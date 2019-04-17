@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>description</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="onBack()">Back</ion-button>
+  <ion-item>
+    <ion-label>Input Description here</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-textarea autofocus placeholder="input" [(ngModel)]="value"></ion-textarea>
+  </ion-item>
+  <ion-button (click)="onSave()">Save</ion-button>
+</ion-content>

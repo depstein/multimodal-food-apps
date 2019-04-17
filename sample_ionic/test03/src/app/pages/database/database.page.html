@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>database</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="onBack()">Back</ion-button>
+  <ion-item>
+    <ion-label position="floating">What would like to search?</ion-label>
+    <ion-input [(ngModel)]="value" placeholder="input"></ion-input>
+  </ion-item>
+  <ion-button (click)="onSave()">Save</ion-button>
+
+</ion-content>

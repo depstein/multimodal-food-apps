@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>confirmation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>{{logService.data.entries.length}}</h1>
+  <ion-button (click)="onClick()">Back</ion-button>
+  <ion-button (click)="onPush()">Push</ion-button>
+  <ion-button (click)="onClear()">Clear</ion-button>
+  <ion-button (click)="onHome()">Home</ion-button>
+</ion-content>
