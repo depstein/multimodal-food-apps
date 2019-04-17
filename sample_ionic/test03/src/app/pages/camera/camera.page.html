@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>camera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button color="primary" (click)="onClick()">Back</ion-button>
+
+  <ion-button color="danger" (click)="onDClick()">Camera</ion-button>
+
+  <ion-button color="primary" (click)="onSave()">Save</ion-button>
+
+  <img src="{{ myphoto }}" alt="abc">
+  <p>{{ info }}</p>
+</ion-content>

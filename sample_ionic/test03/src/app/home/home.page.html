@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    The world is your oyster.
+    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  </div>
+  <ion-button color="primary" (click)="onClick()">Test</ion-button>
+  <ion-button color="success" (click)="onConfirmPage()">Confirmation Page</ion-button>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <!-- <ion-icon name="arrow-dropup"></ion-icon> -->
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="redirect(0)"><ion-icon name="camera"></ion-icon></ion-fab-button>
+      <ion-fab-button (click)="redirect(1)"><ion-icon name="barcode"></ion-icon></ion-fab-button>
+      <ion-fab-button (click)="redirect(2)"><ion-icon name="paper"></ion-icon></ion-fab-button>
+      <ion-fab-button (click)="redirect(3)"><ion-icon name="globe"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+
+    <!-- <ion-fab-list side="end">
+      <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+    </ion-fab-list> -->
+
+  </ion-fab>
+
+</ion-content>
