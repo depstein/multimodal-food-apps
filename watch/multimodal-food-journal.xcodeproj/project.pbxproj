@@ -1,0 +1,872 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8A00A4922653C610069EFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A00A4822653C610069EFD1 /* AppDelegate.swift */; };
+		A8A00A4B22653C610069EFD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A00A4A22653C610069EFD1 /* ViewController.swift */; };
+		A8A00A4E22653C610069EFD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8A00A4C22653C610069EFD1 /* Main.storyboard */; };
+		A8A00A5022653C620069EFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8A00A4F22653C620069EFD1 /* Assets.xcassets */; };
+		A8A00A5322653C620069EFD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8A00A5122653C620069EFD1 /* LaunchScreen.storyboard */; };
+		A8A00A5E22653C620069EFD1 /* multimodal_food_journalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A00A5D22653C620069EFD1 /* multimodal_food_journalTests.swift */; };
+		A8A00A6922653C620069EFD1 /* multimodal_food_journalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A00A6822653C620069EFD1 /* multimodal_food_journalUITests.swift */; };
+		A8A00A6E22653C620069EFD1 /* multimodal-food-journal WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A8A00A6D22653C620069EFD1 /* multimodal-food-journal WatchKit App.app */; };
+		A8A00A7422653C620069EFD1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8A00A7222653C620069EFD1 /* Interface.storyboard */; };
+		A8A00A7622653C620069EFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8A00A7522653C620069EFD1 /* Assets.xcassets */; };
+		A8A00A7D22653C630069EFD1 /* multimodal-food-journal WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A8A00A7C22653C630069EFD1 /* multimodal-food-journal WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A8A00A8222653C630069EFD1 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A00A8122653C630069EFD1 /* InterfaceController.swift */; };
+		A8A00A8422653C630069EFD1 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A00A8322653C630069EFD1 /* ExtensionDelegate.swift */; };
+		A8A00A8622653C630069EFD1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A00A8522653C630069EFD1 /* NotificationController.swift */; };
+		A8A00A8822653C630069EFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8A00A8722653C630069EFD1 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8A00A5A22653C620069EFD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8A00A3D22653C600069EFD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8A00A4422653C600069EFD1;
+			remoteInfo = "multimodal-food-journal";
+		};
+		A8A00A6522653C620069EFD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8A00A3D22653C600069EFD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8A00A4422653C600069EFD1;
+			remoteInfo = "multimodal-food-journal";
+		};
+		A8A00A6F22653C620069EFD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8A00A3D22653C600069EFD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8A00A6C22653C620069EFD1;
+			remoteInfo = "multimodal-food-journal WatchKit App";
+		};
+		A8A00A7E22653C630069EFD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8A00A3D22653C600069EFD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8A00A7B22653C630069EFD1;
+			remoteInfo = "multimodal-food-journal WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A8A00A9022653C630069EFD1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A8A00A7D22653C630069EFD1 /* multimodal-food-journal WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A9422653C630069EFD1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A8A00A6E22653C620069EFD1 /* multimodal-food-journal WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A8A00A4522653C610069EFD1 /* multimodal-food-journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "multimodal-food-journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A00A4822653C610069EFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A8A00A4A22653C610069EFD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A8A00A4D22653C610069EFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A8A00A4F22653C620069EFD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A8A00A5222653C620069EFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A8A00A5422653C620069EFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8A00A5922653C620069EFD1 /* multimodal-food-journalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "multimodal-food-journalTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A00A5D22653C620069EFD1 /* multimodal_food_journalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multimodal_food_journalTests.swift; sourceTree = "<group>"; };
+		A8A00A5F22653C620069EFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8A00A6422653C620069EFD1 /* multimodal-food-journalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "multimodal-food-journalUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A00A6822653C620069EFD1 /* multimodal_food_journalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = multimodal_food_journalUITests.swift; sourceTree = "<group>"; };
+		A8A00A6A22653C620069EFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8A00A6D22653C620069EFD1 /* multimodal-food-journal WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "multimodal-food-journal WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A00A7322653C620069EFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		A8A00A7522653C620069EFD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A8A00A7722653C620069EFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8A00A7C22653C630069EFD1 /* multimodal-food-journal WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "multimodal-food-journal WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A00A8122653C630069EFD1 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		A8A00A8322653C630069EFD1 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		A8A00A8522653C630069EFD1 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A8A00A8722653C630069EFD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A8A00A8922653C630069EFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8A00A8A22653C630069EFD1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8A00A4222653C600069EFD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A5622653C620069EFD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A6122653C620069EFD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A7922653C630069EFD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A8A00A3C22653C600069EFD1 = {
+			isa = PBXGroup;
+			children = (
+				A8A00A4722653C610069EFD1 /* multimodal-food-journal */,
+				A8A00A5C22653C620069EFD1 /* multimodal-food-journalTests */,
+				A8A00A6722653C620069EFD1 /* multimodal-food-journalUITests */,
+				A8A00A7122653C620069EFD1 /* multimodal-food-journal WatchKit App */,
+				A8A00A8022653C630069EFD1 /* multimodal-food-journal WatchKit Extension */,
+				A8A00A4622653C610069EFD1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A8A00A4622653C610069EFD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8A00A4522653C610069EFD1 /* multimodal-food-journal.app */,
+				A8A00A5922653C620069EFD1 /* multimodal-food-journalTests.xctest */,
+				A8A00A6422653C620069EFD1 /* multimodal-food-journalUITests.xctest */,
+				A8A00A6D22653C620069EFD1 /* multimodal-food-journal WatchKit App.app */,
+				A8A00A7C22653C630069EFD1 /* multimodal-food-journal WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8A00A4722653C610069EFD1 /* multimodal-food-journal */ = {
+			isa = PBXGroup;
+			children = (
+				A8A00A4822653C610069EFD1 /* AppDelegate.swift */,
+				A8A00A4A22653C610069EFD1 /* ViewController.swift */,
+				A8A00A4C22653C610069EFD1 /* Main.storyboard */,
+				A8A00A4F22653C620069EFD1 /* Assets.xcassets */,
+				A8A00A5122653C620069EFD1 /* LaunchScreen.storyboard */,
+				A8A00A5422653C620069EFD1 /* Info.plist */,
+			);
+			path = "multimodal-food-journal";
+			sourceTree = "<group>";
+		};
+		A8A00A5C22653C620069EFD1 /* multimodal-food-journalTests */ = {
+			isa = PBXGroup;
+			children = (
+				A8A00A5D22653C620069EFD1 /* multimodal_food_journalTests.swift */,
+				A8A00A5F22653C620069EFD1 /* Info.plist */,
+			);
+			path = "multimodal-food-journalTests";
+			sourceTree = "<group>";
+		};
+		A8A00A6722653C620069EFD1 /* multimodal-food-journalUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A8A00A6822653C620069EFD1 /* multimodal_food_journalUITests.swift */,
+				A8A00A6A22653C620069EFD1 /* Info.plist */,
+			);
+			path = "multimodal-food-journalUITests";
+			sourceTree = "<group>";
+		};
+		A8A00A7122653C620069EFD1 /* multimodal-food-journal WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				A8A00A7222653C620069EFD1 /* Interface.storyboard */,
+				A8A00A7522653C620069EFD1 /* Assets.xcassets */,
+				A8A00A7722653C620069EFD1 /* Info.plist */,
+			);
+			path = "multimodal-food-journal WatchKit App";
+			sourceTree = "<group>";
+		};
+		A8A00A8022653C630069EFD1 /* multimodal-food-journal WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A8A00A8122653C630069EFD1 /* InterfaceController.swift */,
+				A8A00A8322653C630069EFD1 /* ExtensionDelegate.swift */,
+				A8A00A8522653C630069EFD1 /* NotificationController.swift */,
+				A8A00A8722653C630069EFD1 /* Assets.xcassets */,
+				A8A00A8922653C630069EFD1 /* Info.plist */,
+				A8A00A8A22653C630069EFD1 /* PushNotificationPayload.apns */,
+			);
+			path = "multimodal-food-journal WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A8A00A4422653C600069EFD1 /* multimodal-food-journal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A00A9522653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journal" */;
+			buildPhases = (
+				A8A00A4122653C600069EFD1 /* Sources */,
+				A8A00A4222653C600069EFD1 /* Frameworks */,
+				A8A00A4322653C600069EFD1 /* Resources */,
+				A8A00A9422653C630069EFD1 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8A00A7022653C620069EFD1 /* PBXTargetDependency */,
+			);
+			name = "multimodal-food-journal";
+			productName = "multimodal-food-journal";
+			productReference = A8A00A4522653C610069EFD1 /* multimodal-food-journal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A8A00A5822653C620069EFD1 /* multimodal-food-journalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A00A9822653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journalTests" */;
+			buildPhases = (
+				A8A00A5522653C620069EFD1 /* Sources */,
+				A8A00A5622653C620069EFD1 /* Frameworks */,
+				A8A00A5722653C620069EFD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8A00A5B22653C620069EFD1 /* PBXTargetDependency */,
+			);
+			name = "multimodal-food-journalTests";
+			productName = "multimodal-food-journalTests";
+			productReference = A8A00A5922653C620069EFD1 /* multimodal-food-journalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A8A00A6322653C620069EFD1 /* multimodal-food-journalUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A00A9B22653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journalUITests" */;
+			buildPhases = (
+				A8A00A6022653C620069EFD1 /* Sources */,
+				A8A00A6122653C620069EFD1 /* Frameworks */,
+				A8A00A6222653C620069EFD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8A00A6622653C620069EFD1 /* PBXTargetDependency */,
+			);
+			name = "multimodal-food-journalUITests";
+			productName = "multimodal-food-journalUITests";
+			productReference = A8A00A6422653C620069EFD1 /* multimodal-food-journalUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A8A00A6C22653C620069EFD1 /* multimodal-food-journal WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A00A9122653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journal WatchKit App" */;
+			buildPhases = (
+				A8A00A6B22653C620069EFD1 /* Resources */,
+				A8A00A9022653C630069EFD1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8A00A7F22653C630069EFD1 /* PBXTargetDependency */,
+			);
+			name = "multimodal-food-journal WatchKit App";
+			productName = "multimodal-food-journal WatchKit App";
+			productReference = A8A00A6D22653C620069EFD1 /* multimodal-food-journal WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A8A00A7B22653C630069EFD1 /* multimodal-food-journal WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A00A8D22653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journal WatchKit Extension" */;
+			buildPhases = (
+				A8A00A7822653C630069EFD1 /* Sources */,
+				A8A00A7922653C630069EFD1 /* Frameworks */,
+				A8A00A7A22653C630069EFD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "multimodal-food-journal WatchKit Extension";
+			productName = "multimodal-food-journal WatchKit Extension";
+			productReference = A8A00A7C22653C630069EFD1 /* multimodal-food-journal WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8A00A3D22653C600069EFD1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Daniel Epstein";
+				TargetAttributes = {
+					A8A00A4422653C600069EFD1 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					A8A00A5822653C620069EFD1 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = A8A00A4422653C600069EFD1;
+					};
+					A8A00A6322653C620069EFD1 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = A8A00A4422653C600069EFD1;
+					};
+					A8A00A6C22653C620069EFD1 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					A8A00A7B22653C630069EFD1 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+				};
+			};
+			buildConfigurationList = A8A00A4022653C600069EFD1 /* Build configuration list for PBXProject "multimodal-food-journal" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A8A00A3C22653C600069EFD1;
+			productRefGroup = A8A00A4622653C610069EFD1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8A00A4422653C600069EFD1 /* multimodal-food-journal */,
+				A8A00A5822653C620069EFD1 /* multimodal-food-journalTests */,
+				A8A00A6322653C620069EFD1 /* multimodal-food-journalUITests */,
+				A8A00A6C22653C620069EFD1 /* multimodal-food-journal WatchKit App */,
+				A8A00A7B22653C630069EFD1 /* multimodal-food-journal WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8A00A4322653C600069EFD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A00A5322653C620069EFD1 /* LaunchScreen.storyboard in Resources */,
+				A8A00A5022653C620069EFD1 /* Assets.xcassets in Resources */,
+				A8A00A4E22653C610069EFD1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A5722653C620069EFD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A6222653C620069EFD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A6B22653C620069EFD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A00A7622653C620069EFD1 /* Assets.xcassets in Resources */,
+				A8A00A7422653C620069EFD1 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A7A22653C630069EFD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A00A8822653C630069EFD1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8A00A4122653C600069EFD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A00A4B22653C610069EFD1 /* ViewController.swift in Sources */,
+				A8A00A4922653C610069EFD1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A5522653C620069EFD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A00A5E22653C620069EFD1 /* multimodal_food_journalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A6022653C620069EFD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A00A6922653C620069EFD1 /* multimodal_food_journalUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A00A7822653C630069EFD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A00A8622653C630069EFD1 /* NotificationController.swift in Sources */,
+				A8A00A8422653C630069EFD1 /* ExtensionDelegate.swift in Sources */,
+				A8A00A8222653C630069EFD1 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8A00A5B22653C620069EFD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8A00A4422653C600069EFD1 /* multimodal-food-journal */;
+			targetProxy = A8A00A5A22653C620069EFD1 /* PBXContainerItemProxy */;
+		};
+		A8A00A6622653C620069EFD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8A00A4422653C600069EFD1 /* multimodal-food-journal */;
+			targetProxy = A8A00A6522653C620069EFD1 /* PBXContainerItemProxy */;
+		};
+		A8A00A7022653C620069EFD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8A00A6C22653C620069EFD1 /* multimodal-food-journal WatchKit App */;
+			targetProxy = A8A00A6F22653C620069EFD1 /* PBXContainerItemProxy */;
+		};
+		A8A00A7F22653C630069EFD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8A00A7B22653C630069EFD1 /* multimodal-food-journal WatchKit Extension */;
+			targetProxy = A8A00A7E22653C630069EFD1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A8A00A4C22653C610069EFD1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8A00A4D22653C610069EFD1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A8A00A5122653C620069EFD1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8A00A5222653C620069EFD1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A8A00A7222653C620069EFD1 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8A00A7322653C620069EFD1 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A8A00A8B22653C630069EFD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A8A00A8C22653C630069EFD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A8A00A8E22653C630069EFD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journal WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journal.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		A8A00A8F22653C630069EFD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journal WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journal.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		A8A00A9222653C630069EFD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				IBSC_MODULE = multimodal_food_journal_WatchKit_Extension;
+				INFOPLIST_FILE = "multimodal-food-journal WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journal.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		A8A00A9322653C630069EFD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				IBSC_MODULE = multimodal_food_journal_WatchKit_Extension;
+				INFOPLIST_FILE = "multimodal-food-journal WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journal.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		A8A00A9622653C630069EFD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journal/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journal";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A8A00A9722653C630069EFD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journal/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journal";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A8A00A9922653C630069EFD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journalTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journalTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/multimodal-food-journal.app/multimodal-food-journal";
+			};
+			name = Debug;
+		};
+		A8A00A9A22653C630069EFD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journalTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journalTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/multimodal-food-journal.app/multimodal-food-journal";
+			};
+			name = Release;
+		};
+		A8A00A9C22653C630069EFD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journalUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journalUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "multimodal-food-journal";
+			};
+			name = Debug;
+		};
+		A8A00A9D22653C630069EFD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A96R74593Q;
+				INFOPLIST_FILE = "multimodal-food-journalUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.depstein.multimodal-food-journalUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "multimodal-food-journal";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8A00A4022653C600069EFD1 /* Build configuration list for PBXProject "multimodal-food-journal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A00A8B22653C630069EFD1 /* Debug */,
+				A8A00A8C22653C630069EFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A00A8D22653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journal WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A00A8E22653C630069EFD1 /* Debug */,
+				A8A00A8F22653C630069EFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A00A9122653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journal WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A00A9222653C630069EFD1 /* Debug */,
+				A8A00A9322653C630069EFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A00A9522653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A00A9622653C630069EFD1 /* Debug */,
+				A8A00A9722653C630069EFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A00A9822653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A00A9922653C630069EFD1 /* Debug */,
+				A8A00A9A22653C630069EFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A00A9B22653C630069EFD1 /* Build configuration list for PBXNativeTarget "multimodal-food-journalUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A00A9C22653C630069EFD1 /* Debug */,
+				A8A00A9D22653C630069EFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8A00A3D22653C600069EFD1 /* Project object */;
+}
