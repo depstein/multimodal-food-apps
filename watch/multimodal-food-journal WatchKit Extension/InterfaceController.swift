@@ -57,6 +57,7 @@ class InterfaceController: WKInterfaceController {
             presentTextInputController(withSuggestions: (nil), allowedInputMode: WKTextInputMode.plain){ (arr: [Any]?) in
                 if let strArr = arr as? [String]? {
                     self.sendToFirebase(food: strArr?.joined(separator: " ") ?? "unknown")
+                    WKInterfaceDevice.current().play(.success)
                 }
             }
         }
