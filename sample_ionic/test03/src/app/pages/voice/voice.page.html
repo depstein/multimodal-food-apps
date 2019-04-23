@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>voice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button expand="full" (click)="onBack()">Back</ion-button>
+
+  <ion-button expand="full" (click)="getPermission()">request permission</ion-button>
+  <ion-button expand="full" (click)="startListening()">start listening</ion-button>
+  <ion-button expand="full" (click)="stopListening()">stop listening</ion-button>
+  <ion-item>
+    Recording: {{isRecording}}
+  </ion-item>
+  <ion-item>
+    HasPermission: {{isAvailable}}
+  </ion-item>
+
+  <ion-item>
+    {{matches.length}}
+  </ion-item>
+
+  <ion-item>
+    {{text}}
+  </ion-item>
+  
+
+</ion-content>

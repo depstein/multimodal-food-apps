@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-button (click)="onBack()">Back</ion-button>
+
+  <h1>{{id}}</h1>
+
+  <div class="edit-databass" *ngIf="logService.data.entries[id]['modality'] == 'database'">
+    <h4>What would you like to search in a database?</h4>
+    <ion-item>
+        <ion-input [(ngModel)]="logService.data.entries[id]['entry']"></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="edit-databass" *ngIf="logService.data.entries[id]['modality'] == 'foodDsrp'">
+    <h4>How would you like to describe what you are eating?</h4>
+    <ion-item>
+      <ion-textarea [(ngModel)]="logService.data.entries[id]['entry']"></ion-textarea>
+    </ion-item>
+  </div>
+
+  <div class="edit-photo" *ngIf="logService.data.entries[id]['modality'] == 'foodImg'">
+    <h4>This is the image you took</h4>
+    <ion-item>
+      <img [src]="logService.data.entries[id]['data']">
+    </ion-item>
+    <ion-button (click)="onRetake()">Retake</ion-button>
+  </div>
+
+  <div class="edit-barcode" *ngIf="logService.data.entries[id]['modality'] == 'barcode'">
+    <h4>This is the barcode data we scanned</h4>
+    <ion-item>
+      <p>{{logService.data.entries[id]['entry']}}</p>
+    </ion-item>
+    <ion-button (click)="onRescan()">Rescan</ion-button>
+  </div>
+
+
+</ion-content>

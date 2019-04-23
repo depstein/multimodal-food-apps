@@ -22,6 +22,8 @@ export class ConfirmationPage implements OnInit {
   }
 
   onPush() {
+    this.logService.setName('Yuqi2');
+    this.logService.setPlatform('Mobile');
     this.logService.push();
   }
 
@@ -32,5 +34,27 @@ export class ConfirmationPage implements OnInit {
   onHome() {
     this.router.navigateByUrl('/');
   }
+
+  redirect(mode) {
+    if (mode === 0) {
+      // camera
+      this.router.navigateByUrl('/camera');
+    } else if (mode === 1) {
+      // barcode
+      this.router.navigateByUrl('/barcode');
+    } else if (mode === 2) {
+      // description
+      this.router.navigateByUrl('/description');
+    } else if (mode === 3) {
+      // database
+      this.router.navigateByUrl('/database');
+    } else if (mode === 4) {
+      this.router.navigateByUrl('/voice');
+    }
+   }
+
+   edit(index) {
+     this.router.navigate(['edit', index]);
+   }
 
 }

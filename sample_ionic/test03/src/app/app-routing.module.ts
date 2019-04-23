@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'database', loadChildren: './pages/database/database.module#DatabasePageModule' },
   { path: 'description', loadChildren: './pages/description/description.module#DescriptionPageModule' },
   { path: 'confirmation', loadChildren: './pages/confirmation/confirmation.module#ConfirmationPageModule' },
+  { path: 'edit/:id', loadChildren: './pages/edit/edit.module#EditPageModule' },
+  { path: 'voice', loadChildren: './pages/voice/voice.module#VoicePageModule' },
 ];
 
 @NgModule({

@@ -1,0 +1,30 @@
+.content {
+    margin-left: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    ion-button {
+        width: 23%;
+        // margin-top: 15px;
+    }
+}
+h1 {
+    text-align: center;
+}
+
+.main-content {
+    // height: 80vh;
+    // overflow: hidden;
+    height: calc(100% - 90px);
+    overflow: scroll;
+}
+
+.func-buttons {
+    height: 90px;
+    // overflow: hidden;
+    overflow: hidden;
+    padding-left: 15px;
+}

@@ -30,6 +30,7 @@ export class DatabasePage implements OnInit {
       const p = new Map<string, string>();
       p['modality'] = 'database';
       p['entry'] = this.value;
+      this.value = '';
       this.logService.addEntry(p);
       this.router.navigateByUrl('/confirmation');
     }

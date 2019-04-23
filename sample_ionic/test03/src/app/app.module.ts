@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { Camera } from '@ionic-native/camera/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
     CameraPreview,
-    Camera
+    Camera,
+    SpeechRecognition
   ],
   bootstrap: [AppComponent]
 })

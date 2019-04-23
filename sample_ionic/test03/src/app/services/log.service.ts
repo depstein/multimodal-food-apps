@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { LogData } from '../model/log';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class LogService {
   private logsCollection: AngularFirestoreCollection;
 
   constructor(private afStorage: AngularFireStorage,
-              private afs: AngularFirestore) {
+              private afs: AngularFirestore,
+              private loadingController: LoadingController) {
     this.username = '';
     this.data = new LogData();
     this.data.date = new Date();
@@ -38,11 +40,17 @@ export class LogService {
     this.data.entries.push(entry);
   }
 
-  push() {
+  async push() {
     if (this.username === '') {
       console.log('Error: Need an username.')
       return;
     }
+    const loading = await this.loadingController.create({
+      message: 'Please wait',
+      duration: 99999
+    });
+    loading.present();
+    
     this.logsCollection.add({date: new Date(), platform: this.data.platform, contextLogged: false}).then(
       doc => {
         const tmp = [];
@@ -66,7 +74,9 @@ export class LogService {
           }
           tmp.push(obj);
         });
-        this.afs.doc(this.username + '/' + doc.id).update({entries: tmp});
+        this.afs.doc(this.username + '/' + doc.id).update({entries: tmp}).then(obj => {
+          loading.dismiss();
+        });
       }
     );
   }
