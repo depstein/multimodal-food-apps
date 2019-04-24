@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { LogService } from 'src/app/services/log.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-voice',
@@ -9,24 +11,26 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 })
 export class VoicePage implements OnInit {
 
-  matches: string[] = [];
-  text = 'default';
+  matches: string[];
   isRecording = false;
-  isAvailable = false;;
+  isAvailable = false;
 
   constructor(private location: Location,
-              private speechRecognition: SpeechRecognition) { }
+              private speechRecognition: SpeechRecognition,
+              private changeDetectorRef: ChangeDetectorRef,
+              private logService: LogService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.speechRecognition.hasPermission().then(permission => {
-      this.isAvailable = permission;
-      if (!permission) {
-        this.speechRecognition.requestPermission().then(
-          () => this.isAvailable = true,
-          () => this.isAvailable = false
-        )
-      }
-    })
+    // this.speechRecognition.hasPermission().then(permission => {
+    //   this.isAvailable = permission;
+    //   if (!permission) {
+    //     this.speechRecognition.requestPermission().then(
+    //       () => this.isAvailable = true,
+    //       () => this.isAvailable = false
+    //     )
+    //   }
+    // })
   }
 
   onBack() {
@@ -34,35 +38,38 @@ export class VoicePage implements OnInit {
   }
 
   getPermission() {
-    console.log(1);
     this.speechRecognition.hasPermission().then(permission => {
       console.log(permission);
-      if(!permission) {
+      if (!permission) {
         this.speechRecognition.requestPermission().then(
           () => this.isAvailable = true,
           () => this.isAvailable = false
-        )
+        );
       }
-    })
+    });
   }
 
   startListening() {
 
-    this.speechRecognition.startListening({language:'en-EN'}).subscribe(matches => {
-      this.text = '123';
-      this.matches = matches;
-      this.text = matches[0];
+    this.speechRecognition.startListening({language: 'en-EN'}).subscribe(matches => {
+      this.matches = [];
+      matches.forEach(item => this.matches.push(item));
+      this.changeDetectorRef.detectChanges();
     }, error => {
-      this.text = error;
     });
     this.isRecording = true;
   }
 
   stopListening() {
-    // this.sR.stopListening().then( () => {
-    //   this.isRecording = false;
-    // });
     this.speechRecognition.stopListening();
     this.isRecording = false;
+  }
+
+  onSave() {
+    const p = new Map<string, string>();
+    p['modality'] = 'voice';
+    p['entry'] = this.matches[0];
+    this.logService.addEntry(p);
+    this.router.navigateByUrl('/confirmation');
   }
 }

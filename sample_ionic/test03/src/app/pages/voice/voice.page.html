@@ -8,8 +8,10 @@
   <ion-button expand="full" (click)="onBack()">Back</ion-button>
 
   <ion-button expand="full" (click)="getPermission()">request permission</ion-button>
-  <ion-button expand="full" (click)="startListening()">start listening</ion-button>
-  <ion-button expand="full" (click)="stopListening()">stop listening</ion-button>
+  <ion-button *ngIf="!isRecording" expand="full" color="danger" (click)="startListening()">start listening</ion-button>
+  <ion-button *ngIf="isRecording" expand="full" color="danger" (click)="stopListening()">stop listening</ion-button>
+  <ion-button expand="full" disabled="{{matches == null}}" (click)="onSave()">Save</ion-button>
+
   <ion-item>
     Recording: {{isRecording}}
   </ion-item>
@@ -17,13 +19,12 @@
     HasPermission: {{isAvailable}}
   </ion-item>
 
-  <ion-item>
-    {{matches.length}}
-  </ion-item>
 
-  <ion-item>
-    {{text}}
+  <ion-item *ngIf="matches">
+    <ion-label>Voice Detected: </ion-label>
+    <ion-input [(ngModel)]="matches[0]"></ion-input>
   </ion-item>
+  
   
 
 </ion-content>
