@@ -5,9 +5,33 @@
 </ion-header>
 
 <ion-content>
-  <h1>{{logService.data.entries.length}}</h1>
-  <ion-button (click)="onClick()">Back</ion-button>
-  <ion-button (click)="onPush()">Push</ion-button>
-  <ion-button (click)="onClear()">Clear</ion-button>
-  <ion-button (click)="onHome()">Home</ion-button>
+  <div class="main-content">
+    <div class="buttons">
+      <ion-button (click)="onClick()">Back</ion-button>
+      <ion-button (click)="onPush()">Push</ion-button>
+      <ion-button (click)="onClear()">Clear</ion-button>
+      <ion-button (click)="onHome()">Home</ion-button>
+    </div>
+
+    <h1 *ngIf="logService.data.entries.length == 0">No Entries Yet</h1>
+
+    <div class="content" *ngFor="let entry of logService.data.entries; let i = index">
+      <h4>Index {{i+1}}</h4>
+      <p>Mode: {{entry['modality']}}</p>
+      <p *ngIf="entry['entry'] != 'base64_img'">Entry: {{entry['entry']}}</p>
+      <img src="{{entry['data']}}" *ngIf="entry['entry']=='base64_img'">
+
+      <ion-button (click)="edit(i)">Edit</ion-button>
+    </div>
+
+  </div>
+
+  <div class="func-buttons">
+    <ion-button (click)='redirect(3)'>DB Search</ion-button>
+    <ion-button (click)='redirect(2)'>Description</ion-button>
+    <ion-button (click)='redirect(0)'>Picture</ion-button>
+    <ion-button (click)='redirect(1)'>Barcode</ion-button>
+    <ion-button (click)='redirect(4)'>Voice</ion-button>
+    <ion-button>Another Button</ion-button>
+  </div>
 </ion-content>

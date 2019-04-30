@@ -1,35 +1,36 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Food Journal Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
-  <ion-button color="primary" (click)="onClick()">Test</ion-button>
-  <ion-button color="success" (click)="onConfirmPage()">Confirmation Page</ion-button>
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button>
-      <!-- <ion-icon name="arrow-dropup"></ion-icon> -->
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-    
+  <ion-fab>
     <ion-fab-list side="top">
       <ion-fab-button (click)="redirect(0)"><ion-icon name="camera"></ion-icon></ion-fab-button>
       <ion-fab-button (click)="redirect(1)"><ion-icon name="barcode"></ion-icon></ion-fab-button>
       <ion-fab-button (click)="redirect(2)"><ion-icon name="paper"></ion-icon></ion-fab-button>
       <ion-fab-button (click)="redirect(3)"><ion-icon name="globe"></ion-icon></ion-fab-button>
     </ion-fab-list>
-
-    <!-- <ion-fab-list side="end">
-      <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
-    </ion-fab-list> -->
-
   </ion-fab>
-
+  <div class="calendar">
+    <div *ngIf="logs_array">
+      <p>
+        {{logs_array[current_index] | json}}
+      </p>
+      <ion-item>
+        Logged from: {{logs_array[current_index]['platform']}}
+      </ion-item>
+      <ion-item>
+        Logged at: {{logs_array[current_index]['date'].toDate() | date: 'short'}}
+      </ion-item>
+    </div>
+  </div>
+  <div class="navigator">
+    <ion-button disabled="{{logs_array == null || current_index == 0}}" (click)="onPrev()">Prev</ion-button>
+    <ion-button color="success" (click)="onConfirmPage()">Add Entries</ion-button>
+    <ion-button disabled="{{logs_array == null || current_index == max_index}}" (click)="onNext()">Next</ion-button>
+  </div>
 </ion-content>

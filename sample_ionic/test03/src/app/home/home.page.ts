@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { LogService } from '../services/log.service';
 import { Router } from '@angular/router';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +11,29 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  private logsCollection: AngularFirestoreCollection<any>;
+  logs: Observable<any[]>;
+  logs_array: any[] = null;
+
+  current_index: number;
+  max_index: number;
+
   constructor(private logService: LogService, 
-              private router: Router) {
+              private router: Router,
+              private afs: AngularFirestore) {
+
+
+    this.logsCollection = this.afs.collection('Yuqi2', ref => ref.orderBy('date', 'asc'));
+    this.logs = this.logsCollection.valueChanges();
+
+    this.logs.subscribe(items => {
+      this.logs_array = items;
+      
+      this.max_index = this.logs_array.length - 1;
+      this.current_index = this.max_index;
+    })
+    // this.logs.subscribe()
     this.logService.setPlatform('Mobile');
     this.logService.setName('Yuqi2');
   }
@@ -43,4 +67,11 @@ export class HomePage {
       this.router.navigateByUrl('/database');
     }
    }
+
+  onPrev() {
+    this.current_index -= 1;
+  }
+  onNext() {
+    this.current_index += 1;
+  }
 }
