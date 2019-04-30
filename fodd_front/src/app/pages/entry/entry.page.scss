@@ -1,0 +1,23 @@
+ion-toolbar {
+    --background: rgb(246, 205, 96);
+    color: white;
+
+    ion-back-button {
+        color:white;
+    }
+}
+
+ion-content {
+    --background: rgb(242, 168, 70);
+}
+
+ion-fab {
+    #main {
+        --background: var(--ion-color-primary);
+
+    }
+
+    #submit {
+        --background: var(--ion-color-success);
+    }
+}
