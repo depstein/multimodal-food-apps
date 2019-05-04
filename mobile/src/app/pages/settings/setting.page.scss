@@ -35,3 +35,32 @@ ion-toolbar {
 ion-content {
     --background: rgb(242, 168, 70);
 }
+
+.Content {
+    height: 40vh;
+    width: 100%;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    color: white;
+
+    .card {
+        background-color: rgb(148, 213, 228);
+        padding-top: 5vh;
+        padding-bottom: 2vh;
+        border-radius: 25px;
+        margin-bottom: 5vh;
+    }
+    margin-bottom: 35vh;
+}
+
+h1{
+  color: white
+}
+
+.button{
+  text-align: center;
+}
+
+ion-icon {
+    font-size: 2.5em;
+}

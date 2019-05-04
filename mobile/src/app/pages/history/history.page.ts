@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LogService } from '../services/log.service';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+//import { LogService } from '../services/log.service';
+//import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-history',
