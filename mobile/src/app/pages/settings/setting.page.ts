@@ -4,11 +4,11 @@ import { LogService } from '../services/log.service';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-history',
-  templateUrl: './history.page.html',
-  styleUrls: ['./history.page.scss'],
+  selector: 'app-setting',
+  templateUrl: './setting.page.html',
+  styleUrls: ['./setting.page.scss'],
 })
-export class HistoryPage implements OnInit {
+export class SettingPage implements OnInit {
 
   constructor(private router: Router) { }
 
@@ -24,7 +24,7 @@ export class HistoryPage implements OnInit {
         this.router.navigateByUrl('/home');
         break;
       case 2:
-        // this.router.navigateByUrl('settings')
+         this.router.navigateByUrl('setting')
         break;
     }
   }

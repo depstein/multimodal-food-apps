@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
       case 1:
         break;
       case 2:
-        // this.router.navigateByUrl('settings')
+         this.router.navigateByUrl('/setting')
         break;
     }
   }
