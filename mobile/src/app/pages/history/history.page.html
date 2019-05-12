@@ -6,6 +6,43 @@
 
 <ion-content>
 
+  <div class="date">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="back">
+          <button item-right clear (click)="backdate()"><ion-icon name="arrow-round-back"></ion-icon></button>
+        </ion-col>
+
+        <ion-col class="date">
+          <p>{{calendar_date.toDateString()}}</p>
+        </ion-col>
+
+        <ion-col class="forward">
+          <button item-right clear (click)="forwarddate()"><ion-icon name="arrow-round-forward"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-card *ngFor="let log of logs_array">
+              <ion-card-content>
+                <ion-icon name="home"></ion-icon>{{log.date.toDateString()}}<br>
+                <ion-icon name="home"></ion-icon>{{log.entries[0].entry}}<br>
+                <ion-icon name="home"></ion-icon>{{log.entries[0].modality}}<br>
+                <ion-icon name="home"></ion-icon>{{log.platform}}<br>
+
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+<ion-footer>
     <div class="footer">
         <ion-grid>
           <ion-row class="ion-justify-content-center">
@@ -15,4 +52,4 @@
           </ion-row>
         </ion-grid>
       </div>
-</ion-content>
+</ion-footer>

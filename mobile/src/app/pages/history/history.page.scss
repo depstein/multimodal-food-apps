@@ -16,12 +16,6 @@ ion-toolbar {
         color: green;
     }
 
-    ion-icon {
-        font-size: 3em;
-        color: white;
-        // margin-left: 5vw;
-    }
-
 
 
     ion-col {
@@ -31,7 +25,31 @@ ion-toolbar {
         align-items: center;
     }
 }
+p{
+  color: white;
+}
+
+ion-icon {
+    font-size: 3em;
+    color: white;
+    // margin-left: 5vw;
+}
+
+.back{
+  text-align: right;
+}
+.forward{
+  text-align:left;
+}
+.date{
+  text-align: center;
+}
 
 ion-content {
     --background: rgb(242, 168, 70);
+}
+
+ion-card{
+  color:white;
+  --background: rgb(175, 218, 226);
 }

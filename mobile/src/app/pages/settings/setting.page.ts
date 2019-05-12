@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import { LogService } from '../services/log.service';
-//import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-setting',
@@ -32,5 +31,7 @@ export class SettingPage implements OnInit {
   logout() {
     this.router.navigateByUrl('login');
   }
+
+
 
 }
