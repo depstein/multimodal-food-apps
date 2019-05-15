@@ -38,7 +38,7 @@ ion-icon {
 .back{
   text-align: right;
 }
-.forward{
+.forward, .day{
   text-align:left;
 }
 .date{
@@ -52,4 +52,8 @@ ion-content {
 ion-card{
   color:white;
   --background: rgb(175, 218, 226);
+}
+
+ion-card-content{
+  text-align: left;
 }

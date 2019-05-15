@@ -27,6 +27,7 @@ export class HistoryPage implements OnInit {
 
     this.logsCollection = this.afs.collection('Kim', ref => ref.orderBy('date', 'asc'));
     //this.logs = this.logsCollection.valueChanges();
+    //this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
 
     /*this.logs.subscribe(items => {
     //  console.log(items.date)
@@ -64,26 +65,20 @@ export class HistoryPage implements OnInit {
   backdate(){
     var newday = this.calendar_date.getDate()-1
     this.calendar_date.setDate(newday)
-    //this.logs_array=this.getentries();
-    this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
+    this.logs_array=this.getentries();
 
   }
 
   forwarddate(){
     var check = new Date()
-    if (this.calendar_date.toDateString() == check.toDateString()){
-      this.calendar_date=this.calendar_date
-    }
-    else{
+    if (this.calendar_date.toDateString() != check.toDateString()){ //i need to make a disabled forward button condition
       var newday = this.calendar_date.getDate()+1
       this.calendar_date.setDate(newday)
     }
-  //  console.log(this.logs_array)
-    this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
-    //console.log(this.logs_array)
+    this.logs_array=this.getentries();
   }
 
-  getentries(day, month, year){
+  getentries(){
     var entry = [];
     var logs = this.logsCollection.valueChanges();
     logs.subscribe((array)=>{
@@ -91,13 +86,13 @@ export class HistoryPage implements OnInit {
       array.forEach(element =>{
         //checks the date
         var dates = new EntryCard(element.date, element.entries, element.platform)
-        if ((dates.date.getDay()==this.calendar_date.getDay())&& (dates.date.getMonth()==this.calendar_date.getMonth())&&(dates.date.getFullYear()==this.calendar_date.getFullYear())){
+        if ((dates.date.getDate()==this.calendar_date.getDate())){
             entry.push(dates)
+            console.log(dates)
         }
 
       })
     })
-    //console.log(x)
     return entry
   }
 

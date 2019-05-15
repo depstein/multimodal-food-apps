@@ -27,7 +27,7 @@
           <div>
             <ion-card *ngFor="let log of logs_array">
               <ion-card-content>
-                <ion-icon name="home"></ion-icon>{{log.date.toDateString()}}<br>
+                {{log.date.toDateString()}}<br>
                 <ion-icon name="home"></ion-icon>{{log.entries[0].entry}}<br>
                 <ion-icon name="home"></ion-icon>{{log.entries[0].modality}}<br>
                 <ion-icon name="home"></ion-icon>{{log.platform}}<br>

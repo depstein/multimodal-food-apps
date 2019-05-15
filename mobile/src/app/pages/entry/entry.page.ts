@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntryPage implements OnInit {
 
-  constructor() { }
+  modalities_list: any[];
+
+  constructor() {
+    this.modalities_list = []
+    //this.modalities_list.push(1)
+  }
 
   ngOnInit() {
   }
