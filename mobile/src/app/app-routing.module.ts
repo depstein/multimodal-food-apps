@@ -8,6 +8,12 @@ const routes: Routes = [
   { path: 'entry', loadChildren: './pages/entry/entry.module#EntryPageModule' },
   { path: 'history', loadChildren: './pages/history/history.module#HistoryPageModule' },
   { path: 'setting', loadChildren: './pages/settings/setting.module#SettingPageModule' },
+  { path: 'e-camera', loadChildren: './pages/e-camera/e-camera.module#ECameraPageModule' },
+  { path: 'e-url', loadChildren: './pages/e-url/e-url.module#EUrlPageModule' },
+  { path: 'e-voice', loadChildren: './pages/e-voice/e-voice.module#EVoicePageModule' },
+  { path: 'e-search', loadChildren: './pages/e-search/e-search.module#ESearchPageModule' },
+  { path: 'e-description', loadChildren: './pages/e-description/e-description.module#EDescriptionPageModule' },
+  { path: 'e-barcode', loadChildren: './pages/e-barcode/e-barcode.module#EBarcodePageModule' },
 ];
 
 @NgModule({

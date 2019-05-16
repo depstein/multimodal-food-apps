@@ -15,19 +15,31 @@
     </ion-fab-button>
     
     <ion-fab-list side="top">
-      <ion-fab-button><ion-icon name="barcode"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="clipboard"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="search"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="mic"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="globe"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="camera"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon (click)="navigate(0)" name="barcode"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon (click)="navigate(1)" name="clipboard"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon (click)="navigate(2)" name="search"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon (click)="navigate(3)" name="mic"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon (click)="navigate(4)" name="globe"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon (click)="navigate(5)" name="camera"></ion-icon></ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button id="submit">
+    <ion-fab-button id="submit" (click)='onSubmit()'>
         <ion-icon name="checkmark"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+
+  <h1 *ngIf="logService.data.entries.length == 0">No Entries Yet</h1>
+
+  <div class="content" *ngFor="let entry of logService.data.entries; let i = index">
+    <h4>Index {{i+1}}</h4>
+    <p>Mode: {{entry['modality']}}</p>
+    <p *ngIf="entry['entry'] != 'base64_img'">Entry: {{entry['entry']}}</p>
+    <img src="{{entry['data']}}" *ngIf="entry['entry']=='base64_img'">
+
+    <!-- <ion-button (click)="edit(i)">Edit</ion-button> -->
+  </div>
 
 </ion-content>

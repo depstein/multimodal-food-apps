@@ -20,8 +20,8 @@ export class HistoryPage implements OnInit {
 
 
   constructor(private router: Router,
-              private logService: LogService,
-              private afs: AngularFirestore) {
+    private logService: LogService,
+    private afs: AngularFirestore) {
 
     this.calendar_date = new Date()
 
@@ -48,7 +48,7 @@ export class HistoryPage implements OnInit {
   }
 
   nav(num: number) {
-    switch(num) {
+    switch (num) {
       case 0:
         this.router.navigateByUrl('/history');
         break;
@@ -56,49 +56,51 @@ export class HistoryPage implements OnInit {
         this.router.navigateByUrl('/home');
         break;
       case 2:
-         this.router.navigateByUrl('/setting')
+        this.router.navigateByUrl('/setting');
         break;
     }
   }
 
-  backdate(){
-    var newday = this.calendar_date.getDate()-1
-    this.calendar_date.setDate(newday)
-    //this.logs_array=this.getentries();
-    this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
+  backdate() {
+    const newday = this.calendar_date.getDate() - 1;
+    this.calendar_date.setDate(newday);
+    // this.logs_array=this.getentries();
+    this.logs_array = this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
 
   }
 
-  forwarddate(){
-    var check = new Date()
-    if (this.calendar_date.toDateString() == check.toDateString()){
-      this.calendar_date=this.calendar_date
+  forwarddate() {
+    const check = new Date();
+    if (this.calendar_date.toDateString() == check.toDateString()) {
+      this.calendar_date = this.calendar_date
     }
-    else{
-      var newday = this.calendar_date.getDate()+1
+    else {
+      var newday = this.calendar_date.getDate() + 1
       this.calendar_date.setDate(newday)
     }
-  //  console.log(this.logs_array)
-    this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
-    //console.log(this.logs_array)
+    //  console.log(this.logs_array)
+    this.logs_array = this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
+    // console.log(this.logs_array)
   }
 
-  getentries(day, month, year){
-    var entry = [];
-    var logs = this.logsCollection.valueChanges();
-    logs.subscribe((array)=>{
+  getentries(day, month, year) {
+    const entry = [];
+    const logs = this.logsCollection.valueChanges();
+    logs.subscribe((array) => {
 
-      array.forEach(element =>{
-        //checks the date
-        var dates = new EntryCard(element.date, element.entries, element.platform)
-        if ((dates.date.getDay()==this.calendar_date.getDay())&& (dates.date.getMonth()==this.calendar_date.getMonth())&&(dates.date.getFullYear()==this.calendar_date.getFullYear())){
-            entry.push(dates)
+      array.forEach(element => {
+        // checks the date
+        const dates = new EntryCard(element.date, element.entries, element.platform);
+        if ((dates.date.getDate() === this.calendar_date.getDate())
+        && (dates.date.getMonth() === this.calendar_date.getMonth())
+        && (dates.date.getFullYear() === this.calendar_date.getFullYear())) {
+          entry.push(dates);
         }
 
-      })
-    })
-    //console.log(x)
-    return entry
+      });
+    });
+    // console.log(x)
+    return entry;
   }
 
 

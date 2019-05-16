@@ -14,6 +14,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,7 +30,10 @@ import { environment } from 'src/environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner,
+    Camera,
+    SpeechRecognition
   ],
   bootstrap: [AppComponent]
 })

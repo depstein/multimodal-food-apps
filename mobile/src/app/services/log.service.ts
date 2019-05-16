@@ -75,6 +75,7 @@ export class LogService {
         });
         this.afs.doc(this.username + '/' + doc.id).update({entries: tmp}).then(obj => {
           loading.dismiss();
+          this.clear();
         });
       }
     );

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Barcode</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid style="height: 100%; display: flex; flex-direction: column;">
+    <ion-row style="flex-grow: 1;">
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>{{value}}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row style="flex-grow: 1;">
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand='full' (click)='onScan()'>Open Scanner</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand='full' (click)='onSave()'>Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
