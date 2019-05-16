@@ -7,9 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './setting.page.html',
   styleUrls: ['./setting.page.scss'],
 })
+
+
 export class SettingPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }

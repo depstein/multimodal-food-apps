@@ -9,11 +9,19 @@
 
 <ion-content>
 
+<div *ngIf="modalities_list.length == 0">
+      <p>Instructions: To get started, click on the blue icon on the bottom left.</p>
+  </div>
+
+  <div *ngIf="modalities_list.length > 0">
+    <p>testing</p>
+  </div>
+
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button id="main">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-    
+
     <ion-fab-list side="top">
       <ion-fab-button><ion-icon (click)="navigate(0)" name="barcode"></ion-icon></ion-fab-button>
       <ion-fab-button><ion-icon (click)="navigate(1)" name="clipboard"></ion-icon></ion-fab-button>

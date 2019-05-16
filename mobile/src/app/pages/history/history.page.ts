@@ -27,6 +27,7 @@ export class HistoryPage implements OnInit {
 
     this.logsCollection = this.afs.collection('Kim', ref => ref.orderBy('date', 'asc'));
     //this.logs = this.logsCollection.valueChanges();
+    //this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
 
     /*this.logs.subscribe(items => {
     //  console.log(items.date)
