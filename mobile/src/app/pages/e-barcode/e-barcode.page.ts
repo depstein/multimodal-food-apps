@@ -32,7 +32,7 @@ export class EBarcodePage implements OnInit {
       return;
     } else {
       const p = new Map<string, string>();
-      p['modality'] = 'database';
+      p['modality'] = 'barcode';
       p['entry'] = this.value;
       this.value = '';
       this.logService.addEntry(p);
