@@ -26,3 +26,24 @@ p{
   text-align: center;
   color: white;
 }
+
+.Content {
+    height: 40vh;
+    width: 100%;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-top: 5vh;
+    color: white;
+    .date {
+        font-size: 1.25em;
+    }
+    
+    .card {
+        background-color: rgb(148, 213, 228);
+        padding-top: 5vh;
+        padding-bottom: 2vh;
+        border-radius: 25px;
+        margin-bottom: 5vh;
+    }
+    margin-bottom: 35vh;
+}

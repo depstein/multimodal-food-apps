@@ -9,6 +9,8 @@ import { LogService } from 'src/app/services/log.service';
 })
 export class EntryPage implements OnInit {
 
+  modalities_list = []
+  
   constructor(private router: Router,
               private logService: LogService) { }
 
