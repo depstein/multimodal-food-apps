@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogService } from 'src/app/services/log.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-entry',
@@ -10,7 +11,8 @@ import { LogService } from 'src/app/services/log.service';
 export class EntryPage implements OnInit {
 
   constructor(private router: Router,
-              private logService: LogService) { }
+              private logService: LogService,
+            public alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -39,9 +41,38 @@ export class EntryPage implements OnInit {
   }
 
   onSubmit() {
-    this.logService.setName('Yuqi3');
+    console.log(this.logService.data.entries.length)
+    this.logService.setName('Kim');
     this.logService.setPlatform('ios');
     this.logService.push();
+  }
+
+  editEntry(){
+
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Delete Modality',
+      message: 'Are you sure you want to delete it?',
+      buttons: [
+        {
+          text: 'Yes',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'No',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

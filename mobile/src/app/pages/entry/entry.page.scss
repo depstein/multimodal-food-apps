@@ -26,3 +26,30 @@ p{
   text-align: center;
   color: white;
 }
+
+.entry{
+  text-align:left !important;
+}
+
+.edit{
+  text-align: right;
+}
+
+ion-card{
+  color:white;
+  --background: rgb(175, 218, 226);
+}
+
+.header{
+  --background: rgb(242, 168, 70);
+  color:white;
+}
+
+ion-card-subtitle{
+  color:white;
+}
+
+.change {
+    font-size: 2em;
+    color: white;
+}

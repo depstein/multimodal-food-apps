@@ -9,12 +9,8 @@
 
 <ion-content>
 
-<div *ngIf="modalities_list.length == 0">
+  <div *ngIf="logService.data.entries.length == 0">
       <p>Instructions: To get started, click on the blue icon on the bottom left.</p>
-  </div>
-
-  <div *ngIf="modalities_list.length > 0">
-    <p>testing</p>
   </div>
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
@@ -39,15 +35,28 @@
   </ion-fab>
 
 
-  <h1 *ngIf="logService.data.entries.length == 0">No Entries Yet</h1>
-
+  <ion-grid>
+    <ion-card>
   <div class="content" *ngFor="let entry of logService.data.entries; let i = index">
-    <h4>Index {{i+1}}</h4>
-    <p>Mode: {{entry['modality']}}</p>
-    <p *ngIf="entry['entry'] != 'base64_img'">Entry: {{entry['entry']}}</p>
-    <img src="{{entry['data']}}" *ngIf="entry['entry']=='base64_img'">
+
+      <ion-card-header class="header">
+        <ion-row>
+          <ion-col size="10"><ion-card-subtitle>{{entry['modality']}}</ion-card-subtitle></ion-col>
+          <ion-col class="edit" size="2"><ion-icon name="close-circle-outline" (click)="presentAlertConfirm()" class="change"></ion-icon></ion-col>
+        </ion-row>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="10"><p class="entry" *ngIf="entry['entry'] != 'base64_img'">Entry: {{entry['entry']}}</p>
+            <img src="{{entry['data']}}" *ngIf="entry['entry']=='base64_img'"></ion-col>
+            <ion-col class="edit" size="2"><ion-icon name="create" class="change"></ion-icon></ion-col>
+        </ion-row>
+      </ion-card-content>
+  </div>
+  </ion-card>
 
     <!-- <ion-button (click)="edit(i)">Edit</ion-button> -->
-  </div>
+  </ion-grid>
 
 </ion-content>

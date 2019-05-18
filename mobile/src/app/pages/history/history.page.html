@@ -27,10 +27,36 @@
           <div>
             <ion-card *ngFor="let log of logs_array">
               <ion-card-content>
+                <ion-grid>
+                  <ion-row>
                 {{log.date.toDateString()}}<br>
-                <ion-icon name="home"></ion-icon>{{log.entries[0].entry}}<br>
-                <ion-icon name="home"></ion-icon>{{log.entries[0].modality}}<br>
-                <ion-icon name="home"></ion-icon>{{log.platform}}<br>
+                {{log.date.toTimeString()}}<br>
+                </ion-row>
+
+                <div *ngFor="let entry of log.entries">
+                  <div *ngIf="entry.modality=='voice'">
+                    <ion-row><ion-col><ion-icon name="play-circle"></ion-icon></ion-col><ion-col>{{entry.entry}}</ion-col></ion-row><br>
+                  </div>
+                  <div *ngIf="entry.modality=='text'">
+                    <ion-row><ion-col><ion-icon name="text"></ion-icon></ion-col><ion-col>{{entry.entry}}</ion-col></ion-row><br>
+                  </div>
+                  <div *ngIf="entry.modality=='database'">
+                    <ion-row><ion-col><ion-icon name="search"></ion-icon></ion-col><ion-col>{{entry.entry}}</ion-col></ion-row><br>
+                  </div>
+                  <div *ngIf="entry.modality=='url'">
+                    <ion-row><ion-col><ion-icon name="globe"></ion-icon></ion-col><ion-col>{{entry.entry}}</ion-col></ion-row><br>
+                  </div>
+                  <div *ngIf="entry.modality=='barcode'">
+                    <ion-row><ion-col><ion-icon name="barcode"></ion-icon></ion-col><ion-col>{{entry.entry}}</ion-col></ion-row><br>
+                  </div>
+                  <div *ngIf="entry.modality=='foodImg'">
+                    <ion-row><ion-col><ion-icon name="barcode"></ion-icon></ion-col><ion-col>{{entry.entry}}</ion-col></ion-row><br>
+                  </div>
+                </div>
+
+                {{log.platform}}
+
+                </ion-grid>
 
               </ion-card-content>
             </ion-card>

@@ -24,25 +24,8 @@ export class HistoryPage implements OnInit {
     private afs: AngularFirestore) {
 
     this.calendar_date = new Date()
-
     this.logsCollection = this.afs.collection('Kim', ref => ref.orderBy('date', 'asc'));
-    //this.logs = this.logsCollection.valueChanges();
-    //this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
 
-    /*this.logs.subscribe(items => {
-    //  console.log(items.date)
-      //console.log(typeof(items))
-      //this.logs_array = items;
-      items.forEach(item =>{
-        console.log(item.date)
-        var dates = item.date
-        this.logs_array.push(new EntryCard(dates))
-        //this.logs_array.push(item)
-      })
-
-
-    })*/
-    // this.logs.subscribe()
   }
 
   ngOnInit() {
@@ -65,8 +48,7 @@ export class HistoryPage implements OnInit {
   backdate() {
     const newday = this.calendar_date.getDate() - 1;
     this.calendar_date.setDate(newday);
-    // this.logs_array=this.getentries();
-    this.logs_array = this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
+    this.logs_array = this.getentries();
 
   }
 
@@ -79,12 +61,10 @@ export class HistoryPage implements OnInit {
       var newday = this.calendar_date.getDate() + 1
       this.calendar_date.setDate(newday)
     }
-    //  console.log(this.logs_array)
-    this.logs_array = this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
-    // console.log(this.logs_array)
+    this.logs_array = this.getentries();
   }
 
-  getentries(day, month, year) {
+  getentries() {
     const entry = [];
     const logs = this.logsCollection.valueChanges();
     logs.subscribe((array) => {
@@ -100,7 +80,6 @@ export class HistoryPage implements OnInit {
 
       });
     });
-    // console.log(x)
     return entry;
   }
 
