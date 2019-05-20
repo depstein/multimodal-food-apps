@@ -35,6 +35,13 @@
               </ion-card-content>
             </ion-card>
           </div>
+
+          <div *ngIf="logs_array.length==0">
+            <ion-card>
+              <ion-card-content> No entries </ion-card-content>
+            </ion-card>
+          </div>
+
         </ion-col>
       </ion-row>
     </ion-grid>

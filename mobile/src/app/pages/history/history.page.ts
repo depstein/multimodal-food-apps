@@ -24,6 +24,7 @@ export class HistoryPage implements OnInit {
     private afs: AngularFirestore) {
 
     this.calendar_date = new Date()
+    this.logs_array= new Array()
 
     this.logsCollection = this.afs.collection('Kim', ref => ref.orderBy('date', 'asc'));
     //this.logs = this.logsCollection.valueChanges();
@@ -74,6 +75,7 @@ export class HistoryPage implements OnInit {
     const check = new Date();
     if (this.calendar_date.toDateString() == check.toDateString()) {
       this.calendar_date = this.calendar_date
+      this.logs_array.length = 0
     }
     else {
       var newday = this.calendar_date.getDate() + 1
