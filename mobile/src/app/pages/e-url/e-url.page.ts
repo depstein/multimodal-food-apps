@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LogService } from 'src/app/services/log.service';
 
 @Component({
@@ -8,23 +8,33 @@ import { LogService } from 'src/app/services/log.service';
   styleUrls: ['./e-url.page.scss'],
 })
 export class EUrlPage implements OnInit {
-
+  index = -1;
   value = '';
   constructor(private router: Router,
-              private logService: LogService) { }
+              private logService: LogService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id !== null) {
+      this.index = parseInt(id, 10);
+      this.value = this.logService.data.entries[this.index]['entry'];
+    }
   }
 
   onSave() {
     if (this.value === '') {
       return;
     } else {
-      const p = new Map<string, string>();
-      p['modality'] = 'url';
-      p['entry'] = this.value;
+      if (this.index == -1) {
+        const p = new Map<string, string>();
+        p['modality'] = 'url';
+        p['entry'] = this.value;
+        this.logService.addEntry(p);
+      } else {
+        this.logService.data.entries[this.index]['entry'] = this.value;
+      }
       this.value = '';
-      this.logService.addEntry(p);
       this.router.navigateByUrl('/entry');
     }
   }

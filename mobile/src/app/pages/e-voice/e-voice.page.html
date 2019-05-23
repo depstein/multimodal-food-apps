@@ -18,12 +18,20 @@
 
     <ion-grid style="height: 100%; display: flex; flex-flow: column;">
       <ion-row style="flex-grow: 1;">
-        <ion-col size="12">
+
+        <ion-col size="12" *ngIf="result != ''">
           <ion-item>
             <ion-label position="floating">Recognized Text</ion-label>
             <ion-textarea [(ngModel)]='result'></ion-textarea>
           </ion-item>
         </ion-col>
+
+        <ion-col size="12" *ngIf="result === ''">
+          <ion-item>
+            Press the red button to start recording
+          </ion-item>
+        </ion-col>
+
       </ion-row>
       <ion-row>
         <ion-col size="12">

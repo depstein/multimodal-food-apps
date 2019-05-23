@@ -46,4 +46,27 @@ export class EntryPage implements OnInit {
     this.logService.push();
   }
 
+  onRemove(index) {
+    this.logService.data.entries = this.logService.data.entries.filter( (entry) => {
+      return entry !== this.logService.data.entries[index];
+    });
+  }
+
+  onEdit(index) {
+    const m = this.logService.data.entries[index]['modality'];
+    if (m === 'foodDsrp') {
+      this.router.navigateByUrl('e-description/' + index);
+    } else if (m === 'foodImg') {
+      this.router.navigateByUrl('e-camera/' + index);
+    } else if (m === 'barcode') {
+      this.router.navigateByUrl('e-barcode/' + index);
+    } else if (m === 'database') {
+      this.router.navigateByUrl('e-search/' + index);
+    } else if (m === 'url') {
+      this.router.navigateByUrl('e-url/' + index);
+    } else if (m === 'voice') {
+      this.router.navigateByUrl('e-voice/' + index);
+    }
+  }
+
 }

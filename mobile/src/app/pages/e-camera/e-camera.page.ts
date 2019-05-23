@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LogService } from 'src/app/services/log.service';
 
 @Component({
@@ -10,15 +10,21 @@ import { LogService } from 'src/app/services/log.service';
 })
 export class ECameraPage implements OnInit {
 
-
+  index = -1;
   myphoto: any = null;
   info: string;
 
   constructor(private router: Router,
               private logService: LogService,
-              private camera: Camera) { }
+              private camera: Camera,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id !== null) {
+      this.index = parseInt(id, 10);
+      this.myphoto = this.logService.data.entries[this.index]['data'];
+    }
   }
 
   onPhoto() {
@@ -41,11 +47,15 @@ export class ECameraPage implements OnInit {
     if (this.myphoto == null) {
       return;
     } else {
-      const p = new Map<string, any>();
-      p['modality'] = 'foodImg';
-      p['entry'] = 'base64_img';
-      p['data'] = this.myphoto;
-      this.logService.addEntry(p);
+      if (this.index == -1) {
+        const p = new Map<string, any>();
+        p['modality'] = 'foodImg';
+        p['entry'] = 'base64_img';
+        p['data'] = this.myphoto;
+        this.logService.addEntry(p);
+      } else {
+        this.logService.data.entries[this.index]['data'] = this.myphoto;
+      }
       this.router.navigateByUrl('/entry');
     }
   }

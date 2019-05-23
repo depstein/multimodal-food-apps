@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LogService } from 'src/app/services/log.service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
@@ -10,12 +10,19 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 })
 export class EBarcodePage implements OnInit {
 
+  index = -1;
   value = 'Nothing Scanned Yet';
   constructor(private router: Router,
               private logService: LogService,
-              private barcodeScanner: BarcodeScanner) { }
+              private barcodeScanner: BarcodeScanner,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    if (id !== null) {
+      this.index = parseInt(id, 10);
+      this.value = this.logService.data.entries[this.index]['entry'];
+    }
   }
 
   onScan() {
@@ -28,14 +35,18 @@ export class EBarcodePage implements OnInit {
   }
 
   onSave() {
-    if (this.value === '') {
+    if (this.value === 'Nothing Scanned Yet') {
       return;
     } else {
-      const p = new Map<string, string>();
-      p['modality'] = 'barcode';
-      p['entry'] = this.value;
+      if (this.index === -1) {
+        const p = new Map<string, string>();
+        p['modality'] = 'barcode';
+        p['entry'] = this.value;
+        this.logService.addEntry(p);
+      } else {
+        this.logService.data.entries[this.index]['entry'] = this.value;
+      }
       this.value = '';
-      this.logService.addEntry(p);
       this.router.navigateByUrl('/entry');
     }
   }

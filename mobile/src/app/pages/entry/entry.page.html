@@ -55,16 +55,19 @@
     <div class="card" *ngIf='logService.data.entries.length != 0'>
       <ion-grid>
 
-        <ion-row *ngFor="let entry of logService.data.entries">
+        <ion-row *ngFor="let entry of logService.data.entries; let i = index">
           <ion-col size="2" *ngIf="entry['modality'] === 'database'"><ion-icon name="search"></ion-icon></ion-col>
-          <ion-col size="2" *ngIf="entry['modality'] === 'foodDsrp'"><ion-icon name="clipboard"></ion-icon></ion-col>
+          <ion-col size="2" *ngIf="entry['modality'] === 'foodDsrp'"><ion-icon name="text"></ion-icon></ion-col>
           <ion-col size="2" *ngIf="entry['modality'] === 'url'"><ion-icon name="globe"></ion-icon></ion-col>
           <ion-col size="2" *ngIf="entry['modality'] === 'voice'"><ion-icon name="mic"></ion-icon></ion-col>
           <ion-col size="2" *ngIf="entry['modality'] === 'foodImg'"><ion-icon name="camera"></ion-icon></ion-col>
           <ion-col size="2" *ngIf="entry['modality'] === 'barcode'"><ion-icon name="barcode"></ion-icon></ion-col>
 
-          <ion-col size="10" *ngIf="entry['entry'] != 'base64_img'">{{entry['entry']}}</ion-col>
-          <ion-col size="10" *ngIf="entry['entry'] === 'base64_img'"><img src="{{entry['data']}}" alt="image"></ion-col>
+          <ion-col size="6" *ngIf="entry['entry'] != 'base64_img'">{{entry['entry']}}</ion-col>
+          <ion-col size="6" *ngIf="entry['entry'] === 'base64_img'"><img src="{{entry['data']}}" alt="image"></ion-col>
+
+          <ion-col size="2" (click)="onEdit(i)"><ion-icon name="create"></ion-icon></ion-col>
+          <ion-col size="2" (click)="onRemove(i)"><ion-icon name="trash"></ion-icon></ion-col>
         </ion-row>
 
       </ion-grid>
