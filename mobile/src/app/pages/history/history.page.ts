@@ -5,6 +5,8 @@ import { EntryCard } from '../../model/card';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
+//change dates to times
+//change icons for each entry
 
 @Component({
   selector: 'app-history',
@@ -26,24 +28,7 @@ export class HistoryPage implements OnInit {
     this.calendar_date = new Date()
     this.logs_array= new Array()
 
-    this.logsCollection = this.afs.collection('Kim', ref => ref.orderBy('date', 'asc'));
-    //this.logs = this.logsCollection.valueChanges();
-    //this.logs_array=this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
-
-    /*this.logs.subscribe(items => {
-    //  console.log(items.date)
-      //console.log(typeof(items))
-      //this.logs_array = items;
-      items.forEach(item =>{
-        console.log(item.date)
-        var dates = item.date
-        this.logs_array.push(new EntryCard(dates))
-        //this.logs_array.push(item)
-      })
-
-
-    })*/
-    // this.logs.subscribe()
+    this.logsCollection = this.afs.collection(this.logService.username, ref => ref.orderBy('date', 'asc'));
   }
 
   ngOnInit() {
@@ -67,7 +52,7 @@ export class HistoryPage implements OnInit {
     const newday = this.calendar_date.getDate() - 1;
     this.calendar_date.setDate(newday);
     // this.logs_array=this.getentries();
-    this.logs_array = this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
+    this.logs_array = this.getentries();
 
   }
 
@@ -82,11 +67,11 @@ export class HistoryPage implements OnInit {
       this.calendar_date.setDate(newday)
     }
     //  console.log(this.logs_array)
-    this.logs_array = this.getentries(this.calendar_date.getDay(), this.calendar_date.getMonth(), this.calendar_date.getFullYear());
+    this.logs_array = this.getentries();
     // console.log(this.logs_array)
   }
 
-  getentries(day, month, year) {
+  getentries() {
     const entry = [];
     const logs = this.logsCollection.valueChanges();
     logs.subscribe((array) => {
@@ -102,7 +87,6 @@ export class HistoryPage implements OnInit {
 
       });
     });
-    // console.log(x)
     return entry;
   }
 

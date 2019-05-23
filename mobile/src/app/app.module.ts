@@ -18,11 +18,14 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
             IonicModule.forRoot(),
+            IonicStorageModule.forRoot(),
             AppRoutingModule,
             AngularFireModule.initializeApp(environment.firebase),
             AngularFirestoreModule,
