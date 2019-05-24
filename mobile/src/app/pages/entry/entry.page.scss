@@ -28,6 +28,13 @@ ion-fab-button {
     --color: white;
 }
 
+ion-fab-list {
+    ion-fab-button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
 p{
   text-align: center;
   color: white;
