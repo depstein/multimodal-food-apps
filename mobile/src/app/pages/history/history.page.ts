@@ -4,6 +4,8 @@ import { LogService } from '../../services/log.service';
 import { EntryCard } from '../../model/card';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
+
 
 //change dates to times
 //change icons for each entry
@@ -23,10 +25,17 @@ export class HistoryPage implements OnInit {
 
   constructor(private router: Router,
     private logService: LogService,
-    private afs: AngularFirestore) {
+    private afs: AngularFirestore,
+    public storage: Storage) {
 
     this.calendar_date = new Date()
     this.logs_array= new Array()
+    console.log(this.logService.username)
+
+    this.storage.get('username').then(values=>{
+      console.log(values)
+      this.logService.username = values;
+    })
 
     this.logsCollection = this.afs.collection(this.logService.username, ref => ref.orderBy('date', 'asc'));
   }

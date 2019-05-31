@@ -19,8 +19,14 @@ export class SettingPage implements OnInit {
               private logService: LogService,
               public storage: Storage) {
 
+                this.storage.get('username').then(values=>{
+                  console.log(values)
+                  this.logService.username = values;
+                  this.username = values;
+                })
+              //  console.log(this.logService.username);
                 this.username = this.logService.username;
-                console.log(this.logService.username)
+              // console.log(this.logService.username)
 
               }
 
@@ -44,6 +50,7 @@ export class SettingPage implements OnInit {
   async getData(key) {
     const keyVal = await this.storage.get(key);
     console.log('Key is', keyVal);
+    return keyVal
   }
 
 
@@ -53,8 +60,13 @@ export class SettingPage implements OnInit {
   }
 
   logout() {
-    this.getData("username");
-    this.setData("username", "");
+  //  this.getData("username");
+    this.logService.username="";
+    this.storage.remove("username");
+  //  this.storage.get('username').then(values=>{
+    //  console.log(values)
+
+    //})
     this.router.navigateByUrl('login');
   }
 

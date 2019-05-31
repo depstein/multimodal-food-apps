@@ -21,7 +21,21 @@ export class LoginPage implements OnInit {
                 this.username=""
              }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    this.storage.get('username').then(values=>{
+      console.log(values)
+      if (values != null){
+
+        this.username = values;
+        this.logService.setName(this.username);
+
+        this.setData('username',this.username);
+        this.username="";
+        this.route.navigateByUrl('home');
+      }
+    })
+  }
 
   async setData(key, value) {
       const res = await this.storage.set(key, value);
@@ -35,9 +49,14 @@ export class LoginPage implements OnInit {
 
   login() {
     if (this.username!=""){
+  //  console.log(this.username);
     this.logService.setName(this.username);
-    this.setData('username', this.username);
-    this.username=""
+  //  console.log(this.logService.username);
+    //this.setData('username', this.username);ll
+    this.setData('username',this.username);
+  //  this.getData('username');
+
+    this.username="";
     this.route.navigateByUrl('home');
     }
   }
