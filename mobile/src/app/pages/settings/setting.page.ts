@@ -20,14 +20,12 @@ export class SettingPage implements OnInit {
               public storage: Storage) {
 
                 this.storage.get('username').then(values=>{
-                  console.log(values)
                   this.logService.username = values;
                   this.username = values;
                 })
-              //  console.log(this.logService.username);
+                console.log(this.username)
+                console.log(this.logService.username)
                 this.username = this.logService.username;
-              // console.log(this.logService.username)
-
               }
 
   ngOnInit() {
@@ -47,26 +45,10 @@ export class SettingPage implements OnInit {
     }
   }
 
-  async getData(key) {
-    const keyVal = await this.storage.get(key);
-    console.log('Key is', keyVal);
-    return keyVal
-  }
-
-
-  async setData(key, value) {
-    const res = await this.storage.set(key, value);
-    console.log(res);
-  }
-
   logout() {
-  //  this.getData("username");
+  //logs user out of app, removes user information in storage
     this.logService.username="";
     this.storage.remove("username");
-  //  this.storage.get('username').then(values=>{
-    //  console.log(values)
-
-    //})
     this.router.navigateByUrl('login');
   }
 
