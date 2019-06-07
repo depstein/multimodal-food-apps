@@ -5,6 +5,9 @@ import { EntryCard } from '../../model/card';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
+import { ModalController } from '@ionic/angular';
+import { HistoryDatePage } from '../historydate/historydate.page';
+
 
 
 //change dates to times
@@ -22,25 +25,31 @@ export class HistoryPage implements OnInit {
   logs: Observable<any[]>;
   logs_array: any[];
 
-
   constructor(private router: Router,
     private logService: LogService,
     private afs: AngularFirestore,
-    public storage: Storage) {
+    public storage: Storage,
+    public modalController: ModalController) {
 
     this.calendar_date = new Date()
     this.logs_array= new Array()
-    console.log(this.logService.username)
 
-    this.storage.get('username').then(values=>{
-      console.log(values)
-      this.logService.username = values;
-    })
 
-    this.logsCollection = this.afs.collection(this.logService.username, ref => ref.orderBy('date', 'asc'));
+//try and catch here because when you reload the app on the history page, it throws an error on logscollection
+    try{
+      console.log(this.logService.username)
+      this.logsCollection = this.afs.collection(this.logService.username, ref => ref.orderBy('date', 'asc'));
+      this.logs_array=this.getentries();
+    }
+    catch(error){
+      this.router.navigateByUrl('login');
+    }
+
   }
 
   ngOnInit() {
+    console.log(this.logService.username)
+
   }
 
   nav(num: number) {
@@ -58,14 +67,15 @@ export class HistoryPage implements OnInit {
   }
 
   backdate() {
+    //moves dates back by one day
     const newday = this.calendar_date.getDate() - 1;
     this.calendar_date.setDate(newday);
-    // this.logs_array=this.getentries();
     this.logs_array = this.getentries();
 
   }
 
   forwarddate() {
+    //moves the date foward by one day
     const check = new Date();
     if (this.calendar_date.toDateString() == check.toDateString()) {
       this.calendar_date = this.calendar_date
@@ -75,12 +85,11 @@ export class HistoryPage implements OnInit {
       var newday = this.calendar_date.getDate() + 1
       this.calendar_date.setDate(newday)
     }
-    //  console.log(this.logs_array)
     this.logs_array = this.getentries();
-    // console.log(this.logs_array)
   }
 
   getentries() {
+    //gets all entries in the database for user
     const entry = [];
     const logs = this.logsCollection.valueChanges();
     logs.subscribe((array) => {
@@ -99,6 +108,18 @@ export class HistoryPage implements OnInit {
     return entry;
   }
 
-
+  menu() {
+    //opens the modal page for all dates
+      this.modalController.create({
+        component: HistoryDatePage,
+        componentProps: {}
+      }).then((modal)=>{
+        modal.present()
+        modal.onDidDismiss().then((data)=>{
+          this.calendar_date=new Date(data['data']); //set new calendar date
+          this.logs_array=this.getentries();//get new entries for date
+        })
+      });
+    }
 
 }

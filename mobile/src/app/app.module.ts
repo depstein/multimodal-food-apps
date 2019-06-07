@@ -20,9 +20,12 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
 
+import { HistoryDatePage } from './pages/historydate/historydate.page';
+
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,
+                  HistoryDatePage],
+  entryComponents: [HistoryDatePage],
   imports: [BrowserModule,
             IonicModule.forRoot(),
             IonicStorageModule.forRoot(),
