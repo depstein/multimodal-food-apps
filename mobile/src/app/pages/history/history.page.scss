@@ -11,11 +11,6 @@ ion-toolbar {
     width: 100%;
     background-color: rgb(246, 205, 96);
 
-    #selected {
-        // display: none;
-        color: green;
-    }
-
 
 
     ion-col {
@@ -32,7 +27,6 @@ p{
 ion-icon {
     font-size: 3em;
     color: white;
-    // margin-left: 5vw;
 }
 
 .back{
@@ -56,4 +50,8 @@ ion-card{
 
 ion-card-content{
   text-align: left;
+}
+
+.selected {
+    color: rgb(175, 218, 226);
 }

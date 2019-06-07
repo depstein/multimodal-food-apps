@@ -11,18 +11,11 @@ ion-toolbar {
     width: 100%;
     background-color: rgb(246, 205, 96);
 
-    #selected {
-        // display: none;
-        color: green;
-    }
 
     ion-icon {
         font-size: 3em;
         color: white;
-        // margin-left: 5vw;
     }
-
-
 
     ion-col {
         display: flex;
@@ -67,4 +60,8 @@ ion-icon {
 
 .icon {
   fill: #000;
+}
+
+.selected {
+    color: rgb(175, 218, 226) !important;
 }

@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <button (click)="menu()">
+      <ion-icon slot="icon-only" name="calendar"></ion-icon>
+    </button>
     <ion-title>food Journal</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -87,7 +90,7 @@
     <div class="footer">
         <ion-grid>
           <ion-row class="ion-justify-content-center">
-            <ion-col id="selected" size="4" (click)="nav(0)"><ion-icon name="bookmarks"></ion-icon></ion-col>
+            <ion-col size="4" (click)="nav(0)"><ion-icon class="selected"name="bookmarks"></ion-icon></ion-col>
             <ion-col size="4" (click)="nav(1)"><ion-icon name="home"></ion-icon></ion-col>
             <ion-col size="4" (click)="nav(2)"><ion-icon name="settings"></ion-icon></ion-col>
           </ion-row>

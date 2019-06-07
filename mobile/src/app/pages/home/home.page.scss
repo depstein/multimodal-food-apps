@@ -17,7 +17,7 @@ ion-content {
         color: white;
         height: 30vh;
         width: 30vh;
-        border-radius: 100%;        
+        border-radius: 100%;
         background: green;
         display:inline-block;
         line-height: 30vh;
@@ -36,7 +36,7 @@ ion-content {
     .date {
         font-size: 1.25em;
     }
-    
+
     .card {
         background-color: rgb(148, 213, 228);
         padding-top: 5vh;
@@ -70,4 +70,8 @@ ion-icon {
         justify-content: center;
         align-items: center;
     }
+}
+
+.selected {
+    color: rgb(175, 218, 226) !important;
 }
