@@ -40,23 +40,44 @@ p{
   color: white;
 }
 
+// .Content {
+//     height: 40vh;
+//     width: 100%;
+//     padding-left: 5vw;
+//     padding-right: 5vw;
+//     margin-top: 5vh;
+//     color: white;
+//     .date {
+//         font-size: 1.25em;
+//     }
+    
+//     .card {
+//         background-color: rgb(148, 213, 228);
+//         padding-top: 5vh;
+//         padding-bottom: 2vh;
+//         border-radius: 25px;
+//         margin-bottom: 5vh;
+//     }
+//     margin-bottom: 35vh;
+// }
+
 .Content {
-    height: 40vh;
-    width: 100%;
-    padding-left: 5vw;
-    padding-right: 5vw;
-    margin-top: 5vh;
+    margin-left: 20vw;
+    margin-right: 5vw;
     color: white;
-    .date {
-        font-size: 1.25em;
+
+    ion-icon {
+        font-size: 1.5em;
+        color: white;
     }
     
-    .card {
-        background-color: rgb(148, 213, 228);
-        padding-top: 5vh;
-        padding-bottom: 2vh;
-        border-radius: 25px;
-        margin-bottom: 5vh;
+}
+// .data {
+//     --background: black;
+// }
+
+.delete {
+    span {
+        color: red;
     }
-    margin-bottom: 35vh;
 }

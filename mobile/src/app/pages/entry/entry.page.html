@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button (click)='onBack()' style="color: white;"><ion-icon name="arrow-round-back" style="color: white;"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title>Entry</ion-title>
   </ion-toolbar>
@@ -9,7 +9,7 @@
 
 <ion-content>
 
-<div *ngIf="modalities_list.length == 0">
+<div *ngIf="logService.data.entries.length == 0">
       <p>Instructions: To get started, click on the blue icon on the bottom left.</p>
   </div>
 
@@ -56,7 +56,7 @@
     <div class="card" *ngIf='logService.data.entries.length != 0'>
       <ion-grid>
 
-        <ion-row *ngFor="let entry of logService.data.entries; let i = index">
+        <!-- <ion-row *ngFor="let entry of logService.data.entries; let i = index">
           <ion-col size="2" *ngIf="entry['modality'] === 'database'"><ion-icon name="search"></ion-icon></ion-col>
           <ion-col size="2" *ngIf="entry['modality'] === 'foodDsrp'"><ion-icon name="text"></ion-icon></ion-col>
           <ion-col size="2" *ngIf="entry['modality'] === 'url'"><ion-icon name="globe"></ion-icon></ion-col>
@@ -69,7 +69,36 @@
 
           <ion-col size="2" (click)="onEdit(i)"><ion-icon name="create"></ion-icon></ion-col>
           <ion-col size="2" (click)="onRemove(i)"><ion-icon name="trash"></ion-icon></ion-col>
-        </ion-row>
+        </ion-row> -->
+
+        <div *ngFor="let entry of logService.data.entries; let i = index" style="margin-bottom: 2vh;">
+          <ion-row>
+            <!-- <ion-col size="9">TEXT DESCRIPTION</ion-col> -->
+            <ion-col size="9" *ngIf="entry['modality'] === 'database'" style="padding-top: 20px;">Database</ion-col>
+            <ion-col size="9" *ngIf="entry['modality'] === 'foodDsrp'" style="padding-top: 20px;">Text Description</ion-col>
+            <ion-col size="9" *ngIf="entry['modality'] === 'url'" style="padding-top: 20px;">URL</ion-col>
+            <ion-col size="9" *ngIf="entry['modality'] === 'voice'" style="padding-top: 20px;">Voice</ion-col>
+            <ion-col size="9" *ngIf="entry['modality'] === 'foodImg'" style="padding-top: 20px;">Picture</ion-col>
+            <ion-col size="9" *ngIf="entry['modality'] === 'barcode'" style="padding-top: 20px;">Barcode</ion-col>
+
+            <ion-col size="3">
+              <ion-button fill='clear' (click)="onRemove(i)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row class="data" style="background-color: rgb(148, 213, 228);">
+            <!-- <ion-col size="9">
+              Chicken Salada
+            </ion-col> -->
+            <ion-col size="9" *ngIf="entry['entry'] != 'base64_img'" style="padding-top: 20px;">{{entry['entry']}}</ion-col>
+            <ion-col size="9" *ngIf="entry['entry'] === 'base64_img'" style="padding-top: 20px;"><img src="{{entry['data']}}" alt="image"></ion-col>
+
+            <ion-col size="3">
+              <!-- <ion-icon name="create"></ion-icon> -->
+              <ion-button fill='clear' (click)="onEdit(i)"><ion-icon name="create"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+
 
       </ion-grid>
     </div>
