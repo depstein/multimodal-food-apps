@@ -9,10 +9,10 @@
 
 <ion-content>
 
-    <ion-item>
-        <ion-label position="floating">Enter URL</ion-label>
-        <ion-input [(ngModel)]='value' type="url"></ion-input>
+    <ion-item lines="none">
+        <ion-label position="stacked" style="margin-bottom: 10px;">Enter URL</ion-label>
+        <ion-input [(ngModel)]='value' type="url" style="background-color: rgb(148, 213, 228);"></ion-input>
       </ion-item>
-  <ion-button expand='full' (click)='onSave()'>Save</ion-button>
+  <ion-button expand='full' (click)='onSave()' style="margin-left: 15px; margin-right:15px;">Save</ion-button>
 
 </ion-content>

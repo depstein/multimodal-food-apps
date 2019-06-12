@@ -11,7 +11,7 @@ export class LogService {
 
   username: string;
   data: LogData;
-  private logsCollection: AngularFirestoreCollection;
+  logsCollection: AngularFirestoreCollection;
 
   constructor(private afStorage: AngularFireStorage,
               private afs: AngularFirestore,

@@ -80,8 +80,9 @@ export class EntryPage implements OnInit {
 
   onSubmit() {
     // this.logService.setName('Yuqi3');
-    this.logService.setPlatform('ios');
+    // this.logService.setPlatform('ios');
     this.logService.push();
+    this.router.navigateByUrl('/home');
   }
 
   async onRemove(index) {

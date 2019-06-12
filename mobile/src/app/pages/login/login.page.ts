@@ -31,6 +31,7 @@ export class LoginPage implements OnInit {
       if (values != null){
         this.username = values;
         this.logService.setName(this.username);
+        this.logService.setPlatform('mobile');
 
         this.setData('username',this.username);
         this.username="";//resets the placeholder
@@ -63,6 +64,7 @@ export class LoginPage implements OnInit {
     //if username is valid, proceeds to app
     if (this.username!=""){
     this.logService.setName(this.username);
+    this.logService.setPlatform('mobile');
     this.setData('username',this.username);
     console.log(this.setData('username',this.username));
 

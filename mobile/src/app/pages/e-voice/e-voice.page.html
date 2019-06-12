@@ -20,14 +20,14 @@
       <ion-row style="flex-grow: 1;">
 
         <ion-col size="12" *ngIf="result != ''">
-          <ion-item>
+          <ion-item lines="none">
             <ion-label position="floating">Recognized Text</ion-label>
             <ion-textarea [(ngModel)]='result'></ion-textarea>
           </ion-item>
         </ion-col>
 
         <ion-col size="12" *ngIf="result === ''">
-          <ion-item>
+          <ion-item lines="none">
             Press the red button to start recording
           </ion-item>
         </ion-col>
