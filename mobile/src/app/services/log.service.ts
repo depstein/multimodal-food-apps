@@ -29,7 +29,8 @@ export class LogService {
 
   setName(name: string) {
     this.username = name;
-    this.logsCollection = this.afs.collection(this.username);
+    
+    this.logsCollection = this.afs.collection(this.username, ref => ref.orderBy('date', 'asc'));
   }
 
   setPlatform(platform: string) {
