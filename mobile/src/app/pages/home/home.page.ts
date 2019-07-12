@@ -42,10 +42,8 @@ export class HomePage implements OnInit {
                   element.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
                 }
               }
+              this.logsToday.push(element);
             }
-
-
-            this.logsToday.push(element);
           }
         });
         this.logsToday.sort((a, b) => {return b.date - a.date;})

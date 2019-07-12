@@ -104,15 +104,17 @@ export class HistoryPage implements OnInit {
         && (dates.date.getMonth() === this.calendar_date.getMonth())
         && (dates.date.getFullYear() === this.calendar_date.getFullYear())) {
           console.log(dates.entries);
-          for (let i = 0; i < dates.entries.length; ++i) {
-            if (dates.entries[i].modality === 'foodImg') {
-              dates.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
-
+          if (dates.entries) {
+            for (let i = 0; i < dates.entries.length; ++i) {
+              if (dates.entries[i].modality === 'foodImg') {
+                dates.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
+  
+              }
             }
+  
+  
+            entry.push(dates);
           }
-
-
-          entry.push(dates);
         }
 
       });
