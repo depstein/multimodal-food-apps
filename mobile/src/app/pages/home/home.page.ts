@@ -33,10 +33,11 @@ export class HomePage implements OnInit {
 
           const docDate = element.date.toDate();
           if (this.isToday(docDate)) {
-
-            for (let i = 0; i < element.entries.length; ++i) {
-              if (element.entries[i].modality === 'foodImg') {
-                element.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
+            if(element.entries) {
+              for (let i = 0; i < element.entries.length; ++i) {
+                if (element.entries[i].modality === 'foodImg') {
+                  element.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
+                }
               }
             }
 
