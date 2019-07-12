@@ -78,9 +78,23 @@ export class EntryPage implements OnInit {
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
     // this.logService.setName('Yuqi3');
     // this.logService.setPlatform('ios');
+    if(this.logService.data.entries.length === 0) {
+      const alert = await this.alertController.create({
+        header: 'Warning!',
+        message:'You are not allowed to push empty entry',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel'
+          }
+        ]
+      });
+      await alert.present();
+      return;
+    }
     this.logService.push();
     this.router.navigateByUrl('/home');
   }

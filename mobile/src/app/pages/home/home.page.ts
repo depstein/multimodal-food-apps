@@ -31,8 +31,17 @@ export class HomePage implements OnInit {
       data => {
         this.logsToday = [];
         data.forEach(element => {
+
           const docDate = element.date.toDate();
           if (this.isToday(docDate)) {
+
+            for (let i = 0; i < element.entries.length; ++i) {
+              if (element.entries[i].modality === 'foodImg') {
+                element.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
+              }
+            }
+
+
             this.logsToday.push(element);
           }
         });
@@ -58,18 +67,5 @@ export class HomePage implements OnInit {
          this.router.navigateByUrl('/setting')
         break;
     }
-  }
-
-  getImgURL(index, id) {
-    var pathReference = this.afStorage.ref(this.logService.username + '/' + id);
-    console.log(index, pathReference);
-    pathReference.getDownloadURL().subscribe((url) => {
-      const ele: HTMLImageElement = <HTMLImageElement>document.getElementById('img-'+index);
-      ele.src = url;
-    })
-    return id;
-    // return this.afStorage.ref(this.logService.username + '/' + id).getDownloadURL().toPromise().then((url) => {
-    //   return url;
-    // });
   }
 }

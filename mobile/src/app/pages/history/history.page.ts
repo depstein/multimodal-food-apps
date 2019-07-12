@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { ModalController } from '@ionic/angular';
 import { HistoryDatePage } from '../historydate/historydate.page';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 
@@ -29,7 +30,8 @@ export class HistoryPage implements OnInit {
     private logService: LogService,
     private afs: AngularFirestore,
     public storage: Storage,
-    public modalController: ModalController) {
+    public modalController: ModalController,
+    private afStorage: AngularFireStorage) {
 
     this.calendar_date = new Date()
     this.logs_array= new Array()
@@ -96,10 +98,20 @@ export class HistoryPage implements OnInit {
 
       array.forEach(element => {
         // checks the date
+
         const dates = new EntryCard(element.date, element.entries, element.platform);
         if ((dates.date.getDate() === this.calendar_date.getDate())
         && (dates.date.getMonth() === this.calendar_date.getMonth())
         && (dates.date.getFullYear() === this.calendar_date.getFullYear())) {
+          console.log(dates.entries);
+          for (let i = 0; i < dates.entries.length; ++i) {
+            if (dates.entries[i].modality === 'foodImg') {
+              dates.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
+
+            }
+          }
+
+
           entry.push(dates);
         }
 
