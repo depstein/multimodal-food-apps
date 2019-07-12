@@ -24,7 +24,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
 
-    this.logService.setName('yhuai');
     this.logService.setPlatform('mobile');
 
     this.logService.logsCollection.valueChanges().subscribe(
