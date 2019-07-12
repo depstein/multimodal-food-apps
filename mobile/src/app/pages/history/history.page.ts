@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
 import { ModalController } from '@ionic/angular';
 import { HistoryDatePage } from '../historydate/historydate.page';
 import { AngularFireStorage } from '@angular/fire/storage';
-
+import * as moment from 'moment';
 
 
 //change dates to times

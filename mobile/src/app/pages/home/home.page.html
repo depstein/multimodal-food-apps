@@ -9,44 +9,7 @@
     <a [routerLink]="'/entry'">Log A Meal</a>
   </div>
   <div class="Content">
-    <p class="date">May 23, 2019</p>
-
-    <!-- <div class="card">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="2"><ion-icon name="text"></ion-icon></ion-col>
-          <ion-col size="10">Veggie Pizza, 2 slices</ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col size="2"><ion-icon name="play-circle"></ion-icon></ion-col>
-          <ion-col size="10">This is what was recorded</ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col size="2"><ion-icon name="search"></ion-icon></ion-col>
-          <ion-col size="10">This is what was searched</ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="card">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="2"><ion-icon name="text"></ion-icon></ion-col>
-          <ion-col size="10">Veggie Pizza, 2 slices</ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col size="2"><ion-icon name="play-circle"></ion-icon></ion-col>
-          <ion-col size="10">This is what was recorded</ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col size="2"><ion-icon name="search"></ion-icon></ion-col>
-          <ion-col size="10">This is what was searched</ion-col>
-        </ion-row>
-      </ion-grid>
-    </div> -->
+    <p class="date">{{now}}</p>
 
     <div class="card" *ngFor="let log of logsToday; let i = index">
       <ion-grid>

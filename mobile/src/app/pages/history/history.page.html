@@ -30,7 +30,7 @@
           <div>
             <ion-card *ngFor="let log of logs_array">
               <ion-card-content>
-                Entry made at {{log.date.getHours()}}:{{log.date.getMinutes()}}<br>
+                Entry made at {{log.date | date:'hh:mm aa'}}<br>
 
 
                 <div *ngIf="log.entries[0].modality=='voice'">

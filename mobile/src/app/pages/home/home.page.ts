@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { LogData } from '../../model/log';
 import { LogService } from 'src/app/services/log.service';
 import { AngularFireStorage } from '@angular/fire/storage';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class HomePage implements OnInit {
 
   logsToday: any[];
+  now:any;
 
   constructor(private router: Router,
               private logService: LogService,
@@ -25,6 +27,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
 
     this.logService.setPlatform('mobile');
+    this.now = moment().format('dddd, MMM Do, YYYY');
 
     this.logService.logsCollection.valueChanges().subscribe(
       data => {
