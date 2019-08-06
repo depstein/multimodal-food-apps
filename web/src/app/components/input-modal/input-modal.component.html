@@ -1,0 +1,53 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Record</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">{{getName(conm.getMode())}}:</label>
+
+            <textarea *ngIf="isText(conm.getMode()) && conm.getEdit() == -1" [(ngModel)]="textEntry"
+              [ngModelOptions]="{standalone: true}" class="form-control" id="message-text"></textarea>
+            <textarea *ngIf="isText(conm.getMode()) && conm.getEdit() != -1"
+              [(ngModel)]="conm.draftEntries[conm.getEdit()]['content']" [ngModelOptions]="{standalone: true}"
+              class="form-control" id="message-text"></textarea>
+
+            <div *ngIf="!isText(conm.getMode())">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                  <input *ngIf="conm.getEdit() === -1" #file (change)="onFileChange($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01"
+                    accept="image/x-png,image/gif,image/jpeg">
+
+                  <input *ngIf="conm.getEdit() !== -1" #file (change)="onEditFileChange($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01"
+                    accept="image/x-png,image/gif,image/jpeg">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+
+              <div>
+                <img *ngIf="conm.getEdit() === -1 && img" id="myImg" [src]="img" style="width: 100%;">
+                <img *ngIf="conm.getEdit() !== -1" id="myImg" [src]="conm.draftEntries[conm.getEdit()]['content']" style="width: 100%;">
+              </div>
+              
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onClose()">Close</button>
+        <button type="button" class="btn save-btn" (click)="onSave()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

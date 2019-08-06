@@ -1,0 +1,27 @@
+#loginBox {
+    background-color: #f6cd60;
+
+    max-width: 500px;
+    max-height: 500px;
+
+    h1 {
+        color: white;
+        font-weight: 300;
+    }
+
+    .btn {
+        background-color: #f2a846;
+        color: white;
+        font-weight: 700;
+    }
+
+}
+
+.container {
+    height: 100%;
+}
+
+body {
+    align-items: center;
+    font-family: 'Avenir';
+}

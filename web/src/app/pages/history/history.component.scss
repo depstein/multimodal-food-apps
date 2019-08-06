@@ -1,0 +1,55 @@
+.container {
+    height: 100%;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.25em;
+}
+
+
+.nav-link .active {
+    text-decoration: underline;
+}
+
+.content {
+    background-color: #f6cd60;
+    height: 100%;
+    color: white;
+    overflow: scroll;
+}
+
+
+.newEntry {
+    background-color: #f2a846;
+    color: white;
+}
+.disabled {
+    background-color: #b9b3ab;
+}
+
+
+.draft-box {
+    background-color: #ccb065;
+
+    min-height: 250px;
+
+
+    .func {
+        color: white;
+        width: 40%;
+    }
+
+    #clear {
+        background-color: red;
+    }
+    #save {
+        background-color: #f2a846;
+    }
+}
+
+.addB {
+    color: white;
+    background-color: #94e5d4;
+}
+

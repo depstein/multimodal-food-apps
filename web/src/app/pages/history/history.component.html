@@ -1,0 +1,62 @@
+<div class="container d-flex flex-column">
+  <ul class="nav justify-content-center py-4">
+    <li class="nav-item mx-4">
+      <a href="/main" class="nav-link">Journal</a>
+    </li>
+    <li class="nav-item mx-4">
+      <a href="/history" class="nav-link"><u>History</u></a>
+    </li>
+    <li class="nav-item mx-4">
+      <a href="http://www.google.com/" class="nav-link">Survey</a>
+    </li>
+  </ul>
+
+  <div class="content flex-grow-1">
+
+    <div class="d-flex flex-row justify-content-between">
+      <button class="btn ml-4" (click)="onPrev()"><i class="fa fa-arrow-left"
+          style="color: white; font-size: 2em;"></i></button>
+
+
+
+      <!-- <p class="mx-0 mt-4 display-4">{{date | date:'EEEE, MMMM d'}}</p> -->
+      <div class="dropdown mt-4" style="background-color: #F6C459;">
+          <button class="btn dropdown-toggle text-white" style="background-color: #f6cd60;" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p class="h2">{{date | date:'EEEE, MMMM d'}}</p>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button *ngFor="let d of availableDates; let i = index" class="dropdown-item" (click)='onSelect(i)'>{{ d | date:'EEEE, MMMM d'}}</button>
+          </div>
+        </div>
+
+
+
+
+      <button class="btn mr-4" (click)="onNext()"><i class="fa fa-arrow-right"
+          style="color: white; font-size: 2em;"></i></button>
+    </div>
+
+
+    <!-- <div class="saved-content mx-4 my-4 py-2 rounded shadow" style="background-color: #F6C459;">
+      <p class="ml-3 px-0 py-0 mb-0"><em>8:00 AM</em></p>
+      <div class="row mx-0">
+        <app-record-card class="col-lg-3 col-md-6 col-sm-12 px-2 my-2" *ngFor="let entry of conm.draftEntries"
+          title="{{entry['title']}}" content="{{entry['content']}}">
+        </app-record-card>
+      </div>
+    </div> -->
+    <div *ngFor="let log of filterArray()" class="saved-content mx-4 my-4 py-2 rounded shadow" style="background-color: #F6C459;">
+        <p class="ml-3 px-0 py-0 mb-0"><em>{{ log.date.toDate() | date:'hh:mm a' }}</em></p>
+        <div class="row mx-0">
+          <app-record-card class="col-lg-3 col-md-6 col-sm-12 px-2 my-2" *ngFor="let entry of log.entries"
+            title="{{entry['modality']}}" content="{{entry['entry']}}">
+          </app-record-card>
+        </div>
+      </div>
+
+
+
+  </div>
+</div>
+<app-input-modal></app-input-modal>

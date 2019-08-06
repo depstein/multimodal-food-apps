@@ -1,0 +1,81 @@
+<div class="container d-flex flex-column">
+  <ul class="nav justify-content-center py-4">
+    <li class="nav-item mx-4">
+      <a href="/main" class="nav-link"><u>Journal</u></a>
+    </li>
+    <li class="nav-item mx-4">
+      <a href="/history" class="nav-link">History</a>
+    </li>
+    <li class="nav-item mx-4">
+      <a href="http://www.google.com/" class="nav-link">Survey</a>
+    </li>
+  </ul>
+
+  <div class="content flex-grow-1">
+
+    <div class="row mx-0 py-4 px-4">
+      <div class="col-10">
+        <h1 class="h3">{{date | date:'EEEE, MMMM d'}}</h1>
+        <h1 class="h3">Welcome, User</h1>
+      </div>
+      <div class="col-2 d-flex justify-content-center align-items-center">
+        <button class='btn newEntry' [ngClass]="{'disabled': draft}" (click)="onNewEntry()">NEW ENTRY</button>
+      </div>
+    </div>
+
+    <div class="draft-box mx-4" *ngIf="draft">
+      <div class="row py-4 mx-0">
+        <div class="col-8 d-flex flex-row">
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(0)'>+ Description</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(1)'>+ Database Search</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(2)'>+ Image</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(3)'>+ URL</button>
+          <!-- <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(4)'>+ Voice</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(5)'>+ Barcode</button> -->
+
+          <!-- voice / barcode (image/numeric) -->
+          <!-- Image: FileUpload + capture new picture -->
+
+        </div>
+        <div class="col-4 d-flex flex-row justify-content-around">
+          <button class="btn shadow func" id="clear" (click)="onClear()">CLEAR</button>
+          <!-- dialog -->
+          <button class="btn shadow func" id="save" (click)="onSave()">SAVE</button>
+        </div>
+
+      </div>
+
+      <div class="draft-content">
+        <div class="row mx-0">
+
+          <app-record-card class='col-lg-3 col-md-6 col-sm-12 px-2 my-2' *ngFor="let entry of conm.draftEntries; let i = index;"
+            title="{{entry['title']}}" content="{{entry['content']}}" editable="true" index="{{i}}">
+          </app-record-card>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="saved-content mx-4 my-4 py-2 rounded shadow" style="background-color: #F6C459;">
+      <p class="ml-3 px-0 py-0 mb-0"><em>8:00 AM</em></p>
+      <div class="row mx-0">
+        <app-record-card class="col-lg-3 col-md-6 col-sm-12 px-2 my-2" *ngFor="let entry of conm.draftEntries"
+          title="{{entry['title']}}" content="{{entry['content']}}">
+        </app-record-card>
+      </div>
+    </div> -->
+  <div *ngFor="let log of logs" class="saved-content mx-4 my-4 py-2 rounded shadow" style="background-color: #F6C459;">
+    <p class="ml-3 px-0 py-0 mb-0"><em>{{ log.date.toDate() | date:'hh:mm a' }}</em></p>
+    <div class="row mx-0">
+      <app-record-card class="col-lg-3 col-md-6 col-sm-12 px-2 my-2" *ngFor="let entry of log.entries"
+        title="{{entry['modality']}}" content="{{entry['entry']}}">
+      </app-record-card>
+    </div>
+  </div>
+
+  </div>
+</div>
+<app-input-modal #dialog></app-input-modal>
+<!-- <app-input-modal #id></app-input-modal> -->
+<!-- @ViewChild('id') ... -->
