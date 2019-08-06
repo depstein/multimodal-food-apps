@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { InputModalComponent } from '../components/input-modal/input-modal.component';
 
 @Injectable({
   providedIn: 'root'
@@ -7,31 +8,28 @@ export class CommunicationService {
   public static mode = 0;
   public static editIndex = -1;
 
-  draftEntries = [
-    {
-      'title': 'Description', 
-      'content': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere, in. Unde dignissimos omnis reiciendis quidem.'
-    },
-    {
-      'title': 'URL',
-      'content': 'https://www.uci.edu/'
-    },
-  ];
+  dialog: InputModalComponent;
+
+  draftEntries = [];
+  // draftEntries = [
+  //   {
+  //     'title': 'Description', 
+  //     'content': 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere, in. Unde dignissimos omnis reiciendis quidem.'
+  //   },
+  //   {
+  //     'title': 'URL',
+  //     'content': 'https://www.uci.edu/'
+  //   },
+  // ];
 
   constructor() { }
 
-  setMode(mode) {
-    CommunicationService.mode = mode;
-  }
-  getMode() {
-    return CommunicationService.mode;
+  getDialog() {
+    return this.dialog;
   }
 
-  setEdit(index) {
-    CommunicationService.editIndex = index;
-  }
-  getEdit() {
-    return CommunicationService.editIndex;
+  setDialog(d) {
+    this.dialog = d;
   }
 
   isSameDate(a: Date, b: Date) {

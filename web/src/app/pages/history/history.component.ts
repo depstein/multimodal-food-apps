@@ -34,7 +34,6 @@ export class HistoryComponent implements OnInit {
 
           for (const entry of log['entries']) {
             if (entry['modality'] === 'foodImg') {
-              console.log(entry);
               // entry['entry'] = this.db.imgUrl(entry['entry']);
               entry['entry'] = entry['url'];
             }
@@ -51,19 +50,31 @@ export class HistoryComponent implements OnInit {
     );
   }
 
+  isFirstDay(d) {
+    if (this.availableDates) {
+      return this.conm.isSameDate(d, this.availableDates[this.availableDates.length - 1]);
+    }
+    return false;
+  }
+  isToday(d) {
+    const today = new Date();
+    return this.conm.isSameDate(d, today);
+  }
+
   onPrev() {
-    var newDate = new Date(this.date);
+    if (this.isFirstDay(this.date)) {
+      return;
+    }
+    const newDate = new Date(this.date);
     newDate.setDate(this.date.getDate() - 1);
-    this.date = newDate;
+    this.date = newDate; 
   }
 
   onNext() {
-    const today = new Date();
-    if (this.date.getFullYear() === today.getFullYear()
-      && this.date.getMonth() === today.getMonth() 
-      && this.date.getDate() === today.getDate()) {
+    if (this.isToday(this.date)) {
       return;
     }
+
     var newDate = new Date(this.date);
     newDate.setDate(this.date.getDate() + 1);
     this.date = newDate;

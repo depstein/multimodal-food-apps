@@ -41,10 +41,17 @@ export class RecordCardComponent implements OnInit {
 
   onEdit() {
     console.log(this.index);
-    this.conm.setEdit(this.index);
 
     const arr = ['Description', 'URL', 'Image', 'Search'];
-    this.conm.setMode(arr.indexOf(this.title));
+
+    this.conm.getDialog().editIndex = this.index;
+    this.conm.getDialog().mode = arr.indexOf(this.title);
+
+    if (this.title === 'Image') {
+      this.conm.getDialog().img = this.content;
+    } else {
+      this.conm.getDialog().textEntry = this.content;
+    }
 
     $('#exampleModal').modal('toggle');
   }

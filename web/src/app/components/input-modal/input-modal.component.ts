@@ -14,12 +14,13 @@ export class InputModalComponent implements OnInit {
   textEntry = "";
   img: any;
 
+  mode: number;
+  editIndex: number = -1;
+
   constructor(private conm: CommunicationService) { }
 
   ngOnInit() {
-    if (this.conm.getEdit() !== -1) {
-      this.textEntry = this.conm.draftEntries[this.conm.getEdit()]['content'];
-    }
+
   }
 
   getName(mode) {
@@ -44,63 +45,66 @@ export class InputModalComponent implements OnInit {
   }
 
   onClose() {
-    //TODO
+    this.cleanUp();
     $('#exampleModal').modal('toggle');
   }
 
   onSave() {
-    if (this.isText(this.conm.getMode())) {
-      if (this.conm.getEdit() === -1 && this.textEntry.length === 0) {
+    if (this.isText(this.mode)) {
+      if (this.editIndex === -1 && this.textEntry.length === 0) {
         return;
       }
-      if (this.conm.getEdit() === -1) {
-        const title = this.getName(this.conm.getMode());
+      if (this.editIndex === -1) {
+        const title = this.getName(this.mode);
 
         const obj = { 'title': title, 'content': this.textEntry };
         this.conm.draftEntries.push(obj);
         $('#exampleModal').modal('toggle');
-        this.textEntry = '';
+        this.cleanUp();
       } else {
 
-        // this.conm.draftEntries[this.conm.getEdit()]['content'] = this.textEntry;
-        this.conm.setEdit(-1);
+        this.conm.draftEntries[this.editIndex]['content'] = this.textEntry;
+        this.editIndex = -1;
         $('#exampleModal').modal('toggle');
+        this.cleanUp();
       }
     } else {
-      if (this.conm.getEdit() === -1 && !this.img) {
+      if (this.editIndex === -1 && !this.img) {
         return;
       }
-      if (this.conm.getEdit() === -1) {
-        const title = this.getName(this.conm.getMode());
+      if (this.editIndex === -1) {
+        const title = this.getName(this.mode);
         const obj = { 'title': title, 'content': this.img };
         this.conm.draftEntries.push(obj);
         $('#exampleModal').modal('toggle');
-        this.img = null;
+        this.cleanUp();
       } else {
-        this.conm.setEdit(-1);
+        this.conm.draftEntries[this.editIndex]['content'] = this.img;
         $('#exampleModal').modal('toggle');
+        this.cleanUp();
       }
     }
 
   }
 
   onFileChange(file) {
-
     const reader = new FileReader();
     reader.readAsDataURL(file[0]);
     reader.onload = (_event) => {
       this.img = reader.result;
+      // if (this.editIndex === -1) {
+      //   this.img = reader.result;
+      // } else {
+      //   // this.conm.draftEntries[this.editIndex]['content'] = reader.result.toString();
+      //   this.img
+      // }
     };
-
   }
 
-  onEditFileChange(file) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file[0]);
-    reader.onload = (_event) => {
-      this.conm.draftEntries[this.conm.getEdit()]['content'] = reader.result.toString();
-    };
-
+  cleanUp() {
+    this.editIndex = -1;
+    this.textEntry = '';
+    this.img = null;
   }
 
 }

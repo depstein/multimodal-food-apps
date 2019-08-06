@@ -14,7 +14,7 @@
   <div class="content flex-grow-1">
 
     <div class="d-flex flex-row justify-content-between">
-      <button class="btn ml-4" (click)="onPrev()"><i class="fa fa-arrow-left"
+      <button class="btn ml-4" [ngClass]="{'disabled': isFirstDay(date)}" (click)="onPrev()"><i class="fa fa-arrow-left"
           style="color: white; font-size: 2em;"></i></button>
 
 
@@ -33,7 +33,7 @@
 
 
 
-      <button class="btn mr-4" (click)="onNext()"><i class="fa fa-arrow-right"
+      <button class="btn mr-4" [ngClass]="{'disabled': isToday(date)}" (click)="onNext()"><i class="fa fa-arrow-right"
           style="color: white; font-size: 2em;"></i></button>
     </div>
 

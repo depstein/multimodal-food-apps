@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 import {Observable} from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { InputModalComponent } from 'src/app/components/input-modal/input-modal.component';
 
 declare var $: any;
 
@@ -13,16 +14,17 @@ declare var $: any;
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
-  draft = true;
+  @ViewChild('dialog') dialog: InputModalComponent;
+  draft = false;
   date = new Date();
-  // logs: Observable<any[]>;
   logs: any[];
 
   constructor(private conm: CommunicationService, private db: DatabaseService) { }
 
   ngOnInit() {
     // this.logs = this.db.getLogs();
+    this.conm.setDialog(this.dialog);
+
     this.db.getLogs().subscribe(
       (arr) => {
         const today = new Date();
@@ -56,6 +58,7 @@ export class MainComponent implements OnInit {
 
   onClear() {
     this.draft = false;
+    this.conm.draftEntries = [];
   }
 
   onSave() {
@@ -65,17 +68,7 @@ export class MainComponent implements OnInit {
   }
 
   onNewModal(index) {
-    // $('#exampleModal').modal('toggle');
-    // jQuery()
-    this.conm.setMode(index);
+    this.dialog.mode = index;
     $('#exampleModal').modal('toggle');
   }
-
-  onEdit() {
-    console.log("edit clicked");
-  }
-  onRemove() {
-    console.log("remove clicked");
-  }
-
 }
