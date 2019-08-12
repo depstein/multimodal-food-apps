@@ -11,12 +11,16 @@ import * as firebase from 'firebase/app';
 })
 export class DatabaseService {
 
-  col = 'yhuai';
+  col = '';
 
   constructor(private db: AngularFirestore, private conm: CommunicationService, private afs: AngularFireStorage) { }
 
   getLogs() {
     return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).valueChanges();
+  }
+
+  setUser(usr) {
+    this.col = usr;
   }
 
   convertToModality(title) {
@@ -33,45 +37,57 @@ export class DatabaseService {
     return this.afs.ref(this.col + '/' + id).getDownloadURL();
   }
 
-  push() {
+  push(callback = null) {
 
     const usr = this.col;
 
     const entries = this.conm.draftEntries;
 
     const collection = this.db.collection(usr);
-    collection.add({'contextLogged': false, 'date': new Date(), 'platform': 'web', 'entries' : [] }).then(
+    collection.add({ 'contextLogged': false, 'date': new Date(), 'platform': 'web', 'entries': [] }).then(
       (doc) => {
         const docId = doc.id;
-        console.log(docId);
+
+        const promises = [];
+
 
         let fileCounter = 0;
         for (let i = 0; i < entries.length; ++i) {
           if (entries[i].title === 'Image') {
             const fileName = docId + '_' + fileCounter.toString(); fileCounter++;
             const task = this.afs.ref(usr + '/' + fileName).putString(entries[i].content, 'data_url');
-            task.snapshotChanges().subscribe(
+
+            const t = task.snapshotChanges().toPromise().then(
               async (state) => {
-                if (state.bytesTransferred === state.totalBytes) {
-                  const downloadURL = await this.afs.ref(usr + '/' + fileName).getDownloadURL().toPromise();
-                  this.db.doc(usr + '/' + docId).set(
-                    { ['entries'] : firebase.firestore.FieldValue.arrayUnion({modality: 'foodImg', entry: fileName, url: downloadURL})},
-                    { merge : true }
-                  );
-                }
+                const downloadURL = await this.afs.ref(usr + '/' + fileName).getDownloadURL().toPromise();
+                this.db.doc(usr + '/' + docId).set(
+                  { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: 'foodImg', entry: fileName, url: downloadURL }) },
+                  { merge: true }
+                );
               }
             );
+            promises.push(t);
+
           } else {
             const mod = this.convertToModality(entries[i].title);
-            this.db.doc(usr + '/' + docId).set(
-              { ['entries'] : firebase.firestore.FieldValue.arrayUnion({modality: mod, entry: entries[i].content}) },
-              { merge : true }
+            const t = this.db.doc(usr + '/' + docId).set(
+              { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: mod, entry: entries[i].content }) },
+              { merge: true }
             );
+            promises.push(t);
           }
         }
+
+        Promise.all(promises).then(
+          () => {
+            if (callback != null) {
+              callback();
+            }
+          }
+        );
 
       }
     );
   }
-  
+
 }

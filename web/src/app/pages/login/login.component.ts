@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-login',
@@ -8,13 +12,21 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  username = '';
+
+  constructor(private router: Router, public db: DatabaseService) { }
 
   ngOnInit() {
   }
 
   onLogin() {
-    this.router.navigateByUrl('/main');
+    if (this.username.length !== 0) {
+      this.db.setUser(this.username);
+      this.router.navigateByUrl('/main');
+    } else {
+      $('.toast').toast({delay: 3000, autohide: true});
+      $('.toast').toast('show');
+    }
   }
 
 }

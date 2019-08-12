@@ -14,12 +14,14 @@ declare var $: any;
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  @ViewChild('dialog') dialog: InputModalComponent;
+  @ViewChild('inputDialog') dialog: InputModalComponent;
   draft = false;
   date = new Date();
   logs: any[];
 
-  constructor(private conm: CommunicationService, private db: DatabaseService) { }
+  clear = 'CLEAR';
+
+  constructor(private conm: CommunicationService, public db: DatabaseService) { }
 
   ngOnInit() {
     // this.logs = this.db.getLogs();
@@ -37,7 +39,6 @@ export class MainComponent implements OnInit {
         for (const log of arr) {
           for (const entry of log['entries']) {
             if (entry['modality'] === 'foodImg') {
-              console.log(entry);
               // entry['entry'] = this.db.imgUrl(entry['entry']);
               entry['entry'] = entry['url'];
             }
@@ -46,6 +47,7 @@ export class MainComponent implements OnInit {
         this.logs = arr;
       }
     );
+    
   }
 
 
@@ -57,14 +59,36 @@ export class MainComponent implements OnInit {
   }
 
   onClear() {
+
+    if (this.conm.draftEntries.length === 0) {
+      this.draft = false;
+    } else {
+      $('#warningDialog').modal('toggle');
+    }
+  }
+
+  onCancelClose() {
+    $('#warningDialog').modal('toggle');
+  }
+  onCancelConfirm() {
     this.draft = false;
     this.conm.draftEntries = [];
+    $('#warningDialog').modal('toggle');
   }
 
   onSave() {
-    this.db.push();
-    this.conm.draftEntries = [];
-    this.draft = false;
+    if (this.conm.draftEntries.length !== 0) {
+      $('#mpDialog').modal('toggle');
+      this.db.push(() => {
+        $('#mpDialog').modal('toggle');
+      });
+      this.conm.draftEntries = [];
+      this.draft = false;
+    } else {
+      $('.toast').toast({delay: 3000, autohide: true});
+      $('.toast').toast('show');
+      
+    }
   }
 
   onNewModal(index) {

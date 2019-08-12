@@ -15,7 +15,7 @@ export class HistoryComponent implements OnInit {
 
   logs: any[];
 
-  constructor(private conm: CommunicationService, private db: DatabaseService) { }
+  constructor(private conm: CommunicationService, public db: DatabaseService) { }
 
   ngOnInit() {
     this.db.getLogs().subscribe(
@@ -51,10 +51,10 @@ export class HistoryComponent implements OnInit {
   }
 
   isFirstDay(d) {
-    if (this.availableDates) {
+    if (this.availableDates != null && this.availableDates.length !== 0) {
       return this.conm.isSameDate(d, this.availableDates[this.availableDates.length - 1]);
     }
-    return false;
+    return true;
   }
   isToday(d) {
     const today = new Date();
@@ -95,6 +95,10 @@ export class HistoryComponent implements OnInit {
       }
     );
     return tmp;
+  }
+
+  onMouseOver() {
+    console.log('1');
   }
 
 }

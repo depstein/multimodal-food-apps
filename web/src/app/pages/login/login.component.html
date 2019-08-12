@@ -1,9 +1,25 @@
+<div style="position: absolute; top: 0; right: 0;">
+    <div class="toast mr-2 mt-2" role="alert" data-delay="700" data-autohide="false">
+        <div class="toast-header">
+            <strong class="mr-auto text-danger">Warning</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Please enter an username!
+        </div>
+    </div>
+</div>
+
+
 <div class="container d-flex justify-content-center align-items-center">
     <form id="loginBox" class="d-flex flex-column p-4 rounded shadow">
 
         <h1 class="m-2">Food Journaling</h1>
-        <input class="my-2 form-control" id="username" type="text" placeholder="Username">
-        <input class="my-2 form-control" id="password" type="text" placeholder="Password">
+        <input class="my-2 form-control" id="username" type="text" placeholder="Username" [(ngModel)]='username'
+            [ngModelOptions]="{standalone: true}">
+        <!-- <input class="my-2 form-control" id="password" type="text" placeholder="Password"> -->
         <button class="my-2 btn" (click)='onLogin()'>LOGIN</button>
 
     </form>
