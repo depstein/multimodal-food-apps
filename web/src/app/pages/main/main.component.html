@@ -79,6 +79,10 @@
 
     </div>
 
+    <div *ngIf="(!logs || logs.length === 0) && !draft " class="d-flex flex-row justify-content-center">
+      <p class="h3"><em>Nothing recorded yet.</em></p>
+    </div>
+
     <div *ngFor="let log of logs" class="saved-content mx-4 my-4 py-2 rounded shadow"
       style="background-color: #F6C459;">
       <p class="ml-3 px-0 py-0 mb-0"><em>{{ log.date.toDate() | date:'hh:mm a' }}</em></p>

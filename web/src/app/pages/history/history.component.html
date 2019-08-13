@@ -43,6 +43,10 @@
           style="color: white; font-size: 2em;"></i></button>
     </div>
 
+    <div *ngIf="filterArray().length === 0" class="d-flex flex-row justify-content-center">
+      <p class="h3"><em>Nothing recorded for this day.</em></p>
+    </div>
+
     <div *ngFor="let log of filterArray()" class="saved-content mx-4 my-4 py-2 rounded shadow"
       style="background-color: #F6C459;">
       <p class="ml-3 px-0 py-0 mb-0"><em>{{ log.date.toDate() | date:'hh:mm a' }}</em></p>
