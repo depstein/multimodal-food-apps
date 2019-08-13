@@ -18,8 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('current') !== null) {
-      this.db.login(localStorage.getItem('current'));
-      this.router.navigateByUrl('/main');
+      this.db.login(localStorage.getItem('current'), () => {this.router.navigateByUrl('/main');});
     }
   }
 

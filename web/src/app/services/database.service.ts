@@ -5,6 +5,7 @@ import { CommunicationService } from './communication.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,24 @@ export class DatabaseService {
 
   constructor(private db: AngularFirestore, private conm: CommunicationService, private afs: AngularFireStorage) { }
 
-  login(usr) {
+  login(usr, callback = null) {
     localStorage.setItem('current', usr);
     this.col = usr;
+
+    // firebase.auth().signInAnonymously().then(
+    //   () => {
+
+    //     if (callback != null) {
+    //       callback();
+    //     }
+    //   }
+    // );
   }
 
   logout() {
     this.col = '';
     localStorage.removeItem('current');
+    // firebase.auth().signOut();
   }
 
   getLogs(mode = 'desc') {

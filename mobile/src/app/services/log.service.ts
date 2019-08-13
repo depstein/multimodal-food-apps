@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,11 @@ export class LogService {
     this.data = new LogData();
     this.data.date = new Date();
     this.data.entries = [];
+
+    firebase.auth().signInAnonymously();
+
+    // console.log(firebase.auth());
+
   }
 
   clear() {
