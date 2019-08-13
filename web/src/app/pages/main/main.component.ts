@@ -5,6 +5,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 import {Observable} from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { InputModalComponent } from 'src/app/components/input-modal/input-modal.component';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -21,7 +22,7 @@ export class MainComponent implements OnInit {
 
   clear = 'CLEAR';
 
-  constructor(private conm: CommunicationService, public db: DatabaseService) { }
+  constructor(private conm: CommunicationService, public db: DatabaseService, private router: Router) { }
 
   ngOnInit() {
     // this.logs = this.db.getLogs();
@@ -94,5 +95,10 @@ export class MainComponent implements OnInit {
   onNewModal(index) {
     this.dialog.mode = index;
     $('#exampleModal').modal('toggle');
+  }
+
+  logout() {
+    this.db.logout();
+    this.router.navigateByUrl('/login');
   }
 }

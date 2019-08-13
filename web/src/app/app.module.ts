@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { SurveyComponent } from './pages/survey/survey.component';
+import { SurveyRecordComponent } from './components/survey-record/survey-record.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     MainComponent,
     InputModalComponent,
     RecordCardComponent,
-    HistoryComponent
+    HistoryComponent,
+    SurveyComponent,
+    SurveyRecordComponent
   ],
   imports: [
     FormsModule,

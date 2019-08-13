@@ -1,0 +1,155 @@
+<div class="row card pb-4 mx-4 my-4" style="background-color: transparent;">
+
+
+  <div class="card-header col-12" style="background-color: #f2a846;">
+    {{record.date.toDate()}}
+  </div>
+
+  <div class="row col-12">
+
+    <ul class="list-group list-group-flush col-6" style="background-color: transparent;">
+
+      <li class="list-group-item" style="background-color: transparent;" *ngFor="let data of record.entries">
+        <p class="h4 my-0"><u>{{getTitle(data.modality)}}</u></p>
+        <br>
+        <div *ngIf="data.modality !== 'foodImg'">{{data.entry}}</div>
+        <div *ngIf="data.modality === 'foodImg'">
+          <img [src]="data.url" style="width: 100%;">
+        </div>
+      </li>
+      
+    </ul>
+
+
+    <div class="col-6 py-4">
+      <form #contextForm="ngForm" (ngSubmit)="saveContext(contextForm)">
+        <strong>Who did you eat with?</strong>
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="social" [(ngModel)]=context.eatWith value="alone">By myself
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="social" [(ngModel)]=context.eatWith value="one">One other person
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="social" [(ngModel)]=context.eatWith value="two-three">2-3 others
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="social" [(ngModel)]=context.eatWith value="four-plus">4 or more people
+            </label>
+          </div>
+        </div>
+        <strong>Where did you eat?</strong>
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="place" [(ngModel)]=context.place (click)="pickPlace(false)" value="home">At home
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="place" [(ngModel)]=context.place (click)="pickPlace(false)" value="work">At work
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="place" [(ngModel)]=context.place (click)="pickPlace(false)" value="restaurant">At a restaurant, cafe, etc.
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="place" [(ngModel)]=context.place (click)="pickPlace(false)" value="another_home">Someone else's home
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" [ngClass]='placeValid'>
+              <input type="radio" class="form-check-input" name="place" [checked]="otherPlacePicked">
+              <input type="text" class="form-control" name="placeOther" [ngClass]='placeValid' [(ngModel)]=placeOther (click)="pickPlace(true)" placeholder="Somewhere else">
+            </label>
+          </div>
+        </div>
+        <strong>Is this...</strong>
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="meal" [(ngModel)]=context.meal (click)="pickMeal(false)" value="full">A full meal
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="meal" [(ngModel)]=context.meal (click)="pickMeal(false)" value="partial">Part of a meal
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="meal" [(ngModel)]=context.meal (click)="pickMeal(false)" value="snack">A snack, drink, etc.
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="meal" id="mealOther" [checked]="otherMealPicked">
+              <input type="text" class="form-control" name="mealOther" [ngClass]='mealValid' [(ngModel)]=mealOther (click)="pickMeal(true)" placeholder="Something else">
+            </label>
+          </div>
+        </div>
+        <strong>I journaled...</strong>
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="time" [(ngModel)]=context.time value="long_before">More than 10 minutes before I ate
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="time" [(ngModel)]=context.time value="before">Less than 10 minutes before I ate
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="time" [(ngModel)]=context.time value="during">While I was eating
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="time" [(ngModel)]=context.time value="after">Less than 10 minutes after I ate
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="time" [(ngModel)]=context.time value="long_after">More than 10 minutes after I ate
+            </label>
+          </div>
+        </div>
+        <strong>Write anything else which would help us understand your eating situation.</strong>
+        <div class="form-group">
+          <textarea class="form-control" name="situation" rows="2" [ngClass]='situationValid' [(ngModel)]=context.situation></textarea>
+        </div>
+        <strong>Why did you choose to journal this food on {{platformString}} with a {{recordString}}?</strong>
+        <div class="form-group">
+          <textarea class="form-control" name="modality" rows="3" [ngClass]='modalityValid' [(ngModel)]=context.modality></textarea>
+        </div>
+        <button type="submit" id="submit-button" class="btn">Submit</button>
+      </form>
+    </div>
+  </div>
+
+    
+
+
+
+
+
+  
+
+
+  
+
+
+</div>

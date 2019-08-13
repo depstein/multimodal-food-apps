@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-history',
@@ -15,7 +16,7 @@ export class HistoryComponent implements OnInit {
 
   logs: any[];
 
-  constructor(private conm: CommunicationService, public db: DatabaseService) { }
+  constructor(private conm: CommunicationService, public db: DatabaseService, private router: Router) { }
 
   ngOnInit() {
     this.db.getLogs().subscribe(
@@ -48,6 +49,11 @@ export class HistoryComponent implements OnInit {
         this.logs = arr;
       }
     );
+  }
+
+  logout() {
+    this.db.logout();
+    this.router.navigateByUrl('/login');
   }
 
   isFirstDay(d) {

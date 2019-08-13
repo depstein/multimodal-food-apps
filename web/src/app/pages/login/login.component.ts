@@ -17,11 +17,15 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, public db: DatabaseService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('current') !== null) {
+      this.db.login(localStorage.getItem('current'));
+      this.router.navigateByUrl('/main');
+    }
   }
 
   onLogin() {
     if (this.username.length !== 0) {
-      this.db.setUser(this.username);
+      this.db.login(this.username);
       this.router.navigateByUrl('/main');
     } else {
       $('.toast').toast({delay: 3000, autohide: true});

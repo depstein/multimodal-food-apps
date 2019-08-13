@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CommunicationService } from './communication.service';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 
 @Injectable({
@@ -15,12 +15,43 @@ export class DatabaseService {
 
   constructor(private db: AngularFirestore, private conm: CommunicationService, private afs: AngularFireStorage) { }
 
-  getLogs() {
-    return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).valueChanges();
+  login(usr) {
+    localStorage.setItem('current', usr);
+    this.col = usr;
   }
 
-  setUser(usr) {
-    this.col = usr;
+  logout() {
+    this.col = '';
+    localStorage.removeItem('current');
+  }
+
+  getLogs(mode = 'desc') {
+    // return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).valueChanges();
+    if (mode === 'desc') {
+      return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
+        map(
+          actions => actions.map(
+            a => {
+              const data = a.payload.doc.data();
+              const docId = a.payload.doc.id;
+              return {docId, ...data};
+            }
+          )
+        )
+      );
+    } else {
+      return this.db.collection(this.col, ref => ref.orderBy('date', 'asc')).snapshotChanges().pipe(
+        map(
+          actions => actions.map(
+            a => {
+              const data = a.payload.doc.data();
+              const docId = a.payload.doc.id;
+              return {docId, ...data};
+            }
+          )
+        )
+      );
+    }
   }
 
   convertToModality(title) {
@@ -34,7 +65,18 @@ export class DatabaseService {
   }
 
   imgUrl(id) {
+    // console.log(id);
     return this.afs.ref(this.col + '/' + id).getDownloadURL();
+  }
+
+  updateContext(docId, data:Object, callback) {
+    this.db.doc(this.col + '/' + docId).update({'context':data, 'contextLogged':true}).then(
+      () => {
+        if (callback) {
+          callback();
+        }
+      }
+    );
   }
 
   push(callback = null) {

@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column">
-  <ul class="nav justify-content-center py-4">
+  <ul class="nav justify-content-center align-items-center py-4">
     <li class="nav-item mx-4">
       <a [routerLink]="['/main']" class="nav-link">Journal</a>
     </li>
@@ -7,7 +7,11 @@
       <a [routerLink]="['/history']" class="nav-link"><u>History</u></a>
     </li>
     <li class="nav-item mx-4">
-      <a href="http://www.google.com/" class="nav-link">Survey</a>
+      <a [routerLink]="['/survey']" class="nav-link">Survey</a>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-danger rounded-pill" (click)='logout()'><i class="fa fa-stop-circle-o mr-1"
+        style="color: white;"></i>Logout</button>
     </li>
   </ul>
 
