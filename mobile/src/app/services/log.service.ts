@@ -3,6 +3,7 @@ import { LogData } from '../model/log';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { LoadingController } from '@ionic/angular';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +41,9 @@ export class LogService {
     this.data.entries.push(entry);
   }
 
-  async push() {
+  async push(callback = null) {
     if (this.username === '') {
-      console.log('Error: Need an username.')
+      console.log('Error: Need an username.');
       return;
     }
     const loading = await this.loadingController.create({
@@ -50,34 +51,67 @@ export class LogService {
       duration: 99999
     });
     loading.present();
-    this.logsCollection.add({date: new Date(), platform: this.data.platform, contextLogged: false}).then(
+    this.logsCollection.add({date: new Date(), platform: this.data.platform, contextLogged: false, entries: []}).then(
       doc => {
-        const tmp = [];
+        const docId = doc.id;
+        const promises = [];
+
         let fileCounter = 0;
+
         this.data.entries.forEach(element => {
           const obj = {};
+          const mod = element['modality'];
+
           obj['modality'] = element['modality'];
-          if (typeof element['entry'] === 'string') {
-            if (element['entry'] === 'base64_img') {
-              obj['entry'] = doc.id + '_' + fileCounter.toString();
-              fileCounter++;
-              this.afStorage.ref(this.username + '/' + obj['entry']).putString(element['data'], 'data_url');
-            } else {
-              obj['entry'] = element['entry'];
-            }
-          } else {
-            // File
-            obj['entry'] = doc.id + '_' + fileCounter.toString();
+
+          if (element['entry'] === 'base64_img') {
+
+            const fileName = docId + '_' + fileCounter.toString(); fileCounter++;
+            const task = this.afStorage.ref(this.username + '/' + fileName).putString(element['data'], 'data_url');
             fileCounter++;
-            this.afStorage.upload(this.username + '/' + obj['entry'], element['entry']);
+
+            const t = task.snapshotChanges().toPromise().then(
+              async (state) => {
+                const downloadURL = await this.afStorage.ref(this.username + '/' + fileName).getDownloadURL().toPromise();
+                this.logsCollection.doc(docId).set(
+                  { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: 'foodImg', entry: fileName, url: downloadURL }) },
+                  { merge: true }
+                );
+              }
+            );
+
+            promises.push(t);
+
+            // obj['entry'] = doc.id + '_' + fileCounter.toString();
+            // fileCounter++;
+            // this.afStorage.ref(this.username + '/' + obj['entry']).putString(element['data'], 'data_url');
+
+
+          } else {
+
+
+            // obj['entry'] = element['entry'];
+            // const mod = this.convertToModality(entries[i].title);
+            const t = this.logsCollection.doc(docId).set(
+              { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: mod, entry: element['entry'] }) },
+              { merge: true }
+            );
+            promises.push(t);
+
+
           }
-          tmp.push(obj);
+
         });
-        this.afs.doc(this.username + '/' + doc.id).update({entries: tmp}).then(obj => {
-          loading.dismiss();
-          this.clear();
-        });
-      }
-    );
+
+        Promise.all(promises).then(
+          () => {
+            loading.dismiss();
+            if (callback) {
+              callback();
+            }
+          }
+        );
+
+      });
   }
 }

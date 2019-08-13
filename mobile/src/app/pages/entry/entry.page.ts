@@ -95,8 +95,8 @@ export class EntryPage implements OnInit {
       await alert.present();
       return;
     }
-    this.logService.push();
-    this.router.navigateByUrl('/home');
+    this.logService.push(()=>{this.router.navigateByUrl('/home');});
+    
   }
 
   async onRemove(index) {
