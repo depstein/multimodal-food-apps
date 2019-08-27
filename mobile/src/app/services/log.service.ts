@@ -60,7 +60,8 @@ export class LogService {
     this.logsCollection.add({date: new Date(), platform: this.data.platform, contextLogged: false, entries: []}).then(
       doc => {
         const docId = doc.id;
-        const promises = [];
+        const update = this.logsCollection.doc('--last--').set({id: docId});
+        const promises = [update];
 
         let fileCounter = 0;
 
