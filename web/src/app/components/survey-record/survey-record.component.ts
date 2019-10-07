@@ -15,6 +15,9 @@ export class SurveyRecordComponent implements OnInit {
 
   @Input() record: Object;
 
+  // _date = this.record['date'];
+  // _entries = this.record['entries'];;
+
   otherPlacePicked: boolean = false;
   otherMealPicked: boolean = false;
 

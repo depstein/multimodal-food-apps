@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DatabaseService } from './services/database.service';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,14 @@ export class AuthGuard implements CanActivate {
   }
   canActivate() {
 
+  
+
     if (localStorage.getItem('current') !== null) {
       this.db.login(localStorage.getItem('current'));
       return true;
     }
+
+
 
     if (this.db.col === '') {
       this.router.navigateByUrl('/login');

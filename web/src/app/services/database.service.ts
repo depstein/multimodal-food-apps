@@ -4,7 +4,14 @@ import { Observable } from 'rxjs';
 import { CommunicationService } from './communication.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { map } from 'rxjs/operators';
+
 import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+
+
+
+// import * as admin from 'firebase-admin';
+
 import 'firebase/auth';
 
 @Injectable({
@@ -20,24 +27,26 @@ export class DatabaseService {
     localStorage.setItem('current', usr);
     this.col = usr;
 
-    // firebase.auth().signInAnonymously().then(
-    //   () => {
+    console.log(this.col);
+    console.log(callback != null);
+    if (callback != null) {
+      callback();
+    }
 
-    //     if (callback != null) {
-    //       callback();
-    //     }
-    //   }
-    // );
   }
 
   logout() {
     this.col = '';
     localStorage.removeItem('current');
-    // firebase.auth().signOut();
+    firebase.auth().signOut();
   }
 
   getLogs(mode = 'desc') {
     // return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).valueChanges();
+
+    console.log(this.col);
+    // console.log(firebase.auth().currentUser.uid);
+
     if (mode === 'desc') {
       return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
         map(
@@ -99,9 +108,10 @@ export class DatabaseService {
     const collection = this.db.collection(usr);
     collection.add({ 'contextLogged': false, 'date': new Date(), 'platform': 'web', 'entries': [] }).then(
       (doc) => {
+        const update = collection.doc('--last--').set({id: doc.id});
         const docId = doc.id;
 
-        const promises = [];
+        const promises = [update];
 
 
         let fileCounter = 0;

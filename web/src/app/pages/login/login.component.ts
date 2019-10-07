@@ -23,9 +23,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+
     if (this.username.length !== 0) {
-      this.db.login(this.username);
-      this.router.navigateByUrl('/main');
+      this.db.login(this.username, () => {console.log('navigating');this.router.navigateByUrl('/main');} );
+      
     } else {
       $('.toast').toast({delay: 3000, autohide: true});
       $('.toast').toast('show');
