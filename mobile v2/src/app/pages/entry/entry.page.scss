@@ -1,0 +1,83 @@
+ion-toolbar {
+    --background: rgb(246, 205, 96);
+    color: white;
+
+    ion-back-button {
+        color:white;
+    }
+}
+
+ion-content {
+    --background: rgb(242, 168, 70);
+}
+
+ion-fab {
+    #main {
+        --background: var(--ion-color-primary);
+
+    }
+
+    #submit {
+        --background: var(--ion-color-success);
+    }
+
+}
+
+ion-fab-button {
+    --background: #e48d18;
+    --color: white;
+}
+
+ion-fab-list {
+    ion-fab-button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+p{
+  text-align: center;
+  color: white;
+}
+
+// .Content {
+//     height: 40vh;
+//     width: 100%;
+//     padding-left: 5vw;
+//     padding-right: 5vw;
+//     margin-top: 5vh;
+//     color: white;
+//     .date {
+//         font-size: 1.25em;
+//     }
+    
+//     .card {
+//         background-color: rgb(148, 213, 228);
+//         padding-top: 5vh;
+//         padding-bottom: 2vh;
+//         border-radius: 25px;
+//         margin-bottom: 5vh;
+//     }
+//     margin-bottom: 35vh;
+// }
+
+.Content {
+    margin-left: 20vw;
+    margin-right: 5vw;
+    color: white;
+
+    ion-icon {
+        font-size: 1.5em;
+        color: white;
+    }
+    
+}
+// .data {
+//     --background: black;
+// }
+
+.delete {
+    span {
+        color: red;
+    }
+}

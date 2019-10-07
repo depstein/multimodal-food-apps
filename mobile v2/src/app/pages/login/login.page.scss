@@ -1,0 +1,44 @@
+ion-content{
+    --background: rgb(242, 168, 70);
+
+}
+
+.main {
+    position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 3em;
+}
+
+ion-input {
+    --background: rgb(246, 205, 96);
+    margin-left: 20vw;
+    margin-right: 20vw;
+    width: 60vw;
+    margin-bottom: 5vh;
+    border-radius: 40px;
+    color: white;
+    text-align: center;
+}
+
+ion-button {
+    --background: rgb(246, 205, 96);
+    margin-left: 20vw;
+    margin-right: 20vw;
+    width: 60vw;
+    --border-radius: 40px;
+}
+
+.logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}

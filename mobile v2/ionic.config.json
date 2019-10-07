@@ -1,0 +1,7 @@
+{
+  "name": "fodd_front",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

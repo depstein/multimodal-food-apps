@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Search For Food</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+      <ion-item lines="none">
+          <ion-label position="stacked" style="margin-bottom: 10px;">Enter Search Query</ion-label>
+          <ion-input [(ngModel)]='value' type="text" style="background-color: rgb(148, 213, 228);"></ion-input>
+        </ion-item>
+    <ion-button expand='full' (click)='onSave()' style="margin-left: 15px; margin-right: 15px;">Save</ion-button>
+  
+  </ion-content>
+  

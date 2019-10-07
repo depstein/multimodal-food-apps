@@ -1,0 +1,34 @@
+ion-toolbar {
+    --background: rgb(246, 205, 96);
+    color: white;
+
+    ion-back-button {
+        color:white;
+    }
+}
+
+ion-content {
+    --background: rgb(242, 168, 70);
+}
+
+ion-item {
+    --background: rgb(242, 168, 70);
+    --color: white;
+}
+
+ion-button {
+    --background: rgb(183, 217, 225);
+}
+
+ion-img {
+    display: inline;
+}
+
+ion-col {
+    ion-item {
+        height: 100%;
+        ion-label {
+            text-align: center;
+        }
+    }
+}

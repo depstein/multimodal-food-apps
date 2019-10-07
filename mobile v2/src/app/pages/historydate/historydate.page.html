@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <button (click)="dismiss()">
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>history date</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let log of logs_array">
+    <ion-card-content (click)="getdate(log)"><p>{{log.date | date:'EEEE, LLLL MM, yyyy hh:mm a'}}</p></ion-card-content>
+  </ion-card>
+
+  <div *ngIf="logs_array.length==0">
+    <ion-card>
+      <ion-card-content><p> No entries to display. Make an entry. </p></ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+
+</ion-footer>
