@@ -16,6 +16,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SurveyComponent } from './pages/survey/survey.component';
 import { SurveyRecordComponent } from './components/survey-record/survey-record.component';
+import { SpeechRecognitionModule } from '@kamiazya/ngx-speech-recognition';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SurveyRecordComponent } from './components/survey-record/survey-record.
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    SpeechRecognitionModule.forRoot({ lang: 'en-US' })
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

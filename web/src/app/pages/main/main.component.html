@@ -27,6 +27,7 @@
       <a [routerLink]="['/survey']" class="nav-link">Survey</a>
     </li>
     <li class="nav-item">
+      <span style="color: white; margin-right: 15px;"><em>{{db.col}}</em></span>
       <button class="btn btn-danger rounded-pill" (click)='logout()'><i class="fa fa-stop-circle-o mr-1"
         style="color: white;"></i>Logout</button>
     </li>
@@ -51,8 +52,8 @@
           <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(1)'>+ Database Search</button>
           <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(2)'>+ Image</button>
           <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(3)'>+ URL</button>
-          <!-- <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(4)'>+ Voice</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(5)'>+ Barcode</button> -->
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(4)'>+ Voice</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(5)'>+ Barcode</button>
 
           <!-- voice / barcode (image/numeric) -->
           <!-- Image: FileUpload + capture new picture -->

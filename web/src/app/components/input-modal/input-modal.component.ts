@@ -1,6 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { CommunicationService } from 'src/app/services/communication.service';
+
+import {
+  RxSpeechRecognitionService,
+  resultList,
+} from '@kamiazya/ngx-speech-recognition';
+
+import {
+  SpeechRecognitionService
+} from '@kamiazya/ngx-speech-recognition';
+
 declare var $: any;
 
 @Component({
@@ -14,35 +24,72 @@ export class InputModalComponent implements OnInit {
   textEntry = "";
   img: any;
 
+  placeholder = "";
+
   mode: number;
   editIndex: number = -1;
 
-  constructor(private conm: CommunicationService) { }
+  // transcript = '';
+  isRecording = false;
+  constructor(private conm: CommunicationService, private speechService: SpeechRecognitionService) {
+    this.speechService.onstart = (e) => {
+      console.log('onstart');
+    };
+    this.speechService.onresult = (e) => {
+      this.textEntry = e.results[0].item(0).transcript;
+      console.log('MainComponent:onresult', this.textEntry, e);
+      this.speechService.stop();
+      this.isRecording = false;
+    };
+  }
+
 
   ngOnInit() {
 
   }
 
+  onListen() {
+    // this.speechService.listen().pipe(resultList).subscribe(
+    //   (list) => {
+    //     this.transcript = list.item(0).item(0).transcript;
+    //     console.log('RxComponent:onresult', this.transcript, list);
+    //   }
+    // );
+    if(!this.isRecording) {
+        this.isRecording = true;
+        this.speechService.start();
+    }
+  }
+
   getName(mode) {
     switch (mode) {
       case 0:
+        this.placeholder = 'Please describe what you ate in whatever form would be most useful for you.';
         return 'Description';
       case 1:
+        this.placeholder = 'Please describe the terms you would use to search from a database of foods commonly eaten and logged.';
         return 'Search';
       case 2:
         return 'Image';
       case 3:
+        this.placeholder = 'Please enter the URL of a recipe or other website which describes what you ate.';
         return 'URL';
       case 4:
         return 'Voice';
       case 5:
+        this.placeholder = 'Please enter the digits under the barcode';
         return 'Barcode';
     }
   }
 
-  isText(mode) {
-    return mode === 0 || mode === 1 || mode === 3;
+  isVoice(mode) {
+    return mode === 4;
   }
+
+  isText(mode) {
+    return mode !== 2 && mode !== 4;
+  }
+
 
   onClose() {
     this.cleanUp();
@@ -50,7 +97,7 @@ export class InputModalComponent implements OnInit {
   }
 
   onSave() {
-    if (this.isText(this.mode)) {
+    if (this.isText(this.mode) || this.isVoice(this.mode)) {
       if (this.editIndex === -1 && this.textEntry.length === 0) {
         return;
       }
@@ -58,6 +105,7 @@ export class InputModalComponent implements OnInit {
         const title = this.getName(this.mode);
 
         const obj = { 'title': title, 'content': this.textEntry };
+        console.log(obj);
         this.conm.draftEntries.push(obj);
         $('#exampleModal').modal('toggle');
         this.cleanUp();

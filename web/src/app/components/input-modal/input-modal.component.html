@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Record</h5>
+        <h5 class="modal-title" id="exampleModalLabel">New Entry</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -14,23 +14,34 @@
             <label for="message-text" class="col-form-label">{{getName(mode)}}:</label>
 
             <textarea *ngIf="isText(mode)" [(ngModel)]="textEntry"
-              [ngModelOptions]="{standalone: true}" class="form-control" id="message-text"></textarea>
+              [ngModelOptions]="{standalone: true}" class="form-control" id="message-text" [placeholder]="placeholder"></textarea>
 
             <div *ngIf="!isText(mode)">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Upload</span>
-                </div>
-                <div class="custom-file">
-                  <input #file (change)="onFileChange($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01"
-                    accept="image/x-png,image/gif,image/jpeg">
 
-                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
+              <div *ngIf = "!isVoice(mode)">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                      <input #file (change)="onFileChange($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01"
+                        accept="image/x-png,image/gif,image/jpeg">
+    
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                  </div>
+    
+                  <div>
+                    <img *ngIf="img" id="myImg" [src]="img" style="width: 100%;">
+                  </div>
               </div>
 
-              <div>
-                <img *ngIf="img" id="myImg" [src]="img" style="width: 100%;">
+              <div *ngIf = "isVoice(mode)">
+                <button (click) = 'onListen()' class='btn' style='background-color: red; color: white; width: 100%;'>Record</button>
+                <div *ngIf='textEntry.length != 0'>
+                  <p class="h4">Result</p>
+                  <p>{{textEntry}}</p>
+                </div>
               </div>
               
             </div>

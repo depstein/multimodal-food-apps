@@ -33,6 +33,10 @@ export class RecordCardComponent implements OnInit {
       this.title = 'Database Search';
     } else if (this.title === 'foodImg') {
       this.title = 'Image';
+    } else if (this.title === 'barcode') {
+      this.title = 'Barcode';
+    } else if (this.title === 'voice') {
+      this.title = 'Voice';
     }
 
     this.isImage = this.title === 'Image';
@@ -42,7 +46,7 @@ export class RecordCardComponent implements OnInit {
   onEdit() {
     console.log(this.index);
 
-    const arr = ['Description', 'URL', 'Image', 'Search'];
+    const arr = ['Description', 'URL', 'Image', 'Search', 'Voice', 'Barcode'];
 
     this.conm.getDialog().editIndex = this.index;
     this.conm.getDialog().mode = arr.indexOf(this.title);
