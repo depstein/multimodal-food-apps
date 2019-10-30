@@ -21,7 +21,7 @@ export class DatabaseService {
 
   col = '';
 
-  constructor(private db: AngularFirestore, private conm: CommunicationService, private afs: AngularFireStorage) { }
+  constructor(private firedb: AngularFirestore, private conm: CommunicationService, private afs: AngularFireStorage) { }
 
   login(usr, callback = null) {
     localStorage.setItem('current', usr);
@@ -42,13 +42,13 @@ export class DatabaseService {
   }
 
   getLogs(mode = 'desc') {
-    // return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).valueChanges();
+    // return this.firedb.collection(this.col, ref => ref.orderBy('date', 'desc')).valueChanges();
 
     console.log(this.col);
     // console.log(firebase.auth().currentUser.uid);
 
     if (mode === 'desc') {
-      return this.db.collection(this.col, ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
+      return this.firedb.collection(this.col, ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
         map(
           actions => actions.map(
             a => {
@@ -60,7 +60,7 @@ export class DatabaseService {
         )
       );
     } else {
-      return this.db.collection(this.col, ref => ref.orderBy('date', 'asc')).snapshotChanges().pipe(
+      return this.firedb.collection(this.col, ref => ref.orderBy('date', 'asc')).snapshotChanges().pipe(
         map(
           actions => actions.map(
             a => {
@@ -79,6 +79,10 @@ export class DatabaseService {
       return 'foodDsrp';
     } else if (title === 'Search') {
       return 'database';
+    } else if (title === 'Barcode') {
+      return 'barcode';
+    } else if (title === 'Voice') {
+      return 'voice';
     } else {
       return 'url';
     }
@@ -90,7 +94,7 @@ export class DatabaseService {
   }
 
   updateContext(docId, data:Object, callback) {
-    this.db.doc(this.col + '/' + docId).update({'context':data, 'contextLogged':true}).then(
+    this.firedb.doc(this.col + '/' + docId).update({'context':data, 'contextLogged':true}).then(
       () => {
         if (callback) {
           callback();
@@ -105,7 +109,7 @@ export class DatabaseService {
 
     const entries = this.conm.draftEntries;
 
-    const collection = this.db.collection(usr);
+    const collection = this.firedb.collection(usr);
     collection.add({ 'contextLogged': false, 'date': new Date(), 'platform': 'web', 'entries': [] }).then(
       (doc) => {
         const update = collection.doc('--last--').set({id: doc.id});
@@ -123,7 +127,7 @@ export class DatabaseService {
             const t = task.snapshotChanges().toPromise().then(
               async (state) => {
                 const downloadURL = await this.afs.ref(usr + '/' + fileName).getDownloadURL().toPromise();
-                this.db.doc(usr + '/' + docId).set(
+                this.firedb.doc(usr + '/' + docId).set(
                   { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: 'foodImg', entry: fileName, url: downloadURL }) },
                   { merge: true }
                 );
@@ -133,7 +137,7 @@ export class DatabaseService {
 
           } else {
             const mod = this.convertToModality(entries[i].title);
-            const t = this.db.doc(usr + '/' + docId).set(
+            const t = this.firedb.doc(usr + '/' + docId).set(
               { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: mod, entry: entries[i].content }) },
               { merge: true }
             );
