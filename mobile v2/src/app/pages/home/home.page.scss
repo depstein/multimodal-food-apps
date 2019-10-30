@@ -1,12 +1,12 @@
 ion-toolbar {
-    --background: rgb(246, 205, 96);
+    --background: var(--ion-color-lorange);
     ion-title {
         color: white;
     }
 }
 
 ion-content {
-    --background: rgb(242, 168, 70);
+    --background: var(--ion-color-dorange);
 }
 
 .LogMeal {
@@ -28,7 +28,6 @@ ion-content {
 }
 
 .Content {
-    // height: 40vh;
     width: 100%;
     padding-left: 5vw;
     padding-right: 5vw;
@@ -38,13 +37,26 @@ ion-content {
     }
 
     .card {
-        background-color: rgb(148, 213, 228);
-        padding-top: 5vh;
-        padding-bottom: 2vh;
-        border-radius: 25px;
+        // background-color: var(--ion-color-morange);
+        background-color: var(--ion-color-morange);
+        padding-top: 2vh;
+        padding-bottom: 1vh;
+        border-radius: 5px;
         margin-bottom: 5vh;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .time {
+            margin-left: 10px;
+            span {
+                text-decoration: underline;
+            }
+        }
     }
-    // margin-bottom: 35vh;
     margin-bottom: 15vh;
 }
 
@@ -74,5 +86,5 @@ ion-icon {
 }
 
 .selected {
-    color: rgb(175, 218, 226) !important;
+    color: var(--ion-color-blueish) !important;
 }

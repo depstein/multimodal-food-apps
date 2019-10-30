@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>food Journal</ion-title>
+    <ion-title>Food Journal</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,19 +12,18 @@
     <p class="date">{{now}}</p>
 
     <div class="card" *ngFor="let log of logsToday; let i = index">
+      <p class="time">{{log.date.toDate() | date:'shortTime'}} from <span>{{log.platform}}</span> platform</p>
       <ion-grid>
         <ion-row *ngFor="let e of log.entries">
-          <ion-col size="2" *ngIf="e.modality === 'database'"><ion-icon name="search"></ion-icon></ion-col>
-          <ion-col size="2" *ngIf="e.modality === 'foodDsrp'"><ion-icon name="text"></ion-icon></ion-col>
-          <ion-col size="2" *ngIf="e.modality === 'url'"><ion-icon name="globe"></ion-icon></ion-col>
-          <ion-col size="2" *ngIf="e.modality === 'voice'"><ion-icon name="mic"></ion-icon></ion-col>
-          <ion-col size="2" *ngIf="e.modality === 'foodImg'"><ion-icon name="camera"></ion-icon></ion-col>
-          <ion-col size="2" *ngIf="e.modality === 'barcode'"><ion-icon name="barcode"></ion-icon></ion-col>
-          
-          <!-- <ion-col size="10">{{e.entry}}</ion-col> -->
-          <ion-col size="10" *ngIf="e.modality !== 'foodImg'">{{e.entry}}</ion-col>
-          <!-- <ion-col size="10" *ngIf="e.modality === 'foodImg'"><img id='img-{{i}}' [src]="getImgURL(i, e.entry) | async"></ion-col> -->
-          <ion-col size="10" *ngIf="e.modality === 'foodImg'"><img id='img-{{i}}' [src]="e.entry | async"></ion-col>
+          <ion-col size="1" *ngIf="e.modality === 'database'"><ion-icon name="search"></ion-icon></ion-col>
+          <ion-col size="1" *ngIf="e.modality === 'foodDsrp'"><ion-icon name="text"></ion-icon></ion-col>
+          <ion-col size="1" *ngIf="e.modality === 'url'"><ion-icon name="globe"></ion-icon></ion-col>
+          <ion-col size="1" *ngIf="e.modality === 'voice'"><ion-icon name="mic"></ion-icon></ion-col>
+          <ion-col size="1" *ngIf="e.modality === 'foodImg'"><ion-icon name="camera"></ion-icon></ion-col>
+          <ion-col size="1" *ngIf="e.modality === 'barcode'"><ion-icon name="barcode"></ion-icon></ion-col>
+
+          <ion-col size="11" *ngIf="e.modality !== 'foodImg'"><p>{{e.entry}}</p></ion-col>
+          <ion-col size="11" *ngIf="e.modality === 'foodImg'"><img id='img-{{i}}' [src]="e.entry | async"></ion-col>
         </ion-row>
       </ion-grid>
     </div>

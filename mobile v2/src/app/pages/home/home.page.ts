@@ -36,7 +36,8 @@ export class HomePage implements OnInit {
 
           const docDate = element.date.toDate();
           if (this.isToday(docDate)) {
-            if(element.entries) {
+            if (element.entries) {
+              // tslint:disable-next-line: prefer-for-of
               for (let i = 0; i < element.entries.length; ++i) {
                 if (element.entries[i].modality === 'foodImg') {
                   element.entries[i].entry = this.afStorage.ref(this.logService.username + '/' + element.entries[i].entry).getDownloadURL();
@@ -46,8 +47,7 @@ export class HomePage implements OnInit {
             }
           }
         });
-        this.logsToday.sort((a, b) => {return b.date - a.date;})
-        console.log(this.logsToday);
+        this.logsToday.sort((a, b) => b.date - a.date);
       }
     )
   }
@@ -58,14 +58,14 @@ export class HomePage implements OnInit {
   }
 
   nav(num: number) {
-    switch(num) {
+    switch (num) {
       case 0:
         this.router.navigateByUrl('/history');
         break;
       case 1:
         break;
       case 2:
-         this.router.navigateByUrl('/setting')
+        this.router.navigateByUrl('/setting');
         break;
     }
   }

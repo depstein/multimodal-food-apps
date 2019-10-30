@@ -18,7 +18,7 @@ export class LogService {
   constructor(private afStorage: AngularFireStorage,
               private afs: AngularFirestore,
               private loadingController: LoadingController) {
-    this.username = '';
+    this.username = 'yhuai';
     this.data = new LogData();
     this.data.date = new Date();
     this.data.entries = [];

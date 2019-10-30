@@ -11,7 +11,7 @@
 
     <ion-item lines="none">
         <ion-label position="stacked" style="margin-bottom: 10px;">Enter URL</ion-label>
-        <ion-input [(ngModel)]='value' type="url" style="background-color: rgb(148, 213, 228);"></ion-input>
+        <ion-textarea [(ngModel)]='value' type="url" style="background-color: rgb(148, 213, 228); height: 5em;" placeholder="Please enter the URL of a recipe or other website which describes what you ate."></ion-textarea>
       </ion-item>
   <ion-button expand='full' (click)='onSave()' style="margin-left: 15px; margin-right:15px;">Save</ion-button>
 
