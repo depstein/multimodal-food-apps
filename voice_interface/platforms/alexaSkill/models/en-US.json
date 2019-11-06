@@ -1,0 +1,66 @@
+{
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "talk to food",
+			"types": [],
+			"intents": [
+				{
+					"name": "HelloWorldIntent",
+					"samples": [
+						"Talk to Food Journal",
+						"Food Journal"
+					]
+				},
+				{
+					"name": "LoginIntent",
+					"samples": [
+						"Log in {participantId}",
+						"Login {participantId}",
+						"Sign in {participantId}",
+						"Log in user {participantId}",
+						"Login user {participantId}",
+						"Sign in user {participantId}"
+					],
+					"slots": [
+						{
+							"name": "participantId",
+							"type": "AMAZON.NUMBER"
+						}
+					]
+				},
+				{
+					"name": "JournalIntent",
+					"samples": [
+						"Food journal log {foodInfo}",
+						"log {foodInfo}"
+					],
+					"slots": [
+						{
+							"name": "foodInfo",
+							"type": "AMAZON.Food"
+						}
+					]
+				},
+				{
+					"name": "ReadIntent",
+					"samples": [
+						"read my last log",
+						"read"
+					]
+				},
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": []
+				}
+			]
+		}
+	}
+}

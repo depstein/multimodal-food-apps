@@ -1,0 +1,34 @@
+[
+	{
+		"data": [
+			{
+				"text": "Food journal log ",
+				"userDefined": false
+			},
+			{
+				"text": "foodInfo",
+				"userDefined": true,
+				"alias": "foodInfo",
+				"meta": "@sys.any"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "log ",
+				"userDefined": false
+			},
+			{
+				"text": "foodInfo",
+				"userDefined": true,
+				"alias": "foodInfo",
+				"meta": "@sys.any"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	}
+]

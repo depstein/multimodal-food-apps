@@ -1,0 +1,92 @@
+{
+	"invocation": "talk to food",
+	"intents": [
+		{
+			"name": "HelloWorldIntent",
+			"phrases": [
+				"Talk to Food Journal",
+				"Food Journal",
+				"my food journal"
+			]
+		},
+		{
+			"name": "LoginIntent",
+			"phrases": [
+				"Sign in {participantId}",
+				"Sign in user {participantId}"
+			],
+			"inputs": [
+				{
+					"name": "participantId",
+					"type": {
+						"alexa": "AMAZON.NUMBER",
+						"dialogflow": "@sys.number-integer"
+					}
+				}
+			]
+		},
+		{
+			"name": "JournalIntent",
+			"phrases": [
+				"Food journal log {foodInfo}",
+				"log {foodInfo}"
+			],
+			"inputs": [
+				{
+					"name": "foodInfo",
+					"type": {
+						"alexa": "AMAZON.Food",
+						"dialogflow": "@sys.any"
+					}
+				}
+			]
+		},
+		{
+			"name": "ReadIntent",
+			"phrases": [
+				"read my last log",
+				"read"
+			]
+		}
+	],
+	"alexa": {
+		"interactionModel": {
+			"languageModel": {
+				"intents": [
+					{
+						"name": "AMAZON.CancelIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.HelpIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.StopIntent",
+						"samples": []
+					}
+				]
+			}
+		}
+	},
+	"dialogflow": {
+		"intents": [
+			{
+				"name": "Default Fallback Intent",
+				"auto": true,
+				"webhookUsed": true,
+				"fallbackIntent": true
+			},
+			{
+				"name": "Default Welcome Intent",
+				"auto": true,
+				"webhookUsed": true,
+				"events": [
+					{
+						"name": "WELCOME"
+					}
+				]
+			}
+		]
+	}
+}
