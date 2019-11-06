@@ -37,9 +37,11 @@
               </div>
 
               <div *ngIf = "isVoice(mode)">
-                <button (click) = 'onListen()' class='btn' style='background-color: red; color: white; width: 100%;'>Record</button>
+                <button (click) = 'onListen()' class='btn' style='color: white; width: 100%;' [ngClass]="{'btn-danger': !isRecording, 'btn-secondary': isRecording}">
+                  {{isRecording ? 'recording...' : 'Record'}}
+                </button>
                 <div *ngIf='textEntry.length != 0'>
-                  <p class="h4">Result</p>
+                  <p class="h4 mt-2">Result</p>
                   <p>{{textEntry}}</p>
                 </div>
               </div>
