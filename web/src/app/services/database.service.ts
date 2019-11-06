@@ -93,19 +93,29 @@ export class DatabaseService {
 
   remove(docId: string) {
     console.log(docId);
-    const collection = this.firedb.collection(this.col);
-    // collection.doc(docId).delete();
+    const collection = this.firedb.collection(this.col, ref => ref.orderBy('date', 'desc'));
     collection.doc(docId).delete();
-    // collection.doc('--last--').get().toPromise().then(
-    //   doc => {
-    //     if (doc.data().id !== docId) {
-    //       // last document
 
-    //     } else {
-    //       // deleting last document
-    //     }
-    //   }
-    // );
+    collection.doc('--last--').get().toPromise().then(
+      doc => {
+        if (doc.data().id === docId) {
+          // deleting last document
+          var targetID = '';
+          collection.get().toPromise().then(
+            snapshot => {
+              snapshot.forEach(
+                _doc => {
+                  if (targetID === '' && _doc.id !== docId) {
+                    targetID = _doc.id;
+                    collection.doc('--last--').set({id: targetID});
+                  }
+                }
+              );
+            }
+          );
+        }
+      }
+    );
   }
 
   push(callback = null) {
