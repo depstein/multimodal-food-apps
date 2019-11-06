@@ -8,7 +8,7 @@ import {
 } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { Storage } from "@ionic/storage";
-import { ModalController } from "@ionic/angular";
+import { ModalController, AlertController } from "@ionic/angular";
 import { HistoryDatePage } from "../historydate/historydate.page";
 import { AngularFireStorage } from "@angular/fire/storage";
 import * as moment from "moment";
@@ -33,7 +33,8 @@ export class HistoryPage implements OnInit {
     private afs: AngularFirestore,
     public storage: Storage,
     public modalController: ModalController,
-    private afStorage: AngularFireStorage
+    private afStorage: AngularFireStorage,
+    private alertController: AlertController
   ) {
     this.calendar_date = new Date();
     this.logs_array = new Array();
@@ -139,5 +140,37 @@ export class HistoryPage implements OnInit {
           this.logs_array = this.getentries(); //get new entries for date
         });
       });
+  }
+
+  async deleteEntry(docId) {
+
+
+
+
+    const alert = await this.alertController.create({
+      header: 'Delete Confirmation!',
+      message: 'Are you sure you want to delete this entry?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            // console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            // console.log('Confirm Okay');
+            document.getElementById(docId).remove();
+            this.logService.remove(docId);
+
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
   }
 }

@@ -18,7 +18,7 @@ export class LogService {
   constructor(private afStorage: AngularFireStorage,
               private afs: AngularFirestore,
               private loadingController: LoadingController) {
-    this.username = 'yhuai';
+    // this.username = 'yhuai';
     this.data = new LogData();
     this.data.date = new Date();
     this.data.entries = [];
@@ -45,6 +45,33 @@ export class LogService {
 
   addEntry(entry: Map<string, any>) {
     this.data.entries.push(entry);
+  }
+
+  remove(docId: string) {
+    console.log(docId);
+    // const collection = this.firedb.collection(this.col, ref => ref.orderBy('date', 'desc'));
+    const tmpCol = this.afs.collection(this.username, ref => ref.orderBy('date', 'desc'));
+    tmpCol.doc(docId).delete();
+    tmpCol.doc('--last--').get().toPromise().then(
+      doc => {
+        if (doc.data().id === docId) {
+          // deleting last document
+          var targetID = '';
+          tmpCol.get().toPromise().then(
+            snapshot => {
+              snapshot.forEach(
+                _doc => {
+                  if (targetID === '' && _doc.id !== docId) {
+                    targetID = _doc.id;
+                    tmpCol.doc('--last--').set({id: targetID});
+                  }
+                }
+              );
+            }
+          );
+        }
+      }
+    );
   }
 
   async push(callback = null) {
