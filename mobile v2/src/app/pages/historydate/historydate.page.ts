@@ -46,15 +46,19 @@ export class HistoryDatePage implements OnInit {
   getentries() {
     //collects all entries in the database
     const entry = [];
-    const logs = this.logsCollection.valueChanges();
-    logs.subscribe((array) => {
-
-      array.forEach(element => {
-        // checks the date
-        const dates = new EntryCard(element.date, element.entries, element.platform);
-        entry.push(dates)
-      });
-    });
+    const logs = this.logsCollection.snapshotChanges();
+    logs.subscribe(
+      array => {
+        array.forEach(
+          element => {
+            const ele = element.payload.doc.data();
+            // checks the date
+            const dates = new EntryCard(ele.date, ele.entries, ele.platform, element.payload.doc.id);
+            entry.push(dates);
+          }
+        );
+      }
+    );
     return entry
   }
 
