@@ -5,20 +5,29 @@
 			"types": [],
 			"intents": [
 				{
+					"name": "YesIntent",
+					"samples": [
+						"yes"
+					]
+				},
+				{
+					"name": "NoIntent",
+					"samples": [
+						"no"
+					]
+				},
+				{
 					"name": "HelloWorldIntent",
 					"samples": [
 						"Talk to Food Journal",
-						"Food Journal"
+						"Food Journal",
+						"my food journal"
 					]
 				},
 				{
 					"name": "LoginIntent",
 					"samples": [
-						"Log in {participantId}",
-						"Login {participantId}",
 						"Sign in {participantId}",
-						"Log in user {participantId}",
-						"Login user {participantId}",
 						"Sign in user {participantId}"
 					],
 					"slots": [
@@ -46,6 +55,18 @@
 					"samples": [
 						"read my last log",
 						"read"
+					]
+				},
+				{
+					"name": "DeleteIntent",
+					"samples": [
+						"delete my last log"
+					]
+				},
+				{
+					"name": "HelpIntent",
+					"samples": [
+						"help"
 					]
 				},
 				{

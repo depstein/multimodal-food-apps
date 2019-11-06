@@ -2,6 +2,18 @@
 	"invocation": "talk to food",
 	"intents": [
 		{
+			"name": "YesIntent",
+			"phrases": [
+				"yes"
+			]
+		},
+		{
+			"name": "NoIntent",
+			"phrases": [
+				"no"
+			]
+		},
+		{
 			"name": "HelloWorldIntent",
 			"phrases": [
 				"Talk to Food Journal",
@@ -12,8 +24,14 @@
 		{
 			"name": "LoginIntent",
 			"phrases": [
+				"Log in {participantId}",
+				"Log in user {participantId}",
 				"Sign in {participantId}",
-				"Sign in user {participantId}"
+				"Sign in user {participantId}",
+				"Login {participantId}",
+				"Login user {participantId}",
+				"Signin {participantId}",
+				"Signin user {participantId}"
 			],
 			"inputs": [
 				{
@@ -46,6 +64,18 @@
 			"phrases": [
 				"read my last log",
 				"read"
+			]
+		},
+		{
+			"name": "DeleteIntent",
+			"phrases": [
+				"delete my last log"
+			]
+		},
+		{
+			"name": "HelpIntent",
+			"phrases": [
+				"help"
 			]
 		}
 	],

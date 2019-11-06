@@ -2,71 +2,7 @@
 	{
 		"data": [
 			{
-				"text": "Log in ",
-				"userDefined": false
-			},
-			{
-				"text": "participantId",
-				"userDefined": true,
-				"alias": "participantId",
-				"meta": "@sys.number-integer"
-			}
-		],
-		"isTemplate": false,
-		"count": 0
-	},
-	{
-		"data": [
-			{
-				"text": "Login ",
-				"userDefined": false
-			},
-			{
-				"text": "participantId",
-				"userDefined": true,
-				"alias": "participantId",
-				"meta": "@sys.number-integer"
-			}
-		],
-		"isTemplate": false,
-		"count": 0
-	},
-	{
-		"data": [
-			{
 				"text": "Sign in ",
-				"userDefined": false
-			},
-			{
-				"text": "participantId",
-				"userDefined": true,
-				"alias": "participantId",
-				"meta": "@sys.number-integer"
-			}
-		],
-		"isTemplate": false,
-		"count": 0
-	},
-	{
-		"data": [
-			{
-				"text": "Log in user ",
-				"userDefined": false
-			},
-			{
-				"text": "participantId",
-				"userDefined": true,
-				"alias": "participantId",
-				"meta": "@sys.number-integer"
-			}
-		],
-		"isTemplate": false,
-		"count": 0
-	},
-	{
-		"data": [
-			{
-				"text": "Login user ",
 				"userDefined": false
 			},
 			{
