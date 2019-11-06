@@ -49,7 +49,12 @@
 
     <div *ngFor="let log of filterArray()" class="saved-content mx-4 my-4 py-2 rounded shadow"
       style="background-color: #F6C459;">
-      <p class="ml-3 px-0 py-0 mb-0"><em>{{ log.date.toDate() | date:'hh:mm a' }}</em></p>
+      <div class='d-inline-flex'>
+        <p class="ml-3 px-0 py-0 mb-0">
+          <em>{{ log.date.toDate() | date:'hh:mm a' }}</em> 
+        </p>
+        <a class='ml-2' style='cursor: pointer;' (click)='deleteEntry(log.docId)'><u>Delete</u></a>
+      </div>
       <div class="row mx-0">
         <app-record-card class="col-lg-3 col-md-6 col-sm-12 px-2 my-2" *ngFor="let entry of log.entries"
           title="{{entry['modality']}}" content="{{entry['entry']}}">

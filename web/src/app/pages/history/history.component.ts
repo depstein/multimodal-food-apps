@@ -104,7 +104,12 @@ export class HistoryComponent implements OnInit {
   }
 
   onMouseOver() {
-    console.log('1');
+    // console.log('1');
+  }
+
+  deleteEntry(docId) {
+    // console.log(docId);
+    this.db.remove(docId);
   }
 
 }

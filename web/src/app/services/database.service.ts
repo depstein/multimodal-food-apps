@@ -27,8 +27,8 @@ export class DatabaseService {
     localStorage.setItem('current', usr);
     this.col = usr;
 
-    console.log(this.col);
-    console.log(callback != null);
+    // console.log(this.col);
+    // console.log(callback != null);
     if (callback != null) {
       callback();
     }
@@ -44,34 +44,22 @@ export class DatabaseService {
   getLogs(mode = 'desc') {
     // return this.firedb.collection(this.col, ref => ref.orderBy('date', 'desc')).valueChanges();
 
-    console.log(this.col);
+    // console.log(this.col);
     // console.log(firebase.auth().currentUser.uid);
 
-    if (mode === 'desc') {
-      return this.firedb.collection(this.col, ref => ref.orderBy('date', 'desc')).snapshotChanges().pipe(
-        map(
-          actions => actions.map(
-            a => {
-              const data = a.payload.doc.data();
-              const docId = a.payload.doc.id;
-              return {docId, ...data};
-            }
-          )
+    const tmpCollection = this.firedb.collection(this.col, ref => ref.orderBy('date', mode === 'desc' ? mode : 'asc'));
+
+    return tmpCollection.snapshotChanges().pipe(
+      map(
+        actions => actions.map(
+          a => {
+            const data = a.payload.doc.data();
+            const docId = a.payload.doc.id;
+            return {docId, ...data};
+          }
         )
-      );
-    } else {
-      return this.firedb.collection(this.col, ref => ref.orderBy('date', 'asc')).snapshotChanges().pipe(
-        map(
-          actions => actions.map(
-            a => {
-              const data = a.payload.doc.data();
-              const docId = a.payload.doc.id;
-              return {docId, ...data};
-            }
-          )
-        )
-      );
-    }
+      )
+    );
   }
 
   convertToModality(title) {
@@ -101,6 +89,23 @@ export class DatabaseService {
         }
       }
     );
+  }
+
+  remove(docId: string) {
+    console.log(docId);
+    const collection = this.firedb.collection(this.col);
+    // collection.doc(docId).delete();
+    collection.doc(docId).delete();
+    // collection.doc('--last--').get().toPromise().then(
+    //   doc => {
+    //     if (doc.data().id !== docId) {
+    //       // last document
+
+    //     } else {
+    //       // deleting last document
+    //     }
+    //   }
+    // );
   }
 
   push(callback = null) {
