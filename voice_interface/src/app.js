@@ -8,7 +8,8 @@ const { App } = require("jovo-framework");
 const { Alexa } = require("jovo-platform-alexa");
 const { GoogleAssistant } = require("jovo-platform-googleassistant");
 const { JovoDebugger } = require("jovo-plugin-debugger");
-const { FileDb } = require("jovo-db-filedb");
+// const { FileDb } = require("jovo-db-filedb");
+const { Firestore } = require('jovo-db-firestore');
 
 const app = new App();
 
@@ -36,7 +37,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-app.use(new Alexa(), new GoogleAssistant(), new JovoDebugger(), new FileDb());
+app.use(new Alexa(), new GoogleAssistant(), new JovoDebugger(), new Firestore({}, db));
 
 // ------------------------------------------------------------------
 // APP LOGIC
@@ -48,7 +49,11 @@ app.setHandler({
         this.$session.$data.loggedIn = false;
         this.ask(this.$speech);
 
-        return this.toIntent("HelloWorldIntent");
+        if(this.$user.$data.userId && this.$user.$data.userId > 0) {
+            return this.toIntent("LoginIntent");
+        } else {
+            return this.toIntent("HelloWorldIntent");
+        }
     },
 
     HelloWorldIntent() {
@@ -58,16 +63,26 @@ app.setHandler({
 
     LoginIntent() {
         this.$session.$data.loggedIn = true;
-        this.$session.$data.userId = this.$inputs.participantId.value;
+        if(this.$user.$data.userId && this.$user.$data.userId > 0) {
+            this.$session.$data.userId = this.$user.$data.userId;
+        } else {
+            this.$session.$data.userId = this.$inputs.participantId.value;
+            this.$user.$data.userId = this.$session.$data.userId;
+        }
+        
         this.$speech.addText(
-            "Successfully logged in with user " +
-                this.$inputs.participantId.value +
+            "You are logged in as user " +
+                this.$session.$data.userId +
                 "."
         );
         this.$speech.addText("What would you like to do today?");
         this.ask(this.$speech);
     },
-
+    LogOutIntent() {
+        this.$session.$data.loggedIn = false;
+        this.$user.$data.userId = -1;
+        return this.toIntent('HelloWorldIntent');
+    },
     async JournalIntent() {
         if (!this.$session.$data.loggedIn) {
             return this.toIntent("HelloWorldIntent");

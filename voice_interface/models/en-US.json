@@ -1,5 +1,5 @@
 {
-	"invocation": "talk to food",
+	"invocation": "food jovo",
 	"intents": [
 		{
 			"name": "YesIntent",
@@ -44,6 +44,13 @@
 			]
 		},
 		{
+			"name": "LogOutIntent",
+			"phrases": [
+				"sign out",
+				"log out"
+			]
+		},
+		{
 			"name": "JournalIntent",
 			"phrases": [
 				"Food journal log {foodInfo}",
@@ -76,6 +83,13 @@
 			"name": "HelpIntent",
 			"phrases": [
 				"help"
+			]
+		},
+		{
+			"name": "END",
+			"phras": [
+				"bye",
+				"exit"
 			]
 		}
 	],

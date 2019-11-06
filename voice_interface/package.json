@@ -7,6 +7,7 @@
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.2.0",
     "jovo-db-filedb": "^2.0.2",
+    "jovo-db-firestore": "^2.2.14",
     "jovo-framework": "^2.2.18",
     "jovo-platform-alexa": "^2.0.2",
     "jovo-platform-googleassistant": "^2.0.2",
@@ -24,7 +25,8 @@
     "test": "jest",
     "bundle": "gulp --gulpfile node_modules/jovo-framework/gulpfile.js --cwd ./",
     "start": "cd src && node index.js --webhook",
-    "launch": "npm start -- --launch"
+    "launch": "npm start -- --launch",
+    "postinstall": "npm install --save jovo-db-firestore; npm install grpc --target_arch=x64 --target_platform=linux --target_libc=glibc"
   },
   "repository": {
     "type": "git",
