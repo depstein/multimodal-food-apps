@@ -1,0 +1,20 @@
+<div class="container d-flex flex-column">
+
+
+  <ul class="nav justify-content-center align-items-center py-4">
+    <li class="nav-item mx-4">
+      <a [routerLink]="['/main']" routerLinkActive="active-link" class="nav-link">Journal</a>
+    </li>
+    <li class="nav-item mx-4">
+      <a [routerLink]="['/history']" routerLinkActive="active-link" class="nav-link">History</a>
+    </li>
+    <li class="nav-item mx-4">
+      <a [routerLink]="['/survey']" routerLinkActive="active-link" class="nav-link">Survey</a>
+    </li>
+    <li class="nav-item">
+      <span style="color: white; margin-right: 15px;"><em>{{db.col}}</em></span>
+      <button class="btn btn-danger rounded-pill" (click)='logout()'><i class="fa fa-stop-circle-o mr-1"
+        style="color: white;"></i>Logout</button>
+    </li>
+  </ul>
+</div>

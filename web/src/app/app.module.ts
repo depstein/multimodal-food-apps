@@ -17,6 +17,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SurveyComponent } from './pages/survey/survey.component';
 import { SurveyRecordComponent } from './components/survey-record/survey-record.component';
 import { SpeechRecognitionModule } from '@kamiazya/ngx-speech-recognition';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SpeechRecognitionModule } from '@kamiazya/ngx-speech-recognition';
     RecordCardComponent,
     HistoryComponent,
     SurveyComponent,
-    SurveyRecordComponent
+    SurveyRecordComponent,
+    NavbarComponent
   ],
   imports: [
     FormsModule,
