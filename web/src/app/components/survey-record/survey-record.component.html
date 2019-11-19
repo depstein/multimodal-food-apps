@@ -137,13 +137,13 @@
             </label>
           </div>
         </div>
-        <strong>Write anything else which would help us understand your eating situation.</strong>
-        <div class="form-group">
-          <textarea class="form-control" name="situation" rows="2" [ngClass]='situationValid' [(ngModel)]=context.situation></textarea>
-        </div>
         <strong>Why did you choose to journal this food on {{platformString}} with a {{recordString}}?</strong>
         <div class="form-group">
           <textarea class="form-control" name="modality" rows="3" [ngClass]='modalityValid' [(ngModel)]=context.modality></textarea>
+        </div>
+        <strong>Write anything else which would help us understand your eating situation.</strong>
+        <div class="form-group">
+          <textarea class="form-control" name="situation" rows="2" [ngClass]='situationValid' [(ngModel)]=context.situation></textarea>
         </div>
         <button type="submit" id="submit-button" class="btn">Submit</button>
       </form>

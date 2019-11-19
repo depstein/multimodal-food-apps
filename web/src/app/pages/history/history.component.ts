@@ -3,6 +3,7 @@ import { CommunicationService } from 'src/app/services/communication.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Router } from '@angular/router';
 
+declare var $: any;
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
@@ -15,6 +16,8 @@ export class HistoryComponent implements OnInit {
   availableDates = [];
 
   logs: any[];
+
+  toDelete;
 
   constructor(private conm: CommunicationService, public db: DatabaseService, private router: Router) { }
 
@@ -112,4 +115,17 @@ export class HistoryComponent implements OnInit {
     this.db.remove(docId);
   }
 
+  selectedToDelete(docId) {
+    this.toDelete = docId;
+  }
+
+  onCancelClose() {
+    $('#warningDialog').modal('toggle');
+  }
+
+  onDeleteConfirm(){
+    this.db.remove(this.toDelete);
+    this.toDelete='';
+    $('#warningDialog').modal('toggle');
+  }
 }

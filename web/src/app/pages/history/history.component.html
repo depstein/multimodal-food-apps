@@ -38,7 +38,9 @@
         <p class="ml-3 px-0 py-0 mb-0">
           <em>{{ log.date.toDate() | date:'hh:mm a' }}</em> 
         </p>
-        <a class='ml-2' style='cursor: pointer;' (click)='deleteEntry(log.docId)'><u>Delete</u></a>
+        <button type="button" class="ml-2 btn-danger" data-toggle="modal" (click)="selectedToDelete(log.docId)" data-target="#warningDialog">
+            Delete
+          </button>
       </div>
       <div class="row mx-0">
         <app-record-card class="col-lg-3 col-md-6 col-sm-12 px-2 my-2" *ngFor="let entry of log.entries"
@@ -52,3 +54,23 @@
   </div>
 </div>
 <app-input-modal></app-input-modal>
+
+<div class="modal fade" id="warningDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="warningDialogTitle">Warning</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          You will not be able to recover this entry, are you sure you want to delete it?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="onCancelClose()">No</button>
+          <button type="button" class="btn btn-danger" (click)="onDeleteConfirm()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>

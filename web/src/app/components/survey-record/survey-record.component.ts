@@ -89,7 +89,6 @@ export class SurveyRecordComponent implements OnInit {
         this.placeValid = 'is-valid';
         this.context.place = this.placeOther;
       }
-
     }
 
     if (this.otherMealPicked) {
@@ -102,10 +101,11 @@ export class SurveyRecordComponent implements OnInit {
       }
     }
 
-    this.situationValid = this.context.situation === '' ? 'is-invalid' : 'is-valid';
+    // this.situationValid = this.context.situation === '' ? 'is-invalid' : 'is-valid';
     this.modalityValid = this.context.modality === '' ? 'is-invalid' : 'is-valid';
 
-    if (this.situationValid === 'is-invalid' || this.modalityValid === 'is-invalid') {
+    // if (this.situationValid === 'is-invalid' || this.modalityValid === 'is-invalid') {
+    if (this.modalityValid === 'is-invalid') {
       flag = false;
     }
 
