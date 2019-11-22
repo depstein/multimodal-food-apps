@@ -22,7 +22,6 @@ export class SurveyComponent implements OnInit {
           }
         );
         this.logs = arr;
-        console.log(this.logs);
       }
     );
   }

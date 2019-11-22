@@ -55,7 +55,7 @@ export class DatabaseService {
           a => {
             const data = a.payload.doc.data();
             const docId = a.payload.doc.id;
-            return {docId, ...data};
+            return { docId, ...data };
           }
         )
       )
@@ -81,8 +81,8 @@ export class DatabaseService {
     return this.afs.ref(this.col + '/' + id).getDownloadURL();
   }
 
-  updateContext(docId, data:Object, callback) {
-    this.firedb.doc(this.col + '/' + docId).update({'context':data, 'contextLogged':true}).then(
+  updateContext(docId, data: Object, callback) {
+    this.firedb.doc(this.col + '/' + docId).update({ 'context': data, 'contextLogged': true }).then(
       () => {
         if (callback) {
           callback();
@@ -107,7 +107,7 @@ export class DatabaseService {
                 _doc => {
                   if (targetID === '' && _doc.id !== docId) {
                     targetID = _doc.id;
-                    collection.doc('--last--').set({id: targetID});
+                    collection.doc('--last--').set({ id: targetID });
                   }
                 }
               );
@@ -127,7 +127,7 @@ export class DatabaseService {
     const collection = this.firedb.collection(usr);
     collection.add({ 'contextLogged': false, 'date': new Date(), 'platform': 'web', 'entries': [] }).then(
       (doc) => {
-        const update = collection.doc('--last--').set({id: doc.id});
+        const update = collection.doc('--last--').set({ id: doc.id });
         const docId = doc.id;
 
         const promises = [update];
@@ -172,4 +172,175 @@ export class DatabaseService {
     );
   }
 
+
+  //Updating the modalities of a collection that was eddited. We get the current entries[] and 
+  //store it for loging purposes in the editedOldEntries attribute, then delete the entries[] before populating 
+  //it again with the edited entries in the this.conm.draftEntries service
+  update(entryToEdit, callback = null) {
+
+    const usr = this.col;
+
+    const collection = this.firedb.collection(usr);
+    
+    collection.doc(entryToEdit.docId).ref.get().then( (doc) => {
+
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+        let previousLog = [];
+        if (doc.data().editedOldEntries){
+          previousLog = doc.data().editedOldEntries;
+        }
+
+        collection.doc(entryToEdit.docId).update(
+          { entries: [], //first clean up the modality entries for this entry document
+            editedOldEntries: [...previousLog, ...doc.data()['entries']] 
+            // editedOldEntries: {old: doc.data()['editedOldEntries'], new: doc.data()['entries'] } 
+          })
+
+          //then populate with the "new" ones
+          .then(
+            (doc) => {
+
+              let fileCounter = 0;
+              const promises = [];
+
+              this.conm.draftEntries.map((e) => {
+                if (e.title === 'Image') { // a new image is being added, so we need to store it and get the URL first
+                  const fileName = entryToEdit.docId + '_' + fileCounter.toString(); fileCounter++;
+                  const task = this.afs.ref(usr + '/' + fileName).putString(e.content, 'data_url');
+
+                  const t = task.snapshotChanges().toPromise().then(
+                    async (state) => {
+                      const downloadURL = await this.afs.ref(usr + '/' + fileName).getDownloadURL().toPromise();
+                      this.firedb.doc(usr + '/' + entryToEdit.docId).set(
+                        { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: 'foodImg', entry: fileName, url: downloadURL }) },
+                        { merge: true }
+                      );
+                    }
+                  );
+                  promises.push(t);
+
+                } else if (e.title === 'foodImg') { //an image is already in firebase
+                  const fileName = entryToEdit.docId + '_' + fileCounter.toString(); fileCounter++;
+                  const t = this.firedb.doc(usr + '/' + entryToEdit.docId).set(
+                    { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: 'foodImg', entry: fileName, url: e.content }) },
+                    { merge: true }
+                  );
+                  promises.push(t);
+
+                } else {
+                  const t = this.firedb.doc(usr + '/' + entryToEdit.docId).set(
+                    { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: e.title, entry: e.content }) },
+                    { merge: true }
+                  );
+                  promises.push(t);
+                }
+              });
+
+              Promise.all(promises).then(
+                () => {
+                  if (callback != null) {
+                    callback();
+                  }
+                }
+              );
+            }
+          );
+
+
+      } else {
+        console.log("No such document!");
+      }
+    }).catch(function (error) {
+      console.log("Error getting document:", error);
+    });
+  }
+
+
+  //Returns a promise, so the view can act according to the response
+  //
+  //Updating the modalities of a collection that was eddited. We get the current entries[] and 
+  //store it for loging purposes in the editedOldEntries attribute, then delete the entries[] before populating 
+  //it again with the edited entries in the this.conm.draftEntries service
+  update2(entryToEdit) {
+    return new Promise((resolve, reject) => {
+      const usr = this.col;
+
+    const collection = this.firedb.collection(usr);
+    
+    collection.doc(entryToEdit.docId).ref.get().then( (doc) => {
+
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+        let previousLog = [];
+        if (doc.data().editedOldEntries){
+          previousLog = doc.data().editedOldEntries;
+        }
+
+        collection.doc(entryToEdit.docId).update(
+          { entries: [], //first clean up the modality entries for this entry document
+            editedOldEntries: [...previousLog, ...doc.data()['entries']] 
+            // editedOldEntries: {old: doc.data()['editedOldEntries'], new: doc.data()['entries'] } 
+          })
+
+          //then populate with the "new" ones
+          .then(
+            (doc) => {
+
+              let fileCounter = 0;
+              const promises = [];
+
+              this.conm.draftEntries.map((e) => {
+                if (e.title === 'Image') { // a new image is being added, so we need to store it and get the URL first
+                  const fileName = entryToEdit.docId + '_' + fileCounter.toString(); fileCounter++;
+                  const task = this.afs.ref(usr + '/' + fileName).putString(e.content, 'data_url');
+
+                  const t = task.snapshotChanges().toPromise().then(
+                    async (state) => {
+                      const downloadURL = await this.afs.ref(usr + '/' + fileName).getDownloadURL().toPromise();
+                      this.firedb.doc(usr + '/' + entryToEdit.docId).set(
+                        { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: 'foodImg', entry: fileName, url: downloadURL }) },
+                        { merge: true }
+                      );
+                    }
+                  );
+                  promises.push(t);
+
+                } else if (e.title === 'foodImg') { //an image is already in firebase
+                  const fileName = entryToEdit.docId + '_' + fileCounter.toString(); fileCounter++;
+                  const t = this.firedb.doc(usr + '/' + entryToEdit.docId).set(
+                    { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: 'foodImg', entry: fileName, url: e.content }) },
+                    { merge: true }
+                  );
+                  promises.push(t);
+
+                } else {
+                  const t = this.firedb.doc(usr + '/' + entryToEdit.docId).set(
+                    { ['entries']: firebase.firestore.FieldValue.arrayUnion({ modality: e.title, entry: e.content }) },
+                    { merge: true }
+                  );
+                  promises.push(t);
+                }
+              });
+
+              Promise.all(promises).then(
+                () => {
+                    resolve(true);
+                }
+              );
+            }
+          );
+
+
+      } else {
+        console.log("No such document!");
+        resolve(false);
+      }
+    }).catch(function (error) {
+      console.log("Error getting document:", error);
+      resolve(false);
+    });
+    });
+    
+  }
 }

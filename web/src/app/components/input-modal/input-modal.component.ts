@@ -33,11 +33,9 @@ export class InputModalComponent implements OnInit {
   isRecording = false;
   constructor(private conm: CommunicationService, private speechService: SpeechRecognitionService) {
     this.speechService.onstart = (e) => {
-      console.log('onstart');
     };
     this.speechService.onresult = (e) => {
       this.textEntry = e.results[0].item(0).transcript;
-      console.log('MainComponent:onresult', this.textEntry, e);
       this.speechService.stop();
       this.isRecording = false;
     };
@@ -55,9 +53,9 @@ export class InputModalComponent implements OnInit {
     //     console.log('RxComponent:onresult', this.transcript, list);
     //   }
     // );
-    if(!this.isRecording) {
-        this.isRecording = true;
-        this.speechService.start();
+    if (!this.isRecording) {
+      this.isRecording = true;
+      this.speechService.start();
     }
   }
 
@@ -105,7 +103,6 @@ export class InputModalComponent implements OnInit {
         const title = this.getName(this.mode);
 
         const obj = { 'title': title, 'content': this.textEntry };
-        console.log(obj);
         this.conm.draftEntries.push(obj);
         $('#exampleModal').modal('toggle');
         this.cleanUp();
@@ -120,6 +117,7 @@ export class InputModalComponent implements OnInit {
       if (this.editIndex === -1 && !this.img) {
         return;
       }
+      //this is an image
       if (this.editIndex === -1) {
         const title = this.getName(this.mode);
         const obj = { 'title': title, 'content': this.img };
@@ -132,6 +130,7 @@ export class InputModalComponent implements OnInit {
         this.cleanUp();
       }
     }
+
 
   }
 

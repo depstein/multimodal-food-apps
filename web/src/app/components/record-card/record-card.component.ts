@@ -21,9 +21,6 @@ export class RecordCardComponent implements OnInit {
   constructor(private conm: CommunicationService) { }
 
   ngOnInit() {
-    // this.title = 'description';
-    // this.content = 'apple';
-    
 
     if (this.title === 'foodDsrp') {
       this.title = 'Description';
@@ -44,8 +41,6 @@ export class RecordCardComponent implements OnInit {
   }
 
   onEdit() {
-    console.log(this.index);
-
     const arr = ['Description', 'URL', 'Image', 'Search', 'Voice', 'Barcode'];
 
     this.conm.getDialog().editIndex = this.index;
@@ -60,7 +55,6 @@ export class RecordCardComponent implements OnInit {
     $('#exampleModal').modal('toggle');
   }
   onRemove() {
-    console.log(this.index);
     this.conm.draftEntries.splice(this.index, 1);
   }
 

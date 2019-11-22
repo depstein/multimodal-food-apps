@@ -1,3 +1,44 @@
+<div style="position: absolute; top: 0; right: 0;">
+  <div id="nothingToSave" class="toast mr-2 mt-2" role="alert" data-delay="700" data-autohide="false">
+    <div class="toast-header">
+      <strong class="mr-auto text-danger">Warning</strong>
+      <!-- <small class="text-muted">3 mins ago</small> -->
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Nothing to be saved!
+    </div>
+  </div>
+</div>
+
+<div style="position: absolute; top: 0; right: 0;">
+    <div id="firebaseError" class="toast mr-2 mt-2" role="alert" data-delay="700" data-autohide="false">
+      <div class="toast-header">
+        <strong class="mr-auto text-danger">Error</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        There was an error conecting with server.
+      </div>
+    </div>
+  </div>
+  <div style="position: absolute; top: 0; right: 0;">
+      <div id="updateSuccessful" class="toast mr-2 mt-2" role="alert" data-delay="700" data-autohide="false">
+        <div class="toast-header">
+          <strong class="mr-auto text-success">Success</strong>
+          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="toast-body">
+            Update successfully completed.
+        </div>
+      </div>
+    </div>
 <div class="container d-flex flex-column">
 
   <div class="content flex-grow-1">
@@ -5,8 +46,6 @@
     <div class="d-flex flex-row justify-content-between">
       <button class="btn ml-4" [ngClass]="{'disabled': isFirstDay(date)}" (click)="onPrev()"><i class="fa fa-arrow-left"
           style="color: white; font-size: 2em;"></i></button>
-
-
 
       <!-- <p class="mx-0 mt-4 display-4">{{date | date:'EEEE, MMMM d'}}</p> -->
       <div class="dropdown mt-4" style="background-color: #F6C459;" (mouseover)='onMouseOver()'>
@@ -21,9 +60,6 @@
         </div>
       </div>
 
-
-
-
       <button class="btn mr-4" [ngClass]="{'disabled': isToday(date)}" (click)="onNext()"><i class="fa fa-arrow-right"
           style="color: white; font-size: 2em;"></i></button>
     </div>
@@ -32,15 +68,50 @@
       <p class="h3"><em>Nothing recorded for this day.</em></p>
     </div>
 
+
+    <div class="draft-box mx-4" *ngIf="dataToEdit != undefined">
+      <p class="ml-3 px-0 py-0 mb-0"><em>Editing entry of {{ dataToEdit.date.toDate() | date:'hh:mm a' }}</em></p>
+      <div class="row py-4 mx-0">
+        <div class="col-8 d-flex flex-row">
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(0)'>+ Description</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(1)'>+ Database Search</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(2)'>+ Image</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(3)'>+ URL</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(4)'>+ Voice</button>
+          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(5)'>+ Barcode</button>
+        </div>
+
+        <div class="col-4 d-flex flex-row justify-content-around">
+          <button class="btn shadow func btn-danger" (click)="onCancelUpdateEntry()">Cancel</button>
+          <button class="btn shadow func" id="save" (click)="onUpdateEntry()">Update</button>
+
+        </div>
+      </div>
+      <!--THIS is where the edit panel is defined-->
+      <div class="draft-content">
+        <div class="row mx-0">
+          <app-record-card class='col-lg-3 col-md-6 col-sm-12 px-2 my-2'
+            *ngFor="let entry of conm.draftEntries; let i = index;" title="{{entry['title']}}"
+            content="{{entry['content']}}" editable="true" index="{{i}}">
+          </app-record-card>
+
+        </div>
+      </div>
+    </div>
+
     <div *ngFor="let log of filterArray()" class="saved-content mx-4 my-4 py-2 rounded shadow"
       style="background-color: #F6C459;">
       <div class='d-inline-flex'>
         <p class="ml-3 px-0 py-0 mb-0">
-          <em>{{ log.date.toDate() | date:'hh:mm a' }}</em> 
+          <em>{{ log.date.toDate() | date:'hh:mm a' }}</em>
         </p>
-        <button type="button" class="ml-2 btn-danger" data-toggle="modal" (click)="selectedToDelete(log.docId)" data-target="#warningDialog">
-            Delete
-          </button>
+        <button type="button" class="ml-2 btn-danger" data-toggle="modal" (click)="selectedToDelete(log.docId)"
+          data-target="#warningDialog">
+          Delete
+        </button>
+        <button type="button" class="ml-2 btn-danger" data-toggle="modal" (click)="selectedToEdit(log)">
+          Edit
+        </button>
       </div>
       <div class="row mx-0">
         <app-record-card class="col-lg-3 col-md-6 col-sm-12 px-2 my-2" *ngFor="let entry of log.entries"
@@ -48,29 +119,40 @@
         </app-record-card>
       </div>
     </div>
-
-
-
   </div>
 </div>
-<app-input-modal></app-input-modal>
 
-<div class="modal fade" id="warningDialog" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="warningDialogTitle">Warning</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          You will not be able to recover this entry, are you sure you want to delete it?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="onCancelClose()">No</button>
-          <button type="button" class="btn btn-danger" (click)="onDeleteConfirm()">Yes</button>
+<app-input-modal #inputDialog></app-input-modal>
+
+<div class="modal fade" id="mpDialog" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="d-flex align-items-center justify-content-center">
+          <strong>Loading...</strong>
+          <div class="spinner-border" role="status" aria-hidden="true"></div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="warningDialog" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="warningDialogTitle">Warning</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You will not be able to recover this entry, are you sure you want to delete it?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onCancelClose()">No</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteConfirm()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

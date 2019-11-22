@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Router } from '@angular/router';
+import { InputModalComponent } from 'src/app/components/input-modal/input-modal.component';
 
 declare var $: any;
 @Component({
@@ -10,7 +11,7 @@ declare var $: any;
   styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
-
+  @ViewChild('inputDialog') dialog: InputModalComponent;
   date = new Date();
 
   availableDates = [];
@@ -19,9 +20,13 @@ export class HistoryComponent implements OnInit {
 
   toDelete;
 
+  dataToEdit;
+
   constructor(private conm: CommunicationService, public db: DatabaseService, private router: Router) { }
 
   ngOnInit() {
+    this.conm.setDialog(this.dialog);
+
     this.db.getLogs().subscribe(
       (arr) => {
         for (const log of arr) {
@@ -54,6 +59,11 @@ export class HistoryComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    //clean up
+    this.conm.draftEntries = [];
+  }
+
   logout() {
     this.db.logout();
     this.router.navigateByUrl('/login');
@@ -76,7 +86,7 @@ export class HistoryComponent implements OnInit {
     }
     const newDate = new Date(this.date);
     newDate.setDate(this.date.getDate() - 1);
-    this.date = newDate; 
+    this.date = newDate;
   }
 
   onNext() {
@@ -106,26 +116,60 @@ export class HistoryComponent implements OnInit {
     return tmp;
   }
 
-  onMouseOver() {
-    // console.log('1');
-  }
-
-  deleteEntry(docId) {
-    // console.log(docId);
-    this.db.remove(docId);
-  }
-
   selectedToDelete(docId) {
     this.toDelete = docId;
   }
 
+  selectedToEdit(log) {
+    this.conm.draftEntries = []; //reseting modalities to a new entry that was selected
+    this.dataToEdit = log;
+    this.dataToEdit.entries.map(
+      (entry) =>
+        this.conm.draftEntries.push({ 'title': entry.modality, 'content': entry.entry })
+    );
+  }
+  onUpdateEntry() {
+    if (this.conm.draftEntries.length !== 0) {
+      $('#mpDialog').modal('toggle');
+      //will update in the db service using conm service entries 
+      let promise = this.db.update2(this.dataToEdit);
+      promise.then((resolve) => {
+        $('#mpDialog').modal('toggle');
+        
+        if (resolve) {
+          this.dataToEdit = undefined;
+          $('#updateSuccessful').toast({ delay: 3000, autohide: true });
+          $('#updateSuccessful').toast('show');
+        } else { //update was not successfull
+          $('#firebaseError').toast({ delay: 3000, autohide: true });
+          $('#firebaseError').toast('show');
+        }
+      });
+    } else {
+      $('#nothingToSave').toast({ delay: 3000, autohide: true });
+      $('#nothingToSave').toast('show');
+    }
+  }
+
+  onCancelUpdateEntry() {
+    this.dataToEdit = undefined;
+  }
+
+
   onCancelClose() {
+    this.toDelete = '';
     $('#warningDialog').modal('toggle');
   }
 
-  onDeleteConfirm(){
+  onDeleteConfirm() {
     this.db.remove(this.toDelete);
-    this.toDelete='';
+    this.toDelete = '';
+    this.dataToEdit = undefined; //in case the user deletes an entry that was previosly selected to be edited
     $('#warningDialog').modal('toggle');
+  }
+
+  onNewModal(index) {
+    this.conm.dialog.mode = index;
+    $('#exampleModal').modal('toggle');
   }
 }
