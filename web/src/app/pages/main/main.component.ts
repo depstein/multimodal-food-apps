@@ -21,6 +21,9 @@ export class MainComponent implements OnInit {
   logs: any[];
 
   clear = 'CLEAR';
+  
+  dataToEdit;
+  toDelete;
 
   constructor(private conm: CommunicationService, public db: DatabaseService, private router: Router) { }
 
@@ -55,6 +58,8 @@ export class MainComponent implements OnInit {
 
 
   onNewEntry() {
+    this.dataToEdit = undefined; //so the edit panel is closed if the user wants to enter a new entry
+    this.conm.draftEntries = [];
     if (!this.draft) {
       this.draft = true;
     }
@@ -70,8 +75,17 @@ export class MainComponent implements OnInit {
   }
 
   onCancelClose() {
+    this.toDelete = '';
     $('#warningDialog').modal('toggle');
   }
+
+  onDeleteConfirm() {
+    this.db.remove(this.toDelete);
+    this.toDelete = '';
+    this.dataToEdit = undefined; //in case the user deletes an entry that was previosly selected to be edited
+    $('#confirmDeleteDialog').modal('toggle');
+  }
+
   onCancelConfirm() {
     this.draft = false;
     this.conm.draftEntries = [];
@@ -80,18 +94,59 @@ export class MainComponent implements OnInit {
 
   onSave() {
     if (this.conm.draftEntries.length !== 0) {
-      $('#mpDialog').modal('toggle');
+      $('#dialogSuccessful').modal('toggle');
       this.db.push(() => {
-        $('#mpDialog').modal('toggle');
+        $('#dialogSuccessful').modal('toggle');
       });
       this.conm.draftEntries = [];
       this.draft = false;
     } else {
-      $('.toast').toast({delay: 3000, autohide: true});
-      $('.toast').toast('show');
+      $('#nothingToSave').toast({delay: 3000, autohide: true});
+      $('#nothingToSave').toast('show');
       
     }
   }
+
+  selectedToEdit(log) {
+    
+    this.conm.draftEntries = []; //reseting modalities to a new entry that was selected
+    this.dataToEdit = log;
+    this.dataToEdit.entries.map(
+      (entry) =>
+        this.conm.draftEntries.push({ 'title': entry.modality, 'content': entry.entry })
+    );
+  }
+  onUpdateEntry() {
+    if (this.conm.draftEntries.length !== 0) {
+      $('#mpDialog').modal('toggle');
+      //will update in the db service using conm service entries 
+      let promise = this.db.update2(this.dataToEdit);
+      promise.then((resolve) => {
+        $('#mpDialog').modal('toggle');
+        
+        if (resolve) {
+          this.dataToEdit = undefined;
+          $('#dialogSuccessful').toast({ delay: 3000, autohide: true });
+          $('#dialogSuccessful').toast('show');
+        } else { //update was not successfull
+          $('#firebaseError').toast({ delay: 3000, autohide: true });
+          $('#firebaseError').toast('show');
+        }
+      });
+    } else {
+      $('#nothingToSave').toast({ delay: 3000, autohide: true });
+      $('#nothingToSave').toast('show');
+    }
+  }
+
+  selectedToDelete(docId) {
+    this.toDelete = docId;
+  }
+
+  onCancelUpdateEntry() {
+    this.dataToEdit = undefined;
+  }
+
 
   onNewModal(index) {
     this.dialog.mode = index;

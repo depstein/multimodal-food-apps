@@ -18,10 +18,6 @@ export class HistoryComponent implements OnInit {
 
   logs: any[];
 
-  toDelete;
-
-  dataToEdit;
-
   constructor(private conm: CommunicationService, public db: DatabaseService, private router: Router) { }
 
   ngOnInit() {
@@ -116,60 +112,4 @@ export class HistoryComponent implements OnInit {
     return tmp;
   }
 
-  selectedToDelete(docId) {
-    this.toDelete = docId;
-  }
-
-  selectedToEdit(log) {
-    this.conm.draftEntries = []; //reseting modalities to a new entry that was selected
-    this.dataToEdit = log;
-    this.dataToEdit.entries.map(
-      (entry) =>
-        this.conm.draftEntries.push({ 'title': entry.modality, 'content': entry.entry })
-    );
-  }
-  onUpdateEntry() {
-    if (this.conm.draftEntries.length !== 0) {
-      $('#mpDialog').modal('toggle');
-      //will update in the db service using conm service entries 
-      let promise = this.db.update2(this.dataToEdit);
-      promise.then((resolve) => {
-        $('#mpDialog').modal('toggle');
-        
-        if (resolve) {
-          this.dataToEdit = undefined;
-          $('#updateSuccessful').toast({ delay: 3000, autohide: true });
-          $('#updateSuccessful').toast('show');
-        } else { //update was not successfull
-          $('#firebaseError').toast({ delay: 3000, autohide: true });
-          $('#firebaseError').toast('show');
-        }
-      });
-    } else {
-      $('#nothingToSave').toast({ delay: 3000, autohide: true });
-      $('#nothingToSave').toast('show');
-    }
-  }
-
-  onCancelUpdateEntry() {
-    this.dataToEdit = undefined;
-  }
-
-
-  onCancelClose() {
-    this.toDelete = '';
-    $('#warningDialog').modal('toggle');
-  }
-
-  onDeleteConfirm() {
-    this.db.remove(this.toDelete);
-    this.toDelete = '';
-    this.dataToEdit = undefined; //in case the user deletes an entry that was previosly selected to be edited
-    $('#warningDialog').modal('toggle');
-  }
-
-  onNewModal(index) {
-    this.conm.dialog.mode = index;
-    $('#exampleModal').modal('toggle');
-  }
 }
