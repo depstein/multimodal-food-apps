@@ -108,7 +108,7 @@ export class MainComponent implements OnInit {
     if (this.conm.draftEntries.length !== 0) {
       $('#loadingDialog').modal('show');
       //will update in the db service using conm service entries 
-      let promiseToPush = this.db.push2();
+      let promiseToPush = this.db.push();
 
       promiseToPush.then((resolve) => {
         $('#loadingDialog').modal('hide');
