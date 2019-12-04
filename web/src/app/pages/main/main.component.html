@@ -51,28 +51,28 @@
         <h1 class="h3">Welcome, {{db.col}}</h1>
       </div>
       <div class="col-2 d-flex justify-content-center align-items-center">
-        <button class='btn newEntry' [ngClass]="{'disabled': draft}" (click)="onNewEntry()">NEW ENTRY</button>
+        <button class='btn text-white secondary-background-color' [ngClass]="{'disabled': draft}" (click)="onNewEntry()">NEW ENTRY</button>
       </div>
     </div>
 
     <div class="draft-box mx-4" *ngIf="draft">
       <div class="row py-4 mx-0">
         <div class="col-8 d-flex flex-row">
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(0)'>+ Description</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(1)'>+ Database Search</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(2)'>+ Image</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(3)'>+ URL</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(4)'>+ Voice</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(5)'>+ Barcode</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(0)'>+ Description</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(1)'>+ Database Search</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(2)'>+ Image</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(3)'>+ URL</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(4)'>+ Voice</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(5)'>+ Barcode</button>
 
           <!-- voice / barcode (image/numeric) -->
           <!-- Image: FileUpload + capture new picture -->
 
         </div>
         <div class="col-4 d-flex flex-row justify-content-around">
-          <button class="btn shadow func" id="clear" (click)="onClear()">{{clear}}</button>
+          <button class="btn shadow func" id="clear" (click)="onClear()">Cancel</button>
           <!-- dialog -->
-          <button class="btn shadow func" id="save" (click)="onSave()">SAVE</button>
+          <button class="btn shadow func secondary-background-color" id="save" (click)="onSave()">Save</button>
         </div>
 
       </div>
@@ -93,17 +93,17 @@
       <p class="ml-3 px-0 py-0 mb-0"><em>Editing entry of {{ dataToEdit.date.toDate() | date:'hh:mm a' }}</em></p>
       <div class="row py-4 mx-0">
         <div class="col-8 d-flex flex-row">
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(0)'>+ Description</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(1)'>+ Database Search</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(2)'>+ Image</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(3)'>+ URL</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(4)'>+ Voice</button>
-          <button class="btn addB mx-1 rounded-pill" (click)='onNewModal(5)'>+ Barcode</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(0)'>+ Description</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(1)'>+ Database Search</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(2)'>+ Image</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(3)'>+ URL</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(4)'>+ Voice</button>
+          <button class="btn addB mx-1 rounded-pill bg-info" (click)='onNewModal(5)'>+ Barcode</button>
         </div>
 
         <div class="col-4 d-flex flex-row justify-content-around">
           <button class="btn shadow func btn-danger" (click)="onCancelUpdateEntry()">Cancel</button>
-          <button class="btn shadow func" id="save" (click)="onUpdateEntry()">Update</button>
+          <button class="btn shadow func secondary-background-color" id="updateBtn" (click)="onUpdateEntry()">Update</button>
 
         </div>
       </div>
@@ -148,7 +148,7 @@
 </div>
 <app-input-modal #inputDialog></app-input-modal>
 
-<div class="modal fade" id="mpDialog" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="loadingDialog" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -172,7 +172,7 @@
         </button>
       </div>
       <div class="modal-body">
-        You have unsaved contents. Do you still want to clear?
+        You have unsaved contents. Do you still want to cancel?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="onCancelClose()">No</button>

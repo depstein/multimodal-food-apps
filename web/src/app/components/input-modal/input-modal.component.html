@@ -1,43 +1,77 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
+  aria-labelledby="exampleModalLabel" data-keyboard="false"
+  aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Entry</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">{{getName(mode)}} Entry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onClose()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">{{getName(mode)}}:</label>
-
-            <textarea *ngIf="isText(mode)" [(ngModel)]="textEntry"
-              [ngModelOptions]="{standalone: true}" class="form-control" id="message-text" [placeholder]="placeholder"></textarea>
-
-            <div *ngIf="!isText(mode)">
-
-              <div *ngIf = "!isVoice(mode)">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Upload</span>
-                    </div>
-                    <div class="custom-file">
-                      <input #file (change)="onFileChange($event.target.files)" type="file" class="custom-file-input" id="inputGroupFile01"
-                        accept="image/x-png,image/gif,image/jpeg">
-    
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
-                  </div>
-    
-                  <div>
-                    <img *ngIf="img" id="myImg" [src]="img" style="width: 100%;">
-                  </div>
+            <!--Description, url, -->
+            <textarea *ngIf="isText(mode)" [(ngModel)]="textEntry" [ngModelOptions]="{standalone: true}"
+              class="form-control" id="message-text" [placeholder]="placeholder"></textarea>
+            <!--Database search -->
+            <div *ngIf="isSearch(mode)">
+              <div class="d-flex flex-row justify-content-around">
+                  <input  [(ngModel)]="textEntry" type="text" [ngModelOptions]="{standalone: true}"
+                  class="form-control" id="message-text" [placeholder]="placeholder" />
+                <button class="ml-3 btn shadow btn-success" id="save" (click)="toggleSearchResults()">Search</button>
               </div>
 
-              <div *ngIf = "isVoice(mode)">
-                <button (click) = 'onListen()' class='btn' style='color: white; width: 100%;' [ngClass]="{'btn-danger': !isRecording, 'btn-secondary': isRecording}">
+              <div *ngIf="showSearchResults" class="mt-3">
+                  <div class="card bg-info">
+                      <h5 class="card-header ">{{textEntry}} (example)</h5>
+                      <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                              <div class="col card-text">Calories:	*</div>
+                              <div class="col card-text">Sodium	* mg</div>
+                              <div class="w-100"></div>
+                              <div class="col card-text">Total Fat:	* g</div>
+                              <div class="col card-text">Potassium:	* mg</div>
+                              <div class="w-100"></div>
+                              <div class="col card-text">Saturated:	* g</div>
+                              <div class="col card-text">Total Carbs:	* g</div>
+                              <div class="w-100"></div>
+                              <div class="col card-text">Polyunsaturated:	* g</div>
+                              <div class="col card-text">Dietary Fiber:	* g</div>
+                              <div class="w-100"></div>
+                              <div class="col card-text">Cholesterol:	* g</div>
+                              <div class="col card-text">Sugar:	* g</div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <!--image -->
+            <div *ngIf="!isText(mode) && !isSearch(mode)">
+              <div *ngIf="!isVoice(mode)">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Upload</span>
+                  </div>
+                  <div class="custom-file">
+                    <input #file (change)="onFileChange($event.target.files)" type="file" class="custom-file-input"
+                      id="inputGroupFile01" accept="image/x-png,image/gif,image/jpeg">
+
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                  </div>
+                </div>
+
+                <div>
+                  <img *ngIf="img" id="myImg" [src]="img" style="width: 100%;">
+                </div>
+              </div>
+              <!--Voice -->
+              <div *ngIf="isVoice(mode)">
+                <button (click)='onListen()' class='btn' style='color: white; width: 100%;'
+                  [ngClass]="{'btn-danger': !isRecording, 'btn-secondary': isRecording}">
                   {{isRecording ? 'recording...' : 'Record'}}
                 </button>
                 <div *ngIf='textEntry.length != 0'>
@@ -45,7 +79,7 @@
                   <p>{{textEntry}}</p>
                 </div>
               </div>
-              
+
             </div>
 
           </div>
@@ -53,7 +87,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="onClose()">Close</button>
-        <button type="button" class="btn save-btn" (click)="onSave()">Save</button>
+        <button type="button" class="btn save-btn" (click)="onSave()">Add</button>
       </div>
     </div>
   </div>

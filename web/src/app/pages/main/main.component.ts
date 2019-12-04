@@ -19,8 +19,6 @@ export class MainComponent implements OnInit {
   draft = false;
   date = new Date();
   logs: any[];
-
-  clear = 'CLEAR';
   
   dataToEdit;
   toDelete;
@@ -92,23 +90,48 @@ export class MainComponent implements OnInit {
     $('#warningDialog').modal('toggle');
   }
 
+  // onSave() {
+  //   if (this.conm.draftEntries.length !== 0) {
+  //     $('#dialogSuccessful').modal('toggle');
+  //     this.db.push(() => {
+  //       $('#dialogSuccessful').modal('toggle');
+  //     });
+  //     this.conm.draftEntries = [];
+  //     this.draft = false;
+  //   } else {
+  //     $('#nothingToSave').toast({delay: 3000, autohide: true});
+  //     $('#nothingToSave').toast('show');
+      
+  //   }
+  // }
   onSave() {
     if (this.conm.draftEntries.length !== 0) {
-      $('#dialogSuccessful').modal('toggle');
-      this.db.push(() => {
-        $('#dialogSuccessful').modal('toggle');
+      $('#loadingDialog').modal('show');
+      //will update in the db service using conm service entries 
+      let promiseToPush = this.db.push2();
+
+      promiseToPush.then((resolve) => {
+        $('#loadingDialog').modal('hide');
+        if (resolve) {
+          this.conm.draftEntries = [];
+          this.draft = false;
+          $('#dialogSuccessful').toast({ delay: 3000, autohide: true });
+          $('#dialogSuccessful').toast('show');
+        } else { //update was not successfull
+          $('#firebaseError').toast({ delay: 3000, autohide: true });
+          $('#firebaseError').toast('show');
+        }
       });
-      this.conm.draftEntries = [];
-      this.draft = false;
     } else {
-      $('#nothingToSave').toast({delay: 3000, autohide: true});
+      $('#nothingToSave').toast({ delay: 3000, autohide: true });
       $('#nothingToSave').toast('show');
-      
     }
   }
 
+
+  //called when the user clicks on "edit" of a log
   selectedToEdit(log) {
-    
+    this.draft = false; //closing a new entry div in case the user had clicked on "new entry" before selecting one log to edit
     this.conm.draftEntries = []; //reseting modalities to a new entry that was selected
     this.dataToEdit = log;
     this.dataToEdit.entries.map(
@@ -116,13 +139,14 @@ export class MainComponent implements OnInit {
         this.conm.draftEntries.push({ 'title': entry.modality, 'content': entry.entry })
     );
   }
+
   onUpdateEntry() {
     if (this.conm.draftEntries.length !== 0) {
-      $('#mpDialog').modal('toggle');
+      $('#loadingDialog').modal('show');
       //will update in the db service using conm service entries 
-      let promise = this.db.update2(this.dataToEdit);
+      let promise = this.db.update(this.dataToEdit);
       promise.then((resolve) => {
-        $('#mpDialog').modal('toggle');
+        $('#loadingDialog').modal('hide');
         
         if (resolve) {
           this.dataToEdit = undefined;

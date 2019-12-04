@@ -25,9 +25,12 @@ export class InputModalComponent implements OnInit {
   img: any;
 
   placeholder = "";
+  modalTitle = "";
 
   mode: number;
   editIndex: number = -1;
+
+  showSearchResults = false;
 
   // transcript = '';
   isRecording = false;
@@ -85,7 +88,11 @@ export class InputModalComponent implements OnInit {
   }
 
   isText(mode) {
-    return mode !== 2 && mode !== 4;
+    return mode !== 2 && mode !== 4 && mode !== 1;
+  }
+
+  isSearch(mode) {
+    return mode === 1
   }
 
 
@@ -95,7 +102,7 @@ export class InputModalComponent implements OnInit {
   }
 
   onSave() {
-    if (this.isText(this.mode) || this.isVoice(this.mode)) {
+    if (this.isText(this.mode) || this.isVoice(this.mode) || this.isSearch(this.mode)) {
       if (this.editIndex === -1 && this.textEntry.length === 0) {
         return;
       }
@@ -130,10 +137,11 @@ export class InputModalComponent implements OnInit {
         this.cleanUp();
       }
     }
-
-
   }
 
+  toggleSearchResults() {
+    this.showSearchResults = true;
+  }
   onFileChange(file) {
     const reader = new FileReader();
     reader.readAsDataURL(file[0]);
@@ -152,6 +160,7 @@ export class InputModalComponent implements OnInit {
     this.editIndex = -1;
     this.textEntry = '';
     this.img = null;
+    this.showSearchResults = false;
   }
 
 }
