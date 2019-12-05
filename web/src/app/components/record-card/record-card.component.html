@@ -1,7 +1,7 @@
 <div class="card" style="background-color: #f2a846">
+  <h6 class="card-header">{{title}}</h6>
   <div class="card-body">
     <div class="d-flex flex-row">
-      <h6 class="card-title"><u>{{title}}</u></h6>
       <div *ngIf="editable" class="flex-fill"></div>
       <i *ngIf="editable" class="mx-1 fa fa-pencil-square" style="font-size: 1.25em;" (click)="onEdit()"></i>
       <i *ngIf="editable" class="ml-1 fa fa-minus-square" style="font-size: 1.25em;" (click)="onRemove()"></i>
