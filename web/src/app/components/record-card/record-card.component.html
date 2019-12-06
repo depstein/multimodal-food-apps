@@ -1,5 +1,16 @@
 <div class="card" style="background-color: #f2a846">
-  <h6 class="card-header">{{title}}</h6>
+
+  <h6 class="card-header">
+    <div class="d-flex justify-content-between">
+      <div>
+        {{title}}
+      </div>
+      <div>
+        <i [ngClass]="{'fa-rotate-90': title==='Barcode'}" class="material-icons">{{materialIcon}}</i>
+      </div>
+    </div>
+  </h6>
+
   <div class="card-body">
     <div class="d-flex flex-row">
       <div *ngIf="editable" class="flex-fill"></div>

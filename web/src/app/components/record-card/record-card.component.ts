@@ -17,23 +17,31 @@ export class RecordCardComponent implements OnInit {
 
 
   isImage: boolean;
+  materialIcon ='';
 
   constructor(private conm: CommunicationService) { }
 
   ngOnInit() {
-
+    console.log("title: "+ this.title)
     if (this.title === 'foodDsrp') {
       this.title = 'Description';
-    } else if (this.title === 'url') {
+      this.materialIcon = 'description';
+    } else if (this.title === 'url' || this.title === 'URL') {
       this.title = 'URL';
-    } else if (this.title === 'database') {
+      this.materialIcon = 'link';
+    } else if (this.title === 'database' || this.title === 'Search') {
       this.title = 'Search';
+      this.materialIcon = 'search';
     } else if (this.title === 'foodImg') {
       this.title = 'Image';
-    } else if (this.title === 'barcode') {
+      this.materialIcon = 'image';
+    } else if (this.title === 'barcode' || this.title === 'Barcode') {
       this.title = 'Barcode';
-    } else if (this.title === 'voice') {
+      this.materialIcon = 'reorder';
+    } else if (this.title === 'voice' || this.title === 'Voice') {
       this.title = 'Voice';
+      this.materialIcon = 'record_voice_over';
+      console.log(this.materialIcon);
     }
 
     this.isImage = this.title === 'Image';
