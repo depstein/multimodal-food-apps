@@ -23,7 +23,7 @@ export class RecordCardComponent implements OnInit {
 
   ngOnInit() {
     console.log("title: "+ this.title)
-    if (this.title === 'foodDsrp') {
+    if (this.title === 'foodDsrp' || this.title === 'Description') {
       this.title = 'Description';
       this.materialIcon = 'description';
     } else if (this.title === 'url' || this.title === 'URL') {

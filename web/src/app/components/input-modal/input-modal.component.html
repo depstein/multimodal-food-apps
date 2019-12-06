@@ -23,7 +23,7 @@
                 <button class="ml-3 btn shadow btn-success" id="save" (click)="toggleSearchResults()">Search</button>
               </div>
 
-              <div *ngIf="showSearchResults" class="mt-3">
+              <div *ngIf="toggleSearchResults()" class="mt-3">
                   <div class="card bg-info">
                       <h5 class="card-header">{{textEntry}} (example)</h5>
                       <div class="card-body">

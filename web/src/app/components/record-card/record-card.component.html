@@ -3,7 +3,7 @@
   <h6 class="card-header">
     <div class="d-flex justify-content-between">
       <div>
-        {{title}}
+        <h5>{{title}}</h5>
       </div>
       <div>
         <i [ngClass]="{'fa-rotate-90': title==='Barcode'}" class="material-icons">{{materialIcon}}</i>
@@ -17,7 +17,27 @@
       <i *ngIf="editable" class="mx-1 fa fa-pencil-square" style="font-size: 1.25em;" (click)="onEdit()"></i>
       <i *ngIf="editable" class="ml-1 fa fa-minus-square" style="font-size: 1.25em;" (click)="onRemove()"></i>
     </div>
-    <p *ngIf="!isImage" class="card-text">{{content}}</p>
+    <h5 *ngIf="!isImage" class="card-text p-2">{{content}}</h5>
+    <div *ngIf="title === 'database' || title === 'Search'" class="card bg-info">
+        <h5 class="card-header">(example)</h5>
+        <div class="card-body">
+            <div class="d-flex">
+                <div class="p-0 card-text">Calories:</div>
+                <div class="ml-auto p-0 card-text"> *</div>
+            </div>
+            <div class="d-flex">
+                <div class="p-0 card-text">Sugar:  </div>
+                <div class="ml-auto p-0 card-text">    *</div>
+            </div>
+            <div class="d-flex">
+                <div class="p-0 card-text">Sodium:</div>
+                <div class="ml-auto p-0 card-text"> *</div>
+            </div>
+            <div class="d-flex">
+                <div class="p-0 card-text">...</div>
+            </div>
+        </div>
+      </div>
     <div *ngIf="isImage">
       <div>
         <img src="{{content}}" alt="" style="width: 100%;">

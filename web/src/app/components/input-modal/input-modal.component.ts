@@ -140,7 +140,9 @@ export class InputModalComponent implements OnInit {
   }
 
   toggleSearchResults() {
-    this.showSearchResults = true;
+    if (this.textEntry !== ''){
+      return true;
+    } else return false;
   }
   onFileChange(file) {
     const reader = new FileReader();
