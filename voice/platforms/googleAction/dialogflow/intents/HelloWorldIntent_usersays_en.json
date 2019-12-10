@@ -2,7 +2,7 @@
 	{
 		"data": [
 			{
-				"text": "help",
+				"text": "Talk to Food Journal",
 				"userDefined": false
 			}
 		],
@@ -12,7 +12,7 @@
 	{
 		"data": [
 			{
-				"text": "help me",
+				"text": "Food Journal",
 				"userDefined": false
 			}
 		],
@@ -22,17 +22,7 @@
 	{
 		"data": [
 			{
-				"text": "options",
-				"userDefined": false
-			}
-		],
-		"isTemplate": false,
-		"count": 0
-	},
-	{
-		"data": [
-			{
-				"text": "commands",
+				"text": "my food journal",
 				"userDefined": false
 			}
 		],

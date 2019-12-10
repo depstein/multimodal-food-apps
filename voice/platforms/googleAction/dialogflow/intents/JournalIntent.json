@@ -1,0 +1,17 @@
+{
+	"name": "JournalIntent",
+	"auto": true,
+	"webhookUsed": true,
+	"responses": [
+		{
+			"parameters": [
+				{
+					"isList": false,
+					"name": "foodInfo",
+					"value": "$foodInfo",
+					"dataType": "@sys.any"
+				}
+			]
+		}
+	]
+}

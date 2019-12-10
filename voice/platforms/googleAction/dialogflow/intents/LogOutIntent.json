@@ -1,0 +1,5 @@
+{
+	"name": "LogOutIntent",
+	"auto": true,
+	"webhookUsed": true
+}
