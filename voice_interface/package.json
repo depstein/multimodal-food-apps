@@ -6,12 +6,12 @@
   "dependencies": {
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.2.0",
-    "jovo-db-filedb": "^2.0.2",
-    "jovo-db-firestore": "^2.2.14",
-    "jovo-framework": "^2.2.18",
-    "jovo-platform-alexa": "^2.0.2",
-    "jovo-platform-googleassistant": "^2.0.2",
-    "jovo-plugin-debugger": "^2.0.2"
+    "jovo-db-filedb": "^2.2.18",
+    "jovo-db-firestore": "^2.2.18",
+    "jovo-framework": "^2.2.25",
+    "jovo-platform-alexa": "^2.2.28",
+    "jovo-platform-googleassistant": "^2.2.25",
+    "jovo-plugin-debugger": "^2.2.20"
   },
   "devDependencies": {
     "gulp": "^4.0.0",

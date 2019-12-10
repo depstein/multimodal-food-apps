@@ -51,6 +51,15 @@
 			]
 		},
 		{
+			"name": "HelpIntent",
+			"phrases": [
+				"help",
+				"help me",
+				"options",
+				"commands"
+			]
+		},
+		{
 			"name": "JournalIntent",
 			"phrases": [
 				"Food journal log {foodInfo}",
@@ -77,12 +86,6 @@
 			"name": "DeleteIntent",
 			"phrases": [
 				"delete my last log"
-			]
-		},
-		{
-			"name": "HelpIntent",
-			"phrases": [
-				"help"
 			]
 		},
 		{
