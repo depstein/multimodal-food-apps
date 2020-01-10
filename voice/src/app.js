@@ -4,6 +4,9 @@
 // APP INITIALIZATION
 // ------------------------------------------------------------------
 
+// https://us-central1-my-project-1491684267235.cloudfunctions.net/foodJournal
+// https://hd1n8y9430.execute-api.us-west-2.amazonaws.com/testStage/
+
 const { App } = require('jovo-framework');
 const { Alexa } = require('jovo-platform-alexa');
 const { GoogleAssistant } = require('jovo-platform-googleassistant');
