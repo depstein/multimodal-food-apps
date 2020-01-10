@@ -18,3 +18,12 @@ $ jovo new <directory>
 $ jovo new <directory> --template helloworld
 ```
 
+## Deploy
+
+Add the following to bundle/index.js
+```
+// Google Assistant
+exports.ghandler = async (req, res) => {
+    await app.handle(new GoogleCloudFunction(req, res));
+};
+```
