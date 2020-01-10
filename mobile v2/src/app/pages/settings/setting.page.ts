@@ -37,7 +37,7 @@ export class SettingPage implements OnInit {
         this.router.navigateByUrl('/history');
         break;
       case 1:
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/entry');
         break;
       case 2:
          this.router.navigateByUrl('/setting')

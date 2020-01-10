@@ -30,14 +30,14 @@ export class EntryPage implements OnInit {
           {
             text: 'Save draft',
             handler: () => {
-              this.router.navigateByUrl('/home');
+              this.router.navigateByUrl('/history');
             }
           }, {
             text: 'Delete draft',
             cssClass: 'delete',
             handler: () => {
               this.logService.data.entries = [];
-              this.router.navigateByUrl('/home');
+              this.router.navigateByUrl('/history');
             }
           }, {
             text: 'Cancel',
@@ -51,7 +51,7 @@ export class EntryPage implements OnInit {
       });
       await alert.present();
     } else {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/history');
     }
   }
 
@@ -95,7 +95,7 @@ export class EntryPage implements OnInit {
       await alert.present();
       return;
     }
-    this.logService.push(()=>{this.router.navigateByUrl('/home'); this.logService.clear();});
+    this.logService.push(()=>{this.router.navigateByUrl('/history'); this.logService.clear();});
     
   }
 

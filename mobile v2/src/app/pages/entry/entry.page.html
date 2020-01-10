@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)='onBack()' style="color: white;"><ion-icon name="arrow-round-back" style="color: white;"></ion-icon></ion-button>
+      <ion-button (click)='onBack()' style="color: white;">
+        <ion-icon name="arrow-back" style="color: white;"></ion-icon>Back
+      </ion-button>
     </ion-buttons>
     <ion-title>Entry</ion-title>
   </ion-toolbar>
@@ -9,8 +11,8 @@
 
 <ion-content>
 
-<div *ngIf="logService.data.entries.length == 0">
-      <p>Instructions: To get started, click on the blue icon on the bottom left.</p>
+  <div *ngIf="logService.data.entries.length == 0">
+    <p>Instructions: To get started, click on the blue icon on the bottom left.</p>
   </div>
 
   <div *ngIf="modalities_list.length > 0">
@@ -23,19 +25,31 @@
     </ion-fab-button>
 
     <ion-fab-list side="top">
-      <ion-fab-button (click)="navigate(0)"><ion-icon name="barcode"></ion-icon></ion-fab-button>
-      <ion-fab-button (click)="navigate(1)"><ion-icon name="clipboard"></ion-icon></ion-fab-button>
-      <ion-fab-button (click)="navigate(2)"><ion-icon name="search"></ion-icon></ion-fab-button>
-      <ion-fab-button (click)="navigate(3)"><ion-icon name="mic"></ion-icon></ion-fab-button>
-      <ion-fab-button (click)="navigate(4)"><ion-icon name="globe"></ion-icon></ion-fab-button>
-      <ion-fab-button (click)="navigate(5)"><ion-icon name="camera"></ion-icon></ion-fab-button>
-      
+      <ion-fab-button (click)="navigate(0)">
+        <ion-icon name="barcode"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="navigate(1)">
+        <ion-icon name="clipboard"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="navigate(2)">
+        <ion-icon name="search"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="navigate(3)">
+        <ion-icon name="mic"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="navigate(4)">
+        <ion-icon name="globe"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="navigate(5)">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+
     </ion-fab-list>
   </ion-fab>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button id="submit" (click)='onSubmit()'>
-        <ion-icon name="checkmark"></ion-icon>
+      <ion-icon name="checkmark"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
@@ -75,26 +89,33 @@
           <ion-row>
             <!-- <ion-col size="9">TEXT DESCRIPTION</ion-col> -->
             <ion-col size="9" *ngIf="entry['modality'] === 'database'" style="padding-top: 20px;">Database</ion-col>
-            <ion-col size="9" *ngIf="entry['modality'] === 'foodDsrp'" style="padding-top: 20px;">Text Description</ion-col>
+            <ion-col size="9" *ngIf="entry['modality'] === 'foodDsrp'" style="padding-top: 20px;">Text Description
+            </ion-col>
             <ion-col size="9" *ngIf="entry['modality'] === 'url'" style="padding-top: 20px;">URL</ion-col>
             <ion-col size="9" *ngIf="entry['modality'] === 'voice'" style="padding-top: 20px;">Voice</ion-col>
             <ion-col size="9" *ngIf="entry['modality'] === 'foodImg'" style="padding-top: 20px;">Picture</ion-col>
             <ion-col size="9" *ngIf="entry['modality'] === 'barcode'" style="padding-top: 20px;">Barcode</ion-col>
 
             <ion-col size="3">
-              <ion-button fill='clear' (click)="onRemove(i)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+              <ion-button fill='clear' (click)="onRemove(i)">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </ion-button>
             </ion-col>
           </ion-row>
           <ion-row class="data" style="background-color: #009979;">
             <!-- <ion-col size="9">
               Chicken Salada
             </ion-col> -->
-            <ion-col size="9" *ngIf="entry['entry'] != 'base64_img'" style="padding-top: 20px;">{{entry['entry']}}</ion-col>
-            <ion-col size="9" *ngIf="entry['entry'] === 'base64_img'" style="padding-top: 20px;"><img src="{{entry['data']}}" alt="image"></ion-col>
+            <ion-col size="9" *ngIf="entry['entry'] != 'base64_img'" style="padding-top: 20px;">{{entry['entry']}}
+            </ion-col>
+            <ion-col size="9" *ngIf="entry['entry'] === 'base64_img'" style="padding-top: 20px;"><img
+                src="{{entry['data']}}" alt="image"></ion-col>
 
             <ion-col size="3">
               <!-- <ion-icon name="create"></ion-icon> -->
-              <ion-button fill='clear' (click)="onEdit(i)"><ion-icon name="create"></ion-icon></ion-button>
+              <ion-button fill='clear' (click)="onEdit(i)">
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
             </ion-col>
           </ion-row>
         </div>

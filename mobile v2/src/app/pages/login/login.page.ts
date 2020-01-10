@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 
         this.setData('username',this.username);
         this.username="";//resets the placeholder
-        this.route.navigateByUrl('home');
+        this.route.navigateByUrl('history');
       }
     })
   }
@@ -69,7 +69,7 @@ export class LoginPage implements OnInit {
     console.log(this.setData('username',this.username));
 
     this.username="";//resets login to username placeholder
-    this.route.navigateByUrl('home');
+    this.route.navigateByUrl('history');
     }
     else{
       this.presentAlert()

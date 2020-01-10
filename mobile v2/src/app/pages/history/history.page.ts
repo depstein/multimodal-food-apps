@@ -45,7 +45,7 @@ export class HistoryPage implements OnInit {
       this.logsCollection = this.afs.collection(this.logService.username, ref =>
         ref.orderBy("date", "asc")
       );
-      this.logs_array = this.getentries();
+      this.logs_array = this.getEntries();
     } catch (error) {
       this.router.navigateByUrl("login");
     }
@@ -61,7 +61,7 @@ export class HistoryPage implements OnInit {
         this.router.navigateByUrl("/history");
         break;
       case 1:
-        this.router.navigateByUrl("/home");
+        this.router.navigateByUrl("/entry");
         break;
       case 2:
         this.router.navigateByUrl("/setting");
@@ -73,7 +73,7 @@ export class HistoryPage implements OnInit {
     //moves dates back by one day
     const newday = this.calendar_date.getDate() - 1;
     this.calendar_date.setDate(newday);
-    this.logs_array = this.getentries();
+    this.logs_array = this.getEntries();
   }
 
   forwarddate() {
@@ -86,10 +86,10 @@ export class HistoryPage implements OnInit {
       var newday = this.calendar_date.getDate() + 1;
       this.calendar_date.setDate(newday);
     }
-    this.logs_array = this.getentries();
+    this.logs_array = this.getEntries();
   }
 
-  getentries() {
+  getEntries() {
     //gets all entries in the database for user
     const entry = [];
 
@@ -137,16 +137,12 @@ export class HistoryPage implements OnInit {
         modal.present();
         modal.onDidDismiss().then(data => {
           this.calendar_date = new Date(data["data"]); //set new calendar date
-          this.logs_array = this.getentries(); //get new entries for date
+          this.logs_array = this.getEntries(); //get new entries for date
         });
       });
   }
 
   async deleteEntry(docId) {
-
-
-
-
     const alert = await this.alertController.create({
       header: 'Delete Confirmation!',
       message: 'Are you sure you want to delete this entry?',
@@ -172,5 +168,10 @@ export class HistoryPage implements OnInit {
 
     await alert.present();
 
+  }
+
+  isToday() {
+    const today = new Date();
+    return this.calendar_date.getDate() === today.getDate() && this.calendar_date.getMonth() === today.getMonth() && this.calendar_date.getFullYear() === today.getFullYear();
   }
 }
