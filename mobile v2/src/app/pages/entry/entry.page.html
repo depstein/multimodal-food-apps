@@ -11,14 +11,6 @@
 
 <ion-content>
 
-  <div *ngIf="logService.data.entries.length == 0">
-    <p>Instructions: To get started, click on the blue icon on the bottom left.</p>
-  </div>
-
-  <div *ngIf="modalities_list.length > 0">
-    <p>testing</p>
-  </div>
-
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button id="main">
       <ion-icon name="add"></ion-icon>
@@ -38,7 +30,7 @@
         <ion-icon name="mic"></ion-icon>
       </ion-fab-button>
       <ion-fab-button (click)="navigate(4)">
-        <ion-icon name="globe"></ion-icon>
+        <ion-icon name="globe"></ion-icon> 
       </ion-fab-button>
       <ion-fab-button (click)="navigate(5)">
         <ion-icon name="camera"></ion-icon>
@@ -65,6 +57,15 @@
 
     <ion-button (click)="edit(i)">Edit</ion-button>
   </div> -->
+  <ion-grid *ngIf='logService.data.entries.length == 0'>
+    <ion-row>
+      <ion-col>
+        <div class="title">
+          <h1>No entries</h1>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <div class="Content">
     <div class="card" *ngIf='logService.data.entries.length != 0'>
@@ -124,10 +125,9 @@
       </ion-grid>
     </div>
 
-    <div *ngIf='logService.data.entries.length == 0'>
-      <h1>No entries yet</h1>
-    </div>
-
+    <!-- <div *ngIf='logService.data.entries.length == 0' class="title">
+      <h1>No entries</h1>
+    </div> -->
   </div>
 
 </ion-content>

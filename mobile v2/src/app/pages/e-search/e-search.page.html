@@ -9,11 +9,26 @@
   
   <ion-content>
   
-      <ion-item lines="none">
-          <ion-label position="stacked" style="margin-bottom: 10px;">Enter Search Query</ion-label>
-          <ion-textarea [(ngModel)]='value' type="text" style="background-color: #009979; height: 5em;" placeholder="Please describe the terms you would use to search from a database of foods commonly eaten and logged."></ion-textarea>
-        </ion-item>
-    <ion-button expand='full' (click)='onSave()' style="margin-left: 15px; margin-right: 15px;">Save</ion-button>
-  
+    <ion-grid style="height: 100%; display: flex; flex-direction: column">
+      <ion-row>
+        <ion-col size="12">
+          <div>
+            <h1 class="instructions">Please describe the terms you would use to search from a database of foods commonly eaten and logged.</h1>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row style="flex-grow: 1;">
+        <ion-col size="12">
+          <ion-item lines='none'>
+            <ion-textarea [(ngModel)]='value' rows="6" cols="20" placeholder="Enter Search Query"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" class="ion-no-margin" (click)='onSave()'>Save</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-content>
   

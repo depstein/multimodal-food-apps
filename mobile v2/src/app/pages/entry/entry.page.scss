@@ -1,5 +1,6 @@
 ion-toolbar {
-    --background: rgb(246, 205, 96);
+    // --background: rgb(246, 205, 96);
+    --background: rgb(242, 168, 70);
     color: white;
 
     ion-back-button {
@@ -8,7 +9,8 @@ ion-toolbar {
 }
 
 ion-content {
-    --background: rgb(242, 168, 70);
+    // --background: rgb(242, 168, 70);
+    --background: rgb(246, 205, 96);
 }
 
 ion-fab {
@@ -81,3 +83,18 @@ p{
         color: red;
     }
 }
+
+.title {
+    text-align: center;
+    margin-top: 2vh;
+    h1 {
+        text-decoration: none;
+        color: white;
+        width: 30vh;
+        display:inline-block;
+        line-height: 0.5vh;
+        // background-color: #009979;
+        font-weight: 900;
+        font-size: 2em;
+    }
+  }

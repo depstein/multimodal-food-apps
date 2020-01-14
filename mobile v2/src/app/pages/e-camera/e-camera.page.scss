@@ -1,5 +1,7 @@
 ion-toolbar {
-    --background: rgb(246, 205, 96);
+    // --background: rgb(246, 205, 96);
+    --background: rgb(242, 168, 70);
+    
     color: white;
 
     ion-back-button {
@@ -8,11 +10,15 @@ ion-toolbar {
 }
 
 ion-content {
-    --background: rgb(242, 168, 70);
+    // --background: rgb(242, 168, 70);
+    --background: rgb(246, 205, 96);
+
 }
 
 ion-item {
-    --background: rgb(242, 168, 70);
+    // --background: rgb(242, 168, 70);
+    --background: rgb(246, 205, 96);
+
     --color: white;
 }
 

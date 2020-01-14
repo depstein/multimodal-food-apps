@@ -8,11 +8,25 @@
 </ion-header>
 
 <ion-content>
-
-    <ion-item lines="none">
-        <ion-label position="stacked" style="margin-bottom: 10px;">Enter URL</ion-label>
-        <ion-textarea [(ngModel)]='value' type="url" style="background-color: #009979; height: 5em;" placeholder="Please enter the URL of a recipe or other website which describes what you ate."></ion-textarea>
-      </ion-item>
-  <ion-button expand='full' (click)='onSave()' style="margin-left: 15px; margin-right:15px;">Save</ion-button>
-
+  <ion-grid style="height: 100%; display: flex; flex-direction: column">
+    <ion-row>
+      <ion-col size="12">
+        <div>
+          <h1 class="instructions">The URL of a recipe or other website which describes what you ate.</h1>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="flex-grow: 1;">
+      <ion-col size="12">
+        <ion-item lines='none'>
+          <ion-textarea [(ngModel)]='value' type="url" rows="6" cols="20"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" class="ion-no-margin" (click)="onSave()" placeholder="Enter URL">Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,5 +1,6 @@
 ion-toolbar {
-    --background: rgb(246, 205, 96);
+    // --background: rgb(246, 205, 96);
+    --background: rgb(242, 168, 70);
     color: white;
 }
 
@@ -9,9 +10,8 @@ ion-toolbar {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(246, 205, 96);
-
-
+    // background-color: rgb(246, 205, 96);
+    background-color: rgb(242, 168, 70);
 
     ion-col {
         display: flex;
@@ -40,7 +40,8 @@ ion-icon {
 }
 
 ion-content {
-    --background: rgb(242, 168, 70);
+    // --background: rgb(242, 168, 70);
+    --background: rgb(246, 205, 96);
 }
 
 ion-card{
