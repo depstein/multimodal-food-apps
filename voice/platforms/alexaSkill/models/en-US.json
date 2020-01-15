@@ -1,7 +1,7 @@
 {
 	"interactionModel": {
 		"languageModel": {
-			"invocationName": "food jovo",
+			"invocationName": "food journal",
 			"types": [],
 			"intents": [
 				{
@@ -25,16 +25,18 @@
 					]
 				},
 				{
-					"name": "LoginIntent",
+					"name": "AccountInfoIntent",
 					"samples": [
-						"Log in {participantId}",
-						"Log in user {participantId}",
+						"am I logged in",
+						"my current account",
+						"what is my current account"
+					]
+				},
+				{
+					"name": "SignInIntent",
+					"samples": [
 						"Sign in {participantId}",
-						"Sign in user {participantId}",
-						"Login {participantId}",
-						"Login user {participantId}",
-						"Signin {participantId}",
-						"Signin user {participantId}"
+						"Sign in user {participantId}"
 					],
 					"slots": [
 						{
@@ -44,10 +46,9 @@
 					]
 				},
 				{
-					"name": "LogOutIntent",
+					"name": "SignOutIntent",
 					"samples": [
-						"sign out",
-						"log out"
+						"sign out"
 					]
 				},
 				{

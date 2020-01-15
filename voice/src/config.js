@@ -3,13 +3,17 @@
 // ------------------------------------------------------------------
 
 module.exports = {
-    logging: true,
+    logging: false,
 
     intentMap: {
         "AMAZON.StopIntent": "END",
         "AMAZON.StopIntent": "END",
         "AMAZON.YesIntent": "YesIntent",
         "AMAZON.NoIntent": "NoIntent"
+    },
+
+    user: {
+        dataCashing: true
     },
 
     db: {

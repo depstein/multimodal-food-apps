@@ -1,5 +1,5 @@
 {
-	"invocation": "food jovo",
+	"invocation": "food journal",
 	"intents": [
 		{
 			"name": "YesIntent",
@@ -22,16 +22,18 @@
 			]
 		},
 		{
-			"name": "LoginIntent",
+			"name": "AccountInfoIntent",
 			"phrases": [
-				"Log in {participantId}",
-				"Log in user {participantId}",
+				"am I logged in",
+				"my current account",
+				"what is my current account"
+			]
+		},
+		{
+			"name": "SignInIntent",
+			"phrases": [
 				"Sign in {participantId}",
-				"Sign in user {participantId}",
-				"Login {participantId}",
-				"Login user {participantId}",
-				"Signin {participantId}",
-				"Signin user {participantId}"
+				"Sign in user {participantId}"
 			],
 			"inputs": [
 				{
@@ -44,7 +46,7 @@
 			]
 		},
 		{
-			"name": "LogOutIntent",
+			"name": "SignOutIntent",
 			"phrases": [
 				"sign out"
 			]

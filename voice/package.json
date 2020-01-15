@@ -5,12 +5,12 @@
   "main": "src/index.js",
   "dependencies": {
     "grpc": "^1.24.2",
-    "jovo-db-filedb": "^2.0.2",
-    "jovo-db-firestore": "^2.2.18",
-    "jovo-framework": "^2.2.25",
-    "jovo-platform-alexa": "^2.0.2",
-    "jovo-platform-googleassistant": "^2.0.2",
-    "jovo-plugin-debugger": "^2.0.2"
+    "jovo-db-filedb": "^2.2.20",
+    "jovo-db-firestore": "^2.2.20",
+    "jovo-framework": "^2.2.27",
+    "jovo-platform-alexa": "^2.2.30",
+    "jovo-platform-googleassistant": "^2.2.27",
+    "jovo-plugin-debugger": "^2.2.22"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
@@ -25,7 +25,9 @@
     "bundle": "gulp --gulpfile node_modules/jovo-framework/gulpfile.js --cwd ./",
     "start": "cd src && node index.js --webhook",
     "launch": "npm start -- --launch",
-    "postinstall": "npm install --save jovo-db-firestore; npm install grpc --target_arch=x64 --target_platform=linux --target_libc=glibc"
+    "postinstall": "npm install --save jovo-db-firestore; npm install grpc --target_arch=x64 --target_platform=linux --target_libc=glibc",
+    "deploy": "jovo deploy --target zip && jovo deploy -p googleAction && jovo build"
+
   },
   "repository": {
     "type": "git",
