@@ -2,16 +2,6 @@
 	{
 		"data": [
 			{
-				"text": "bye",
-				"userDefined": false
-			}
-		],
-		"isTemplate": false,
-		"count": 0
-	},
-	{
-		"data": [
-			{
 				"text": "exit",
 				"userDefined": false
 			}

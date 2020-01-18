@@ -54,8 +54,6 @@
 				{
 					"name": "HelpIntent",
 					"samples": [
-						"help",
-						"help me",
 						"options",
 						"commands"
 					]
@@ -64,7 +62,8 @@
 					"name": "JournalIntent",
 					"samples": [
 						"Food journal log {foodInfo}",
-						"log {foodInfo}"
+						"log {foodInfo}",
+						"journal {foodInfo}"
 					],
 					"slots": [
 						{
@@ -83,13 +82,13 @@
 				{
 					"name": "DeleteIntent",
 					"samples": [
+						"delete",
 						"delete my last log"
 					]
 				},
 				{
 					"name": "END",
 					"samples": [
-						"bye",
 						"exit"
 					]
 				},

@@ -27,7 +27,6 @@
     "launch": "npm start -- --launch",
     "postinstall": "npm install --save jovo-db-firestore; npm install grpc --target_arch=x64 --target_platform=linux --target_libc=glibc",
     "deploy": "jovo deploy --target zip && jovo deploy -p googleAction && jovo build"
-
   },
   "repository": {
     "type": "git",

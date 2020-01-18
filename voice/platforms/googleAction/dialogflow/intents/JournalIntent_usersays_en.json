@@ -30,5 +30,21 @@
 		],
 		"isTemplate": false,
 		"count": 0
+	},
+	{
+		"data": [
+			{
+				"text": "journal ",
+				"userDefined": false
+			},
+			{
+				"text": "foodInfo",
+				"userDefined": true,
+				"alias": "foodInfo",
+				"meta": "@sys.any"
+			}
+		],
+		"isTemplate": false,
+		"count": 0
 	}
 ]

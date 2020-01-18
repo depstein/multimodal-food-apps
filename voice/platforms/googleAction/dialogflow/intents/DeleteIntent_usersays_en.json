@@ -2,6 +2,16 @@
 	{
 		"data": [
 			{
+				"text": "delete",
+				"userDefined": false
+			}
+		],
+		"isTemplate": false,
+		"count": 0
+	},
+	{
+		"data": [
+			{
 				"text": "delete my last log",
 				"userDefined": false
 			}

@@ -54,8 +54,6 @@
 		{
 			"name": "HelpIntent",
 			"phrases": [
-				"help",
-				"help me",
 				"options",
 				"commands"
 			]
@@ -64,7 +62,8 @@
 			"name": "JournalIntent",
 			"phrases": [
 				"Food journal log {foodInfo}",
-				"log {foodInfo}"
+				"log {foodInfo}",
+				"journal {foodInfo}"
 			],
 			"inputs": [
 				{
@@ -86,13 +85,13 @@
 		{
 			"name": "DeleteIntent",
 			"phrases": [
+				"delete",
 				"delete my last log"
 			]
 		},
 		{
 			"name": "END",
 			"phrases": [
-				"bye",
 				"exit"
 			]
 		}

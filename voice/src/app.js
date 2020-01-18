@@ -51,7 +51,7 @@ app.setHandler({
    */
   LAUNCH() {
     this.$speech.addText(
-      "Welcome to the Food Journal Application. Say help and I will list available options"
+      "Welcome to the Food Journal Application."
     );
     this.ask(this.$speech);
   },
@@ -132,6 +132,8 @@ app.setHandler({
    * Allows user to journal food.
    */
   async JournalIntent() {
+    console.log(this.isLoggedIn());
+    console.log(this.$user.$data.userId);
     if (!this.isLoggedIn()) {
       return this.toIntent("HelloWorldIntent");
     } else {
@@ -216,7 +218,7 @@ app.setHandler({
         .get()
         .then(id_doc => {
           if (!id_doc.exists) {
-            this.ask("Read for this account is not properly installed yet.");
+            this.ask("There is no last entry found.");
           } else {
             const doc_id = id_doc.data().id;
             return collection
@@ -314,7 +316,7 @@ app.setHandler({
   },
 
   Unhandled() {
-    this.ask("I could not understand it. Please try again!");
+    this.ask("I could not understand. Say help for available options.");
   },
 
   END() {

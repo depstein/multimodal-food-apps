@@ -7,9 +7,10 @@ module.exports = {
 
     intentMap: {
         "AMAZON.StopIntent": "END",
-        "AMAZON.StopIntent": "END",
         "AMAZON.YesIntent": "YesIntent",
-        "AMAZON.NoIntent": "NoIntent"
+        "AMAZON.NoIntent": "NoIntent",
+        "AMAZON.HelpIntent": "HelpIntent",
+        "AMAZON.FallbackIntent": "Unhandled"
     },
 
     user: {
