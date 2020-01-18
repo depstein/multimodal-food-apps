@@ -39,6 +39,27 @@ ion-card-content{
   text-align: left;
 }
 
+.card-icon {
+  border-radius: 10px;
+  border: 1.5px solid white;
+  padding: 5px;
+  // margin: 10px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+}
+
+.centralize {
+  display: flex;
+  align-items: center;
+}
+
+.centralize_justify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .selected {
     color: #009979;
 }
@@ -57,6 +78,7 @@ ion-card-content{
       font-size: 2em;
   }
 }
+hr {background: white;}
 
 // Give room for scrolling to bottom and cards not stuck under the footer bar
 .entries {

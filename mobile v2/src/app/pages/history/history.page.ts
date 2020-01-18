@@ -41,28 +41,67 @@ export class HistoryPage implements OnInit {
     public modalController: ModalController,
     private afStorage: AngularFireStorage,
     private alertController: AlertController
-  ) {
-    this.calendar_date = new Date();
-    this.logs_array = new Array();
-
-    //try and catch here because when you reload the app on the history page, it throws an error on logscollection
-    try {
-      console.log(this.logService.username);
-      this.logsCollection = this.afs.collection(this.logService.username, ref =>
-        ref.orderBy("date", "asc")
-      );
-      this.logs_array = this.getEntries();
-    } catch (error) {
-      this.router.navigateByUrl("login");
-    }
-  }
+  ) { }
 
   async fabButtonClick() {
     this.router.navigateByUrl("/entry");
   }
 
   ngOnInit() {
+
     console.log(this.logService.username);
+    this.calendar_date = new Date();
+    this.logs_array = new Array();
+
+    //try and catch here because when you reload the app on the history page, it throws an error on logscollection
+    try {
+      console.log("constructor" + this.logService.username);
+      this.logsCollection = this.afs.collection(this.logService.username, ref =>
+        ref.orderBy("date", "asc")
+      );
+
+      const logs = this.logsCollection.snapshotChanges();
+
+      logs.subscribe(array => {
+        let new_entries = [];
+          array.forEach(element => {
+            // console.log(element.payload.doc.id, element.payload.doc.data());
+            // checks the date
+            const ele = element.payload.doc.data();
+            console.log("1payload: _________" + ele);
+            console.log( ele);
+            console.log("2payload: _________");
+
+
+            const dates = new EntryCard(ele.date, ele.entries, ele.platform, element.payload.doc.id);
+            if (
+              dates.date.getDate() === this.calendar_date.getDate() &&
+              dates.date.getMonth() === this.calendar_date.getMonth() &&
+              dates.date.getFullYear() === this.calendar_date.getFullYear()
+            ) {
+              console.log(dates.entries);
+              if (dates.entries) {
+                for (let i = 0; i < dates.entries.length; ++i) {
+                  if (dates.entries[i].modality === "foodImg") {
+                    dates.entries[i].entry = this.afStorage
+                      .ref(
+                        this.logService.username + "/" + ele.entries[i].entry
+                      )
+                      .getDownloadURL();
+                  }
+                }
+
+                // entry.push(dates);
+                new_entries.push(dates);
+              }
+            }
+          });
+          this.logs_array = new_entries;
+    });
+
+    } catch (error) {
+      this.router.navigateByUrl("login");
+    }
   }
 
   nav(num: number) {

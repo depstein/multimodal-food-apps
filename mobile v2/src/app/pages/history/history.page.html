@@ -57,71 +57,83 @@
                   </ion-col>
                 </ion-row>
 
+                <div *ngFor="let element of log.entries">
+                  <hr>
+                  <ion-row *ngIf="element.modality === 'voice' || element.modality === 'Voice'">
+                    <ion-col size="2" class="centralize">
+                      <div class="card-icon">
+                        <img src="../../../assets/images/record_voice_over.png" width="48px" />
+                      </div>
+                    </ion-col>
+                    <ion-col class="centralize">{{element.entry}}</ion-col>
+                  </ion-row>
 
-                <div *ngIf="log.entries[0].modality=='voice'">
-                  <ion-row>
+                  <ion-row class="centralize" *ngIf="element.modality === 'foodDsrp'">
                     <ion-col size="2">
-                      <ion-icon name="play-circle"></ion-icon>
+                      <div class="card-icon">
+                        <ion-icon name="list-box"></ion-icon>
+                      </div>
                     </ion-col>
-                    <ion-col>{{log.entries[0].entry}}</ion-col>
+                    <ion-col>{{element.entry}}</ion-col>
                   </ion-row>
-                </div>
-                <div *ngIf="log.entries[0].modality=='foodDsrp'">
-                  <ion-row>
+
+                  <ion-row class="centralize" *ngIf="element.modality === 'Search' || element.modality === 'search'">
                     <ion-col size="2">
-                      <ion-icon name="text"></ion-icon>
+                      <div class="card-icon">
+                        <ion-icon name="search"></ion-icon>
+                      </div>
                     </ion-col>
-                    <ion-col>{{log.entries[0].entry}}</ion-col>
+                    <ion-col>{{element.entry}}</ion-col>
                   </ion-row>
-                </div>
-                <div *ngIf="log.entries[0].modality=='database'">
-                  <ion-row>
+
+                  <ion-row class="centralize" *ngIf="element.modality === 'url'">
                     <ion-col size="2">
-                      <ion-icon name="search"></ion-icon>
+                      <div class="card-icon">
+                        <ion-icon name="globe"></ion-icon>
+                      </div>
                     </ion-col>
-                    <ion-col>{{log.entries[0].entry}}</ion-col>
+                    <ion-col>{{element.entry}}</ion-col>
                   </ion-row>
-                </div>
-                <div *ngIf="log.entries[0].modality=='url'">
-                  <ion-row>
+
+                  <ion-row class="centralize" *ngIf="element.modality === 'barcode' || element.modality === 'Barcode'">
                     <ion-col size="2">
-                      <ion-icon name="globe"></ion-icon>
+                      <div class="card-icon">
+                        <ion-icon name="barcode"></ion-icon>
+                      </div>
                     </ion-col>
-                    <ion-col>{{log.entries[0].entry}}</ion-col>
+                    <ion-col>{{element.entry}}</ion-col>
                   </ion-row>
-                </div>
-                <div *ngIf="log.entries[0].modality=='barcode'">
-                  <ion-row>
+
+                  <ion-row class="centralize" *ngIf="element.modality === 'foodImg'">
                     <ion-col size="2">
-                      <ion-icon name="barcode"></ion-icon>
+                      <div class="card-icon">
+                        <ion-icon name="camera"></ion-icon>
+                      </div>
                     </ion-col>
-                    <ion-col>{{log.entries[0].entry}}</ion-col>
-                  </ion-row>
-                </div>
-                <div *ngIf="log.entries[0].modality=='foodImg'">
-                  <ion-row>
-                    <ion-col size="2">
-                      <ion-icon name="camera"></ion-icon>
-                    </ion-col>
-                    <ion-col><img id='img-{{i}}' [src]="log.entries[0].entry | async"></ion-col>
+                    <ion-col><img id='img-{{i}}' [src]="element.entry | async"></ion-col>
                   </ion-row>
                 </div>
 
-
-                <div *ngIf="log.platform =='ios'">
-                  <ion-row>
+                
+                <hr>
+                <div class="centralize_justify">
+                  <p>Platform: {{log.platform}}</p>
+                </div>
+                <!-- <div *ngIf="log.platform == 'mobile'">
+                  <ion-row class="centralize">
                     <ion-col size="2">
                       <ion-icon name="phone-portrait"></ion-icon>
                     </ion-col>
-                    <ion-col>{{log.platform}}</ion-col>
+                    <ion-col>Platform: {{log.platform}}</ion-col>
                   </ion-row>
                 </div>
-                <div *ngIf="log.platform == 'android'">
-                  <ion-row>
+
+                <div *ngIf="log.platform == 'web'">
+                  <ion-row class="centralize">
                     <ion-col size="2">
                       <ion-icon name="phone-portrait"></ion-icon>
                     </ion-col>
-                    <ion-col>{{log.platform}}</ion-col>
+                    <ion-col>Platform: {{log.web}}</ion-col>
                   </ion-row>
                 </div>
                 <div *ngIf="log.platform == 'watch'">
@@ -129,25 +141,17 @@
                     <ion-col size="2">
                       <ion-icon name="watch"></ion-icon>
                     </ion-col>
-                    <ion-col>{{log.platform}}</ion-col>
+                    <ion-col>Platform: {{log.platform}}</ion-col>
                   </ion-row>
                 </div>
-                <div *ngIf="log.platform == 'Alexa'">
+                <div *ngIf="log.platform == 'GA/Alexa'">
                   <ion-row>
                     <ion-col size="2">
                       <ion-icon name="mic"></ion-icon>
                     </ion-col>
-                    <ion-col>{{log.platform}}</ion-col>
+                    <ion-col>Platform: {{log.platform}}</ion-col>
                   </ion-row>
-                </div>
-                <div *ngIf="log.platform == 'Google Home'">
-                  <ion-row>
-                    <ion-col size="2">
-                      <ion-icon name="mic"></ion-icon>
-                    </ion-col>
-                    <ion-col>{{log.platform}}</ion-col>
-                  </ion-row>
-                </div>
+                </div> -->
 
               </ion-card-content>
             </ion-card>
@@ -167,8 +171,8 @@
 
 <!-- ----FOOTER----- -->
 <div>
-  <fiv-app-bar (fivFabClick)="fabButtonClick()" slot="bottom"
-    [titleLayout]="titleLayout" #bar [position]="position" [fabVisible]="fabVisible" [icon]="icon">
+  <fiv-app-bar (fivFabClick)="fabButtonClick()" slot="bottom" [titleLayout]="titleLayout" #bar [position]="position"
+    [fabVisible]="fabVisible" [icon]="icon">
     <fiv-app-bar-tab left icon="md-home" name="Home" href="/history">
     </fiv-app-bar-tab>
     <fiv-app-bar-tab right href="/setting" icon="md-settings" name="Settings">
