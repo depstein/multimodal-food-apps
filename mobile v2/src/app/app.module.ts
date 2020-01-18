@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -21,6 +21,9 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { HistoryDatePage } from './pages/historydate/historydate.page';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import {FooterBarComponent} from './footer-bar/footer-bar.component';
+
 
 @NgModule({
   declarations: [AppComponent,
@@ -32,7 +35,9 @@ import { HistoryDatePage } from './pages/historydate/historydate.page';
             AppRoutingModule,
             AngularFireModule.initializeApp(environment.firebase),
             AngularFirestoreModule,
-            AngularFireStorageModule],
+            AngularFireStorageModule,
+            BrowserAnimationsModule],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     StatusBar,
     SplashScreen,

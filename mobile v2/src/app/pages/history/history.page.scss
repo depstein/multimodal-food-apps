@@ -4,22 +4,6 @@ ion-toolbar {
     color: white;
 }
 
-.footer {
-    height: 10vh;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    // background-color: rgb(246, 205, 96);
-    background-color: rgb(242, 168, 70);
-
-    ion-col {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-}
 p{
   color: white;
 }
@@ -37,6 +21,8 @@ ion-icon {
 }
 .date{
   text-align: center;
+  --background: rgb(242, 168, 70);
+  color: white;
 }
 
 ion-content {
@@ -70,4 +56,26 @@ ion-card-content{
       font-weight: 900;
       font-size: 2em;
   }
+}
+
+// Give room for scrolling to bottom and cards not stuck under the footer bar
+.entries {
+  margin-bottom: calc(84px + env(safe-area-inset-bottom));
+}
+fiv-app-bar{
+  --fiv-color-appbar: rgb(242, 168, 70);
+  --fiv-appbar-background-color: rgb(246, 205, 96);
+  --fiv-color-fab-icon: #009979;
+  --ion-color-primary:  white;
+
+  --fiv-color-icons: white;
+  --fiv-color-icons-active: #009979;
+}
+
+fiv-app-bar-tab{
+  --fiv-appbar-background-color: rgb(242, 168, 70);
+}
+
+fiv-fab {
+  --background: #009979;
 }

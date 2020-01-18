@@ -1,5 +1,6 @@
 ion-toolbar {
-    --background: rgb(246, 205, 96);
+ // --background: rgb(246, 205, 96);
+    --background: rgb(242, 168, 70);    
     color: white;
 }
 
@@ -26,7 +27,8 @@ ion-toolbar {
 }
 
 ion-content {
-    --background: rgb(242, 168, 70);
+    // --background: rgb(242, 168, 70);
+    --background: rgb(246, 205, 96);
 }
 
 .Content {
@@ -35,6 +37,7 @@ ion-content {
     padding-left: 5vw;
     padding-right: 5vw;
     color: white;
+    
 
     .card {
         background-color: #009979;
@@ -65,3 +68,22 @@ ion-icon {
 .selected {
     color: #009979 !important;
 }
+
+fiv-app-bar{
+  --fiv-color-appbar: rgb(242, 168, 70);
+  --fiv-appbar-background-color: rgb(246, 205, 96);
+  --fiv-color-fab-icon: #009979;
+  --ion-color-primary:  white;
+
+  --fiv-color-icons: white;
+  --fiv-color-icons-active: #009979;
+}
+  
+  fiv-app-bar-tab{
+    --fiv-appbar-background-color: rgb(242, 168, 70);
+    --fiv-color-icon: white;
+  }
+  
+  fiv-fab {
+    --background: #009979;
+  }

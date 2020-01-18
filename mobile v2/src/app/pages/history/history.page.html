@@ -41,7 +41,7 @@
   <div class="date">
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col class="entries">
           <div class="title" *ngIf="isToday()">
             <a>Today</a>
           </div>
@@ -163,10 +163,20 @@
       </ion-row>
     </ion-grid>
   </div>
-
 </ion-content>
 
-<ion-footer>
+<!-- ----FOOTER----- -->
+<div>
+  <fiv-app-bar (fivFabClick)="fabButtonClick()" slot="bottom"
+    [titleLayout]="titleLayout" #bar [position]="position" [fabVisible]="fabVisible" [icon]="icon">
+    <fiv-app-bar-tab left icon="md-home" name="Home" href="/history">
+    </fiv-app-bar-tab>
+    <fiv-app-bar-tab right href="/setting" icon="md-settings" name="Settings">
+    </fiv-app-bar-tab>
+  </fiv-app-bar>
+</div>
+
+<!-- <ion-footer>
   <div class="footer">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
@@ -182,4 +192,4 @@
       </ion-row>
     </ion-grid>
   </div>
-</ion-footer>
+</ion-footer> -->

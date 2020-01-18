@@ -27,6 +27,12 @@ export class HistoryPage implements OnInit {
   logs: Observable<any[]>;
   logs_array: any[];
 
+  //footerbar attributes
+  titleLayout = 'hide';
+  position = 'center';
+  fabVisible = true;
+  icon = 'add';
+
   constructor(
     private router: Router,
     private logService: LogService,
@@ -49,6 +55,10 @@ export class HistoryPage implements OnInit {
     } catch (error) {
       this.router.navigateByUrl("login");
     }
+  }
+
+  async fabButtonClick() {
+    this.router.navigateByUrl("/entry");
   }
 
   ngOnInit() {

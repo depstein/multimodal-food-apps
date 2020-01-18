@@ -6,6 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { SettingPage } from './setting.page';
+import {FivAppBarModule} from '../../app-bar/app-bar.module';
+import {FivIconModule, FivFabModule} from '@fivethree/core';
+
+
 
 const routes: Routes = [
   {
@@ -19,6 +23,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    FivAppBarModule,
+    FivIconModule,
+    // FivFabModule,
     RouterModule.forChild(routes)
   ],
   declarations: [SettingPage]

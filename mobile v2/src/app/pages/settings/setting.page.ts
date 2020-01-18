@@ -14,6 +14,11 @@ import { Storage } from '@ionic/storage';
 export class SettingPage implements OnInit {
 
   username = "";
+    //footerbar attributes
+    titleLayout = 'hide';
+    position = 'center';
+    fabVisible = true;
+    icon = 'add';
 
   constructor(private router: Router,
               private logService: LogService,
@@ -29,6 +34,10 @@ export class SettingPage implements OnInit {
               }
 
   ngOnInit() {
+  }
+
+  async fabButtonClick() {
+    this.router.navigateByUrl("/entry");
   }
 
   nav(num: number) {

@@ -35,7 +35,19 @@
 
 </ion-content>
 
-<ion-footer>
+
+<div>
+  <fiv-app-bar (fivFabClick)="fabButtonClick()" slot="bottom"
+    [titleLayout]="titleLayout" #bar [position]="position" [fabVisible]="fabVisible" [icon]="icon">
+    <fiv-app-bar-tab left icon="md-home" name="App Bar" href="/history">
+    </fiv-app-bar-tab>
+    <fiv-app-bar-tab right href="/setting" icon="md-settings" name="Buttons">
+    </fiv-app-bar-tab>
+  </fiv-app-bar>
+</div>
+
+
+<!-- <ion-footer>
   <div class="footer">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
@@ -51,4 +63,4 @@
       </ion-row>
     </ion-grid>
   </div>
-</ion-footer>
+</ion-footer> -->
