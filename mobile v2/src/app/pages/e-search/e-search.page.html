@@ -1,34 +1,53 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>Search For Food</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-  
-    <ion-grid style="height: 100%; display: flex; flex-direction: column">
-      <ion-row>
-        <ion-col size="12">
-          <div>
-            <h1 class="instructions">Please describe the terms you would use to search from a database of foods commonly eaten and logged.</h1>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row style="flex-grow: 1;">
-        <ion-col size="12">
-          <ion-item lines='none'>
-            <ion-textarea [(ngModel)]='value' rows="6" cols="20" placeholder="Enter Search Query"></ion-textarea>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <ion-button expand="block" class="ion-no-margin" (click)='onSave()'>Save</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
-  
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Search For Food</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid style="height: 100%; display: flex; flex-direction: column">
+    <ion-row>
+      <ion-col size="12">
+        <div>
+          <h1 class="instructions">Please describe the terms you would use to search from a database of foods commonly
+            eaten and logged.</h1>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="flex-grow: 0;">
+      <ion-col size="12" style="flex-grow: 0;">
+        <ion-item lines='none'>
+          <!-- <ion-textarea [(ngModel)]='value' rows="6" cols="20" placeholder="Enter Search Query"></ion-textarea> -->
+          <ion-input [(ngModel)]='value' placeholder="Enter Search"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row style="flex-grow: 1;">
+      <ion-col size="12" class="SearchCardContainer" style="flex-grow: 1;">
+        <div *ngIf="value" class="SearchCard">
+          <ion-row>
+            <ion-col size="12">
+              <h4>
+                {{value}} (example)
+              </h4>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6" *ngFor="let placeholder of placeholders">
+              {{placeholder}}: *
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" class="ion-no-margin" (click)='onSave()'>Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

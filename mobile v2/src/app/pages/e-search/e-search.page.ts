@@ -11,6 +11,9 @@ export class ESearchPage implements OnInit {
 
   value = '';
   index = -1;
+
+  placeholders = ["Calories", "Sodium", "Total Fat", "Potassium", "Saturated", "Total Carbs", "Polyunsaturated", "Dietary Fiber", "Cholesterol", "Sugar"]
+
   constructor(private router: Router,
               private logService: LogService,
               private route: ActivatedRoute) { }

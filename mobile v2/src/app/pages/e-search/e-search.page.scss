@@ -1,30 +1,43 @@
 ion-toolbar {
-    // --background: rgb(246, 205, 96);
-    --background: rgb(242, 168, 70);
-    color: white;
+	// --background: rgb(246, 205, 96);
+	--background: rgb(242, 168, 70);
+	color: white;
 
-    ion-back-button {
-        color:white;
-    }
+	ion-back-button {
+		color: white;
+	}
 }
 
 ion-content {
-    // --background: rgb(242, 168, 70);
-    --background: rgb(246, 205, 96);
+	// --background: rgb(242, 168, 70);
+	--background: rgb(246, 205, 96);
 }
 
 ion-item {
-    // --background: rgb(242, 168, 70);
-    --background: rgb(246, 205, 96);
-    --color: white;
+	// --background: rgb(242, 168, 70);
+	--background: rgb(246, 205, 96);
+	--color: white;
 }
 ion-textarea {
-    // height: 45vh;
-    background-color: #009979;
+	// height: 45vh;
+	background-color: #009979;
+}
+ion-input {
+	background-color: #009979;
+	padding-left: 15px;
 }
 ion-button {
-    --background: #009979;
+	--background: #009979;
 }
 .instructions {
-    color:white;
+	color: white;
+}
+
+.SearchCard {
+	background-color: #17a2b8;
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    padding-bottom: 25px;
 }
