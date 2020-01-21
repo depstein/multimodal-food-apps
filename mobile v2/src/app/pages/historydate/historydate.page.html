@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-card *ngFor="let log of logs_array">
-    <ion-card-content (click)="getdate(log)"><p>{{log.date | date:'EEEE, LLLL MM, yyyy hh:mm a'}}</p></ion-card-content>
+    <ion-card-content (click)="getdate(log)"><p>{{log.date | date:'EEEE, LLLL dd, yyyy hh:mm a'}}</p></ion-card-content>
   </ion-card>
 
   <div *ngIf="logs_array.length==0">
