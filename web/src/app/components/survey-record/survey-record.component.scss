@@ -11,3 +11,16 @@
 	color: white;
 	font-weight: 500;
 }
+
+.centralize_justify {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+	padding: 10px;
+
+}
+
+.capitalize{
+    text-transform:capitalize;
+}

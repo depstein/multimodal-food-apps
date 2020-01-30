@@ -2,12 +2,16 @@
 
 
   <div class="card-header col-12" style="background-color: #f2a846;">
-    {{record.date.toDate() | date:'medium' }}
+    {{record.date.toDate() | date:'medium' }} 
   </div>
 
   <div class="row col-12">
+      
 
     <ul class="list-group list-group-flush col-6" style="background-color: transparent;">
+      <div class=" centralize_justify">
+        <h5 class="capitalize">Platform: {{record['platform']}}</h5>
+      </div>
       <!-- ngif -->
       <li class="list-group-item" style="background-color: transparent;" *ngFor="let data of record.entries">
 
@@ -19,7 +23,7 @@
           <img [src]="data.url" style="width: 100%;">
         </div> -->
 
-
+        
         <app-record-card class='col-lg-3 col-md-6 col-sm-12 px-2 my-2'
           title="{{data.modality}}"
           content="{{data.modality === 'foodImg' ? data.url : data.entry }}">
@@ -137,7 +141,7 @@
             </label>
           </div>
         </div>
-        <strong>Why did you choose to journal this food on {{platformString}} with a {{recordString}}?</strong>
+        <strong>Why did you choose to journal this food on {{platformString}}?</strong>
         <div class="form-group">
           <textarea class="form-control" name="modality" rows="3" [ngClass]='modalityValid' [(ngModel)]=context.modality></textarea>
         </div>

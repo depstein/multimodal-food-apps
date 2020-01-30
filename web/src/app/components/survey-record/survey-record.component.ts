@@ -23,8 +23,8 @@ export class SurveyRecordComponent implements OnInit {
 
   context: Context = new Context();
 
-  static readonly PLATFORM_MAP = { 'web': 'the website', 'Alexa': 'Alexa', 'Google Home': 'Google Home', 'mobile': 'the app', 'watch': 'the watch' };
-  static readonly MODALITY_MAP = { 'foodImg': 'picture', 'barcodeImg': 'barcode', 'barcode': 'barcode', 'database': 'food database search', 'url': 'recipe link', 'foodDsrp': 'text description of the food', 'voice': 'voice description of the food' };
+  static readonly PLATFORM_MAP = { 'web': 'the website', 'Alexa': 'Alexa', 'Google Home': 'Google Home', 'GA/Alexa': 'digital assistant', 'mobile': 'the smartphone app', 'watch': 'the watch' };
+  static readonly MODALITY_MAP = { 'foodImg': 'picture', 'barcodeImg': 'barcode', 'barcode': 'barcode', 'database': 'food database search', 'url': 'link', 'foodDsrp': 'text description of the food', 'voice': 'voice description of the food' };
 
 
   situationValid = '';
