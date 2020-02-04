@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class SurveyComponent implements OnInit {
 
   logs = undefined;
+   
+  show
 
   constructor(private db: DatabaseService, private router: Router) { }
 
@@ -24,6 +26,7 @@ export class SurveyComponent implements OnInit {
         this.logs = arr;
       }
     );
+    console.log("logs:" +this.logs)
   }
   logout() {
     this.db.logout();
