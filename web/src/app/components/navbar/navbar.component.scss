@@ -14,3 +14,13 @@
     color: white;
     overflow: scroll;
 }
+
+.colum {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+    padding: 10px;
+    flex-direction: column;
+
+}
