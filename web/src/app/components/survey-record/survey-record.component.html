@@ -141,7 +141,8 @@
             </label>
           </div>
         </div>
-        <strong>Why did you choose to journal this food on {{platformString}} and with those particular input methods?</strong>
+        <strong *ngIf="platformString !== 'the digital assistant'">Why did you choose to journal this food on {{platformString}} and with the particular input method(s)?</strong>
+        <strong *ngIf="platformString === 'the digital assistant'">Why did you choose to journal this food on {{platformString}}?</strong>
         <div class="form-group">
           <textarea class="form-control" name="modality" rows="3" [ngClass]='modalityValid' [(ngModel)]=context.modality></textarea>
         </div>

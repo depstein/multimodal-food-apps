@@ -23,7 +23,7 @@ export class SurveyRecordComponent implements OnInit {
 
   context: Context = new Context();
 
-  static readonly PLATFORM_MAP = { 'web': 'the website', 'Alexa': 'Alexa', 'Google Home': 'Google Home', 'GA/Alexa': 'digital assistant', 'mobile': 'the smartphone app', 'watch': 'the watch' };
+  static readonly PLATFORM_MAP = { 'web': 'the website', 'Alexa': 'Alexa', 'Google Home': 'Google Home', 'GA/Alexa': 'the digital assistant', 'mobile': 'the smartphone app', 'watch': 'the watch' };
   static readonly MODALITY_MAP = { 'foodImg': 'picture', 'barcodeImg': 'barcode', 'barcode': 'barcode', 'database': 'food database search', 'url': 'link', 'foodDsrp': 'text description of the food', 'voice': 'voice description of the food' };
 
 
@@ -41,7 +41,6 @@ export class SurveyRecordComponent implements OnInit {
 
   ngOnInit() {
     this.platformString = SurveyRecordComponent.PLATFORM_MAP[this.record['platform']];
-
   }
 
   getTitle(modality) {
