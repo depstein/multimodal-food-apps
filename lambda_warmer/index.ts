@@ -5,7 +5,7 @@ import { AssertionError } from 'assert';
 const APIGATEWAY_ENDPOINT =
   'https://hd1n8y9430.execute-api.us-west-2.amazonaws.com/testStage/';
 const SLACK_HOOK =
-  'https://hooks.slack.com/services/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';
+  'https://hooks.slack.com/services/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';
 const REQUEST_INTERVAL = 60 * 60 * 1000;
 const SEND_TO_SLACK = true;
 
