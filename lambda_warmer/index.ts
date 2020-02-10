@@ -5,8 +5,8 @@ import { AssertionError } from 'assert';
 const APIGATEWAY_ENDPOINT =
   'https://hd1n8y9430.execute-api.us-west-2.amazonaws.com/testStage/';
 const SLACK_HOOK =
-  'https://hooks.slack.com/services/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';
-const REQUEST_INTERVAL = 60 * 60  * 1000;
+  'https://hooks.slack.com/services/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';
+const REQUEST_INTERVAL = 60 * 60 * 1000;
 const SEND_TO_SLACK = true;
 
 const startTest = {
@@ -51,7 +51,10 @@ const startTest = {
 const notifySlack = async (message: string) => {
   console.log('Slack: ' + message);
   if (SEND_TO_SLACK) {
-    await axios.post(SLACK_HOOK, { text: message });
+    await axios.post(SLACK_HOOK, { text: message }).catch((reason) => {
+      console.log(reason);
+      console.log('error:notifySlack');
+    });
   }
 };
 

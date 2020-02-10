@@ -43,7 +43,7 @@ var axios_1 = __importDefault(require("axios"));
 var moment_1 = __importDefault(require("moment"));
 var assert_1 = require("assert");
 var APIGATEWAY_ENDPOINT = 'https://hd1n8y9430.execute-api.us-west-2.amazonaws.com/testStage/';
-var SLACK_HOOK = 'https://hooks.slack.com/services/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';
+var SLACK_HOOK = 'https://hooks.slack.com/services/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';
 var REQUEST_INTERVAL = 60 * 60 * 1000;
 var SEND_TO_SLACK = true;
 var startTest = {
@@ -90,7 +90,10 @@ var notifySlack = function (message) { return __awaiter(void 0, void 0, void 0, 
             case 0:
                 console.log('Slack: ' + message);
                 if (!SEND_TO_SLACK) return [3 /*break*/, 2];
-                return [4 /*yield*/, axios_1["default"].post(SLACK_HOOK, { text: message })];
+                return [4 /*yield*/, axios_1["default"].post(SLACK_HOOK, { text: message })["catch"](function (reason) {
+                        console.log(reason);
+                        console.log('error:notifySlack');
+                    })];
             case 1:
                 _a.sent();
                 _a.label = 2;
