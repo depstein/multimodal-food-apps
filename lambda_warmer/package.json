@@ -1,0 +1,21 @@
+{
+  "name": "lambda_warmer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "tsc index.ts --esModuleInterop && node index.js",
+    "deploy": "tsc index.ts --esModuleInterop && git add . && git commit -m \"updated time\" && git push heroku master",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^13.7.0",
+    "axios": "^0.19.2",
+    "moment": "^2.24.0",
+    "typescript": "^3.7.5"
+  }
+}
