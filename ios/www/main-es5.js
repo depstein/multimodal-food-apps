@@ -159,7 +159,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <button (click)=\"dismiss()\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\"></ion-icon>\n    </button>\n    <ion-title>history date</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card *ngFor=\"let log of logs_array\">\n    <ion-card-content (click)=\"getdate(log)\"><p>{{log.date | date:'EEEE, LLLL MM, yyyy hh:mm a'}}</p></ion-card-content>\n  </ion-card>\n\n  <div *ngIf=\"logs_array.length==0\">\n    <ion-card>\n      <ion-card-content><p> No entries to display. Make an entry. </p></ion-card-content>\n    </ion-card>\n  </div>\n\n</ion-content>\n\n<ion-footer>\n\n</ion-footer>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <button (click)=\"dismiss()\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\"></ion-icon>\n    </button>\n    <ion-title>history date</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card *ngFor=\"let log of logs_array\">\n    <ion-card-content (click)=\"getdate(log)\"><p>{{log.date | date:'EEEE, LLLL dd, yyyy hh:mm a'}}</p></ion-card-content>\n  </ion-card>\n\n  <div *ngIf=\"logs_array.length==0\">\n    <ion-card>\n      <ion-card-content><p> No entries to display. Make an entry. </p></ion-card-content>\n    </ion-card>\n  </div>\n\n</ion-content>\n\n<ion-footer>\n\n</ion-footer>\n";
     /***/
   },
 
@@ -1459,6 +1459,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             array.forEach(function (element) {
               var ele = element.payload.doc.data(); // checks the date
 
+              console.log(ele.date);
               var dates = new _model_card__WEBPACK_IMPORTED_MODULE_4__["EntryCard"](ele.date, ele.entries, ele.platform, element.payload.doc.id);
               entry.push(dates);
             });

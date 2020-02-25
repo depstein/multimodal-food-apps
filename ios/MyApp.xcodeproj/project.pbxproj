@@ -33,12 +33,12 @@
 		B09F34D6B16B4721B8D6BC90 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2392001795C6494AB621E747 /* CDVDevice.m */; };
 		C65A6DC4232A2836007E4ED3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65A6DC2232A2836007E4ED3 /* Interface.storyboard */; };
 		C65A6DC6232A2836007E4ED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65A6DC5232A2836007E4ED3 /* Assets.xcassets */; };
-		C65A6DCD232A2836007E4ED3 /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C65A6DCC232A2836007E4ED3 /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C65A6DCD232A2836007E4ED3 /* ModEat.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C65A6DCC232A2836007E4ED3 /* ModEat.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C65A6DD2232A2836007E4ED3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A6DD1232A2836007E4ED3 /* InterfaceController.swift */; };
 		C65A6DD4232A2836007E4ED3 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A6DD3232A2836007E4ED3 /* ExtensionDelegate.swift */; };
 		C65A6DD6232A2836007E4ED3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A6DD5232A2836007E4ED3 /* NotificationController.swift */; };
 		C65A6DD8232A2837007E4ED3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65A6DD7232A2837007E4ED3 /* Assets.xcassets */; };
-		C65A6DDD232A2837007E4ED3 /* watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C65A6DC0232A2836007E4ED3 /* watch.app */; };
+		C65A6DDD232A2837007E4ED3 /* ModEat.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C65A6DC0232A2836007E4ED3 /* ModEat.app */; };
 		C6D5113F2331902500C4104C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6D5113E2331902500C4104C /* Media.xcassets */; };
 		C78E5F782552454DBE78119B /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F3028C9305443C1946F492B /* scannerOverlay.xib */; };
 		CEFC8524F75C4486986E3F70 /* CDVWKWebViewEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F01009E55640C79ED5F81D /* CDVWKWebViewEngine.m */; };
@@ -92,7 +92,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C65A6DCD232A2836007E4ED3 /* watch Extension.appex in Embed App Extensions */,
+				C65A6DCD232A2836007E4ED3 /* ModEat.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,7 +103,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				C65A6DDD232A2837007E4ED3 /* watch.app in Embed Watch Content */,
+				C65A6DDD232A2837007E4ED3 /* ModEat.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +118,7 @@
 		19ACCC56A87742DE89F00800 /* CDVSplashScreen.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVSplashScreen.m; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* ModEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA9D40E517B4DE396BBD5A7 /* CDVIonicKeyboard.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVIonicKeyboard.h; path = "cordova-plugin-ionic-keyboard/CDVIonicKeyboard.h"; sourceTree = "<group>"; };
 		2392001795C6494AB621E747 /* CDVDevice.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; };
 		243A3205A8894744881EB5A4 /* ImageIO.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -154,11 +154,11 @@
 		B2EC72AC5171481399AFC275 /* IONAssetHandler.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = IONAssetHandler.m; path = "cordova-plugin-ionic-webview/IONAssetHandler.m"; sourceTree = "<group>"; };
 		B526AFFCE6B740C78B70A6F0 /* CDVCamera.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVCamera.m; path = "cordova-plugin-camera/CDVCamera.m"; sourceTree = "<group>"; };
 		BE46CBDC568E4CA59BB4FC63 /* CDVStatusBar.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVStatusBar.h; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; };
-		C65A6DC0232A2836007E4ED3 /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C65A6DC0232A2836007E4ED3 /* ModEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65A6DC3232A2836007E4ED3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		C65A6DC5232A2836007E4ED3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C65A6DC7232A2836007E4ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C65A6DCC232A2836007E4ED3 /* watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C65A6DCC232A2836007E4ED3 /* ModEat.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ModEat.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65A6DD1232A2836007E4ED3 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		C65A6DD3232A2836007E4ED3 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		C65A6DD5232A2836007E4ED3 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -222,9 +222,9 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* MyApp.app */,
-				C65A6DC0232A2836007E4ED3 /* watch.app */,
-				C65A6DCC232A2836007E4ED3 /* watch Extension.appex */,
+				1D6058910D05DD3D006BFB54 /* ModEat.app */,
+				C65A6DC0232A2836007E4ED3 /* ModEat.app */,
+				C65A6DCC232A2836007E4ED3 /* ModEat.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 			);
 			name = MyApp;
 			productName = MyApp;
-			productReference = 1D6058910D05DD3D006BFB54 /* MyApp.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* ModEat.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C65A6DBF232A2836007E4ED3 /* watch */ = {
@@ -412,7 +412,7 @@
 			);
 			name = watch;
 			productName = watch;
-			productReference = C65A6DC0232A2836007E4ED3 /* watch.app */;
+			productReference = C65A6DC0232A2836007E4ED3 /* ModEat.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		C65A6DCB232A2836007E4ED3 /* watch Extension */ = {
@@ -429,7 +429,7 @@
 			);
 			name = "watch Extension";
 			productName = "watch Extension";
-			productReference = C65A6DCC232A2836007E4ED3 /* watch Extension.appex */;
+			productReference = C65A6DCC232A2836007E4ED3 /* ModEat.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -630,7 +630,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.12.2;
+				CURRENT_PROJECT_VERSION = 1.13.1;
 				DEVELOPMENT_TEAM = A96R74593Q;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -641,9 +641,9 @@
 				INFOPLIST_FILE = "MyApp/MyApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.12.2;
+				MARKETING_VERSION = 1.13.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.depstein.multimodal.food;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ModEat;
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution profile sept-17";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -661,7 +661,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.12.2;
+				CURRENT_PROJECT_VERSION = 1.13.1;
 				DEVELOPMENT_TEAM = A96R74593Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyApp/MyApp-Prefix.pch";
@@ -670,9 +670,9 @@
 				INFOPLIST_FILE = "MyApp/MyApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.12.2;
+				MARKETING_VERSION = 1.13.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.depstein.multimodal.food;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ModEat;
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution profile sept-17";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -781,7 +781,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.12.2;
+				CURRENT_PROJECT_VERSION = 1.13.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = A96R74593Q;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -795,11 +795,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.12.2;
+				MARKETING_VERSION = 1.13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.depstein.multimodal.food.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = ModEat;
 				PROVISIONING_PROFILE_SPECIFIER = "Watchkit distribution profile";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -828,7 +828,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.12.2;
+				CURRENT_PROJECT_VERSION = 1.13.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A96R74593Q;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -837,11 +837,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.12.2;
+				MARKETING_VERSION = 1.13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.depstein.multimodal.food.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = ModEat;
 				PROVISIONING_PROFILE_SPECIFIER = "Watchkit distribution profile";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -871,7 +871,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.12.2;
+				CURRENT_PROJECT_VERSION = 1.13.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = A96R74593Q;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -885,11 +885,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = watch/Info.plist;
-				MARKETING_VERSION = 1.12.2;
+				MARKETING_VERSION = 1.13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.depstein.multimodal.food.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ModEat;
 				PROVISIONING_PROFILE_SPECIFIER = "Watchkit distribution profile";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -919,7 +919,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.12.2;
+				CURRENT_PROJECT_VERSION = 1.13.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = A96R74593Q;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -928,11 +928,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				IBSC_MODULE = watch_Extension;
 				INFOPLIST_FILE = watch/Info.plist;
-				MARKETING_VERSION = 1.12.2;
+				MARKETING_VERSION = 1.13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.depstein.multimodal.food.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ModEat;
 				PROVISIONING_PROFILE_SPECIFIER = "Watchkit distribution profile";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

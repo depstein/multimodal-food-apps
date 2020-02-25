@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n<ion-content>\n  <div class=\"main\">\n    <h1>Ubi-meals</h1>\n    <img src=\"../../assets/images/foodlogging.png\" class=\"logo\">\n\n    <ion-input placeholder='Username' id='username' [(ngModel)]=\"username\">\n    </ion-input>\n\n    <ion-button (click)=\"login()\">\n      Login\n    </ion-button>\n  </div>\n</ion-content>\n";
+    __webpack_exports__["default"] = "\n<ion-content>\n  <div class=\"main\">\n    <h1>ModEat</h1>\n    <img src=\"../../assets/images/foodlogging.png\" class=\"logo\">\n\n    <ion-input placeholder='Username' id='username' [(ngModel)]=\"username\">\n    </ion-input>\n\n    <ion-button (click)=\"login()\">\n      Login\n    </ion-button>\n  </div>\n</ion-content>\n";
     /***/
   },
 

@@ -45,19 +45,19 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func logButtonAction() {
         if user == nil {
-            let users = ["Anna", "Daniel", "Kim", "Yuqi", "Yuqi2"]
+            let users = ["user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10"]
             presentTextInputController(withSuggestions: users, allowedInputMode: WKTextInputMode.plain){ (arr: [Any]?) in
                 if (arr != nil) && (arr?[0] != nil) && users.contains(arr![0] as! String) {
                     self.user = arr![0] as? String
                     self.textLabel.setText("Welcome, " + self.user! + "!")
-                    self.logButton.setTitle("Log a food")
+                    self.logButton.setTitle("Journal Food")
                 }
             }
         } else {
             presentTextInputController(withSuggestions: (nil), allowedInputMode: WKTextInputMode.plain){ (arr: [Any]?) in
                 if let strArr = arr as? [String]? {
-//                    self.sendToFirebase(food: strArr?.joined(separator: " ") ?? "unknown")
-                    self.sendToFirebase(food: "Test Log From Watch");
+                    self.sendToFirebase(food: strArr?.joined(separator: " ") ?? "unknown")
+//                    self.sendToFirebase(food: "Test Log From Watch");
                     WKInterfaceDevice.current().play(.success)
                 }
             }
