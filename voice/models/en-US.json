@@ -86,6 +86,7 @@
 			"name": "DeleteIntent",
 			"phrases": [
 				"delete",
+				"delete today's last entry"
 				"delete my last log"
 			]
 		},

@@ -86,9 +86,12 @@ app.setHandler({
     this.$speech.addText("These are the available options");
     const commands = [
       "sign in",
-      "journal food",
+      "journal",
       "read last entry",
-      "delete today's last entry"
+      "delete today's last entry",
+      "am I logged in",
+      "sign out",
+      "exit"
     ];
     commands.forEach((cmd, index) => {
       this.$speech.addBreak("750ms");
