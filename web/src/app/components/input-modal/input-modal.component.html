@@ -1,6 +1,5 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
-  aria-labelledby="exampleModalLabel" data-keyboard="false"
-  aria-hidden="true" data-backdrop="static">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  data-keyboard="false" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -18,35 +17,35 @@
             <!--Database search -->
             <div *ngIf="isSearch(mode)">
               <div class="d-flex flex-row justify-content-around">
-                  <input  [(ngModel)]="textEntry" type="text" [ngModelOptions]="{standalone: true}"
-                  class="form-control" id="message-text" [placeholder]="placeholder" />
+                <input [(ngModel)]="textEntry" type="text" [ngModelOptions]="{standalone: true}" class="form-control"
+                  id="message-text" [placeholder]="placeholder" />
                 <button class="ml-3 btn shadow btn-success" id="save" (click)="toggleSearchResults()">Search</button>
               </div>
 
               <div *ngIf="toggleSearchResults()" class="mt-3">
-                  <div class="card bg-info">
-                      <h5 class="card-header">{{textEntry}} (example)</h5>
-                      <div class="card-body">
-                        <div class="container">
-                            <div class="row">
-                              <div class="col card-text">Calories:	*</div>
-                              <div class="col card-text">Sodium	* mg</div>
-                              <div class="w-100"></div>
-                              <div class="col card-text">Total Fat:	* g</div>
-                              <div class="col card-text">Potassium:	* mg</div>
-                              <div class="w-100"></div>
-                              <div class="col card-text">Saturated:	* g</div>
-                              <div class="col card-text">Total Carbs:	* g</div>
-                              <div class="w-100"></div>
-                              <div class="col card-text">Polyunsaturated:	* g</div>
-                              <div class="col card-text">Dietary Fiber:	* g</div>
-                              <div class="w-100"></div>
-                              <div class="col card-text">Cholesterol:	* g</div>
-                              <div class="col card-text">Sugar:	* g</div>
-                            </div>
-                          </div>
+                <div class="card bg-info">
+                  <h5 class="card-header">{{textEntry}} (example)</h5>
+                  <div class="card-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col card-text">Calories: *</div>
+                        <div class="col card-text">Sodium * mg</div>
+                        <div class="w-100"></div>
+                        <div class="col card-text">Total Fat: * g</div>
+                        <div class="col card-text">Potassium: * mg</div>
+                        <div class="w-100"></div>
+                        <div class="col card-text">Saturated: * g</div>
+                        <div class="col card-text">Total Carbs: * g</div>
+                        <div class="w-100"></div>
+                        <div class="col card-text">Polyunsaturated: * g</div>
+                        <div class="col card-text">Dietary Fiber: * g</div>
+                        <div class="w-100"></div>
+                        <div class="col card-text">Cholesterol: * g</div>
+                        <div class="col card-text">Sugar: * g</div>
                       </div>
                     </div>
+                  </div>
+                </div>
               </div>
             </div>
             <!--image -->
@@ -70,10 +69,16 @@
               </div>
               <!--Voice -->
               <div *ngIf="isVoice(mode)">
+
                 <button (click)='onListen()' class='btn' style='color: white; width: 100%;'
-                  [ngClass]="{'btn-danger': !isRecording, 'btn-secondary': isRecording}">
+                  [ngClass]="{'btn-danger': !isRecording, 'btn-secondary': isRecording}" *ngIf='isChrome'>
                   {{isRecording ? 'recording...' : 'Record'}}
                 </button>
+
+                <p *ngIf='!isChrome' class=''>
+                  Sorry! This modality is only supported in Chrome Web Browser!
+                </p>
+
                 <div *ngIf='textEntry.length != 0'>
                   <p class="h4 mt-2">Result</p>
                   <p>{{textEntry}}</p>
