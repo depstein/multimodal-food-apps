@@ -4,7 +4,7 @@
   "description": "A sample voice app that works with the Jovo Framework",
   "main": "src/index.js",
   "dependencies": {
-    "grpc": "^1.24.2",
+    "grpc": "^1.24.9",
     "jovo-db-filedb": "^2.2.20",
     "jovo-db-firestore": "^2.2.20",
     "jovo-framework": "^2.2.27",
