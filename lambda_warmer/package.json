@@ -15,7 +15,7 @@
   "dependencies": {
     "@types/node": "^13.7.0",
     "axios": "^0.19.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "typescript": "^3.7.5"
   }
 }
